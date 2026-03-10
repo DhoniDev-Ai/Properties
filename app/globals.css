@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
+  --font-cursive: var(--font-cursive);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +23,25 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Mobile iOS Safari safe areas and tap highlights */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Prevent iOS Zoom on Inputs */
+input[type="text"], input[type="email"], input[type="number"], select, textarea {
+  font-size: 16px !important;
+}
+
+/* Base interactive touch highlight removal */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
