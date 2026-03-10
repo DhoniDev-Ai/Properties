@@ -43,7 +43,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-lg font-cursive md:text-2xl lg:text-4xl text-white/95 mb-14 md:mb-16 font-medium drop-shadow-md max-w-2xl mx-auto"
+                    className="text-lg font-cursive md:text-2xl lg:text-4xl text-white/95 mb-10 md:mb-16 font-medium drop-shadow-md max-w-2xl mx-auto"
                 >
                     Premium Residential & Commercial Properties
                 </motion.p>
@@ -73,14 +73,14 @@ export default function Hero() {
 
                     {/* Search Inputs area */}
                     <div className="bg-slate-50 border border-white/30 rounded-3xl md:rounded-3xl p-2 md:p-3 shadow-2xl">
-                        <div className="flex flex-col md:flex-row gap-2 md:gap-0 items-center">
+                        <div className="flex flex-row md:flex-row gap-2 md:gap-0 items-center">
 
                             {/* City Dropdown */}
-                            <div className="w-full md:w-[15%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex flex-col items-start justify-center">
+                            <div className="w-[42%] md:w-[15%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-3 md:px-4 py-2 flex flex-col items-start justify-center">
                                 <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">CITY</label>
                                 <div className="flex items-center text-slate-700 w-full">
-                                    <MapPin className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
+                                    <MapPin className="h-[17px] w-[17px] text-blue-600 mr-1.5 shrink-0" strokeWidth={1.5} />
+                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[14px] md:text-[15px] font-medium appearance-none cursor-pointer">
                                         <option value="jaipur">Jaipur</option>
                                         <option value="delhi">Delhi</option>
                                         <option value="mumbai">Mumbai</option>
@@ -89,21 +89,22 @@ export default function Hero() {
                             </div>
 
                             {/* Keyword Input */}
-                            <div className="w-full md:w-[22%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">LOCATION/KEYWORD</label>
+                            <div className="flex-1 md:w-[22%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-3 md:px-4 py-2 flex flex-col items-start justify-center">
+                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">LOCATION</label>
                                 <div className="flex items-center text-slate-700 w-full">
-                                    <Search className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
+                                    <Search className="h-[17px] w-[17px] text-blue-600 mr-1.5 shrink-0" strokeWidth={1.5} />
                                     <input
                                         type="text"
                                         placeholder="Search location..."
-                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium placeholder-slate-400"
+                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[14px] md:text-[15px] font-medium placeholder-slate-400"
+                                        style={{ fontSize: '16px' }}
                                     />
                                 </div>
                             </div>
 
-                            {/* Property Type Dropdown */}
-                            <div className="w-full md:w-[15%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">PROPERTY TYPE</label>
+                            {/* Property Type Dropdown — desktop only */}
+                            <div className="hidden md:flex w-full md:w-[15%] relative md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex-col items-start justify-center">
+                                <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">PROPERTY TYPE</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <Home className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
                                     <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
@@ -114,9 +115,9 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* BHK Dropdown */}
-                            <div className="w-full md:w-[14%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BHK</label>
+                            {/* BHK Dropdown — desktop only */}
+                            <div className="hidden md:flex w-full md:w-[14%] relative md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex-col items-start justify-center">
+                                <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BHK</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <BedDouble className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
                                     <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
@@ -129,9 +130,9 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* Budget Dropdown */}
-                            <div className="w-full md:w-[16%] relative border border-slate-200 md:border-0 rounded-xl md:rounded-none px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BUDGET</label>
+                            {/* Budget Dropdown — desktop only */}
+                            <div className="hidden md:flex w-full md:w-[16%] relative md:border-0 rounded-xl md:rounded-none px-4 py-2 flex-col items-start justify-center">
+                                <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BUDGET</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <IndianRupee className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
                                     <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
@@ -144,15 +145,55 @@ export default function Hero() {
                             </div>
 
                             {/* Search Button */}
-                            <div className="md:w-[18%] w-full md:ml-auto mt-1 md:mt-0 flex justify-center items-center">
-                                <button className="w-full bg-[#1D4ED8] hover:bg-blue-800 px-2 text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]">
-                                    <Search className="h-4 w-4 md:h-5 md:w-5 shrink-0" strokeWidth={2.5} />
-                                    <span className="font-semibold text-[14px] md:text-base whitespace-nowrap">Search Properties</span>
+                            <div className="md:w-[18%] w-auto md:ml-auto flex justify-center items-center shrink-0">
+                                <button className="bg-[#1D4ED8] hover:bg-blue-800 px-3 md:px-2 md:w-full text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]">
+                                    <Search className="h-5 w-5 shrink-0" strokeWidth={2.5} />
+                                    <span className="font-semibold text-[14px] md:text-base whitespace-nowrap hidden md:inline">Search Properties</span>
                                 </button>
                             </div>
 
                         </div>
                     </div>
+
+                    {/* ── MOBILE ONLY: Filter Chips below search bar ── */}
+                    <div className="flex md:hidden gap-2.5 mt-3 overflow-x-auto pb-1 scrollbar-hide px-0.5">
+                        {/* Property Type chip */}
+                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                            <Home className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[80px]">
+                                <option value="apartment" className="text-slate-800">Apartment</option>
+                                <option value="villa" className="text-slate-800">Villa</option>
+                                <option value="commercial" className="text-slate-800">Commercial</option>
+                            </select>
+                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                        </div>
+
+                        {/* BHK chip */}
+                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                            <BedDouble className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[55px]">
+                                <option value="any" className="text-slate-800">Any BHK</option>
+                                <option value="1" className="text-slate-800">1 BHK</option>
+                                <option value="2" className="text-slate-800">2 BHK</option>
+                                <option value="3" className="text-slate-800">3 BHK</option>
+                                <option value="4+" className="text-slate-800">4+ BHK</option>
+                            </select>
+                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                        </div>
+
+                        {/* Budget chip */}
+                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                            <IndianRupee className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[70px]">
+                                <option value="10-30" className="text-slate-800">From ₹10L</option>
+                                <option value="30-50" className="text-slate-800">From ₹30L</option>
+                                <option value="50-100" className="text-slate-800">From ₹50L</option>
+                                <option value="100+" className="text-slate-800">From ₹1Cr</option>
+                            </select>
+                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                        </div>
+                    </div>
+
                 </motion.div>
 
                 {/* Trust Indicators */}
