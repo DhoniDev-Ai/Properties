@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Search, MapPin, Home, IndianRupee, BedDouble, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
     const [activeTab, setActiveTab] = useState("All");
@@ -11,15 +12,21 @@ export default function Hero() {
 
     return (
         <div className="relative h-screen w-full flex items-center justify-center">
-            {/* Background Image with Dark Overlay */}
-            <div
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                    backgroundImage:
-                        "url('/her0.png')",
-                }}
-            >
-                <div className="absolute inset-0 bg-black/40"></div>
+            {/* Background Image — next/image with priority for fastest LCP */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <Image
+                    src="/her0.png"
+                    alt="Hero background"
+                    fill
+                    priority
+                    fetchPriority="high"
+                    quality={80}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEA//EACMQAAICAgIBBQAAAAAAAAAAAAECAxEABBIhMUFRYXH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Ag2VsPK5Gfl3xMhEcqJO7MV7VR1YkdKo9Aap8HGiLYpbUQTd2T9Gam6aBDmtQnGOfEE//2Q=="
+                    sizes="100vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+                <div className="absolute inset-0 bg-black/40" />
             </div>
 
             {/* Content text-center mt-20 md:mt-10*/}

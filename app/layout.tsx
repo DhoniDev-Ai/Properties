@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Inter, Great_Vibes } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -31,10 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${outfit.variable} ${inter.variable} ${greatVibes.variable} font-sans antialiased bg-slate-50`}
       >
+        <SmoothScrollProvider />
         <Navbar />
         {children}
         <FloatingWhatsApp />
