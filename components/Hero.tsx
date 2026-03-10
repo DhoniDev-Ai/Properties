@@ -15,7 +15,7 @@ export default function Hero() {
             {/* Background Image — next/image with priority for fastest LCP */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
-                    src="/her0.png"
+                    src="/image.png"
                     alt="Hero background"
                     fill
                     priority
@@ -91,12 +91,12 @@ export default function Hero() {
 
                             {/* Location/Search — always visible */}
                             <div className="flex-1 md:w-[22%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-3 md:px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">LOCATION</label>
+                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">SEARCH</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <Search className="h-[17px] w-[17px] text-blue-600 mr-1.5 shrink-0" strokeWidth={1.5} />
                                     <input
                                         type="text"
-                                        placeholder="Search location..."
+                                        placeholder="Search..."
                                         className="w-full bg-transparent border-none outline-none focus:ring-0 text-[14px] md:text-[15px] font-medium placeholder-slate-400"
                                         style={{ fontSize: '16px' }}
                                     />
@@ -147,9 +147,9 @@ export default function Hero() {
 
                             {/* Search Button */}
                             <div className="md:w-[18%] w-auto md:ml-auto flex justify-center items-center shrink-0">
-                                <button className="bg-[#1D4ED8] hover:bg-blue-800 px-3 md:px-2 md:w-full text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]">
+                                <button className="bg-[#1D4ED8] hover:bg-blue-800 px-2  md:w-full text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]">
                                     <Search className="h-5 w-5 shrink-0" strokeWidth={2.5} />
-                                    <span className="font-semibold text-[14px] md:text-base whitespace-nowrap hidden md:inline">Search Properties</span>
+                                    <span className="font-semibold text-[14px] md:text-base whitespace-nowrap hidden md:inline">Search Property</span>
                                 </button>
                             </div>
 
