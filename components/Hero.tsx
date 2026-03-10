@@ -30,24 +30,25 @@ export default function Hero() {
             </div>
 
             {/* Content text-center mt-20 md:mt-10*/}
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-28 md:mt-12">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-3 tracking-tight  md:mb-4  md:leading-tight drop-shadow-xl px-1"
-                >
-                    Find A Place You Will Call <span className=" text-[#F59E0B] capitaliz  ">HOME</span>
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-lg font-cursive md:text-2xl lg:text-4xl text-white/95 mb-10 md:mb-16 font-medium drop-shadow-md max-w-2xl mx-auto"
-                >
-                    Premium Residential & Commercial Properties
-                </motion.p>
-
+            <div className="relative flex flex-col justify-between h-[75vh] z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-28 md:mt-12">
+                <div>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-3 tracking-tight  md:mb-4  md:leading-tight drop-shadow-xl px-1"
+                    >
+                        Find A Place You Will Call <span className=" text-[#F59E0B] capitaliz  ">HOME</span>
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-lg font-cursive md:text-2xl lg:text-4xl text-white/95 mb-10 md:mb-16 font-medium drop-shadow-md max-w-2xl mx-auto"
+                    >
+                        Premium Residential & Commercial Properties
+                    </motion.p>
+                </div>
                 {/* Search Container */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
@@ -75,12 +76,12 @@ export default function Hero() {
                     <div className="bg-slate-50 border border-white/30 rounded-3xl md:rounded-3xl p-2 md:p-3 shadow-2xl">
                         <div className="flex flex-row md:flex-row gap-2 md:gap-0 items-center">
 
-                            {/* City Dropdown */}
-                            <div className="w-[42%] md:w-[15%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-3 md:px-4 py-2 flex flex-col items-start justify-center">
-                                <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">CITY</label>
+                            {/* City Dropdown — desktop only, moves to grid on mobile */}
+                            <div className="hidden md:flex md:w-[15%] relative md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-4 py-2 flex-col items-start justify-center">
+                                <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">CITY</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <MapPin className="h-[17px] w-[17px] text-blue-600 mr-1.5 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[14px] md:text-[15px] font-medium appearance-none cursor-pointer">
+                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
                                         <option value="jaipur">Jaipur</option>
                                         <option value="delhi">Delhi</option>
                                         <option value="mumbai">Mumbai</option>
@@ -88,7 +89,7 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* Keyword Input */}
+                            {/* Location/Search — always visible */}
                             <div className="flex-1 md:w-[22%] relative border border-slate-200 md:border-0 md:border-r md:border-slate-200 rounded-xl md:rounded-none px-3 md:px-4 py-2 flex flex-col items-start justify-center">
                                 <label className="block text-[10px] md:text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">LOCATION</label>
                                 <div className="flex items-center text-slate-700 w-full">
@@ -155,43 +156,56 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* ── MOBILE ONLY: Filter Chips below search bar ── */}
-                    <div className="flex md:hidden gap-2.5 mt-3 overflow-x-auto pb-1 scrollbar-hide px-0.5">
-                        {/* Property Type chip */}
-                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                    {/* ── MOBILE ONLY: 2×2 filter grid ── */}
+                    <div className="grid md:hidden grid-cols-2 gap-2 mt-3">
+
+                        {/* City — full width */}
+                        <div className="col-span-2 flex items-center gap-2 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
+                            <MapPin className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
+                                <option value="jaipur" className="text-slate-800">Jaipur</option>
+                                <option value="delhi" className="text-slate-800">Delhi</option>
+                                <option value="mumbai" className="text-slate-800">Mumbai</option>
+                            </select>
+                            <svg className="w-3 h-3 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                        </div>
+
+                        {/* Property Type */}
+                        <div className="flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <Home className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[80px]">
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
                                 <option value="apartment" className="text-slate-800">Apartment</option>
                                 <option value="villa" className="text-slate-800">Villa</option>
                                 <option value="commercial" className="text-slate-800">Commercial</option>
                             </select>
-                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                            <svg className="w-3 h-3 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
                         </div>
 
-                        {/* BHK chip */}
-                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                        {/* BHK */}
+                        <div className="flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <BedDouble className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[55px]">
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
                                 <option value="any" className="text-slate-800">Any BHK</option>
                                 <option value="1" className="text-slate-800">1 BHK</option>
                                 <option value="2" className="text-slate-800">2 BHK</option>
                                 <option value="3" className="text-slate-800">3 BHK</option>
                                 <option value="4+" className="text-slate-800">4+ BHK</option>
                             </select>
-                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                            <svg className="w-3 h-3 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
                         </div>
 
-                        {/* Budget chip */}
-                        <div className="shrink-0 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2 text-[13px] font-semibold cursor-pointer">
+                        {/* Budget — full width */}
+                        <div className="col-span-2 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <IndianRupee className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer min-w-[70px]">
-                                <option value="10-30" className="text-slate-800">From ₹10L</option>
-                                <option value="30-50" className="text-slate-800">From ₹30L</option>
-                                <option value="50-100" className="text-slate-800">From ₹50L</option>
-                                <option value="100+" className="text-slate-800">From ₹1Cr</option>
+                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
+                                <option value="10-30" className="text-slate-800">Budget: From ₹10L</option>
+                                <option value="30-50" className="text-slate-800">Budget: From ₹30L</option>
+                                <option value="50-100" className="text-slate-800">Budget: From ₹50L</option>
+                                <option value="100+" className="text-slate-800">Budget: From ₹1Cr</option>
                             </select>
-                            <svg className="w-3 h-3 text-white/70 shrink-0 -ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                            <svg className="w-3 h-3 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
                         </div>
+
                     </div>
 
                 </motion.div>
