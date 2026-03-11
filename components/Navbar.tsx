@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -24,11 +24,13 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: "About Us", href: "#about" },
-        { name: "properties", href: "#properties" },
-        { name: "Emi Calculator", href: "#Emicalculator" },
-        { name: "Contact us", href: "#contact" },
+        { name: "About Us", href: "/#about" },
+        { name: "Properties", href: "/properties" },
+        { name: "EMI Calculator", href: "/#Emicalculator" },
+        { name: "Contact us", href: "/#contact" },
     ];
+
+    const isSolidText = isScrolled || theme === "light";
 
     return (
         <motion.nav
@@ -37,11 +39,11 @@ export default function Navbar() {
                 top: isScrolled ? 16 : 0,
                 width: isScrolled ? "95%" : "100%",
                 maxWidth: isScrolled ? "1152px" : "100%",
-                backgroundColor: isScrolled ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
+                backgroundColor: isScrolled ? "rgba(255, 255, 255, 1)" : (theme === "light" ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)"),
                 borderRadius: isScrolled ? "9999px" : "0px",
                 paddingTop: isScrolled ? "12px" : "20px",
                 paddingBottom: isScrolled ? "12px" : "20px",
-                boxShadow: isScrolled ? "0 8px 30px rgba(0,0,0,0.08)" : "0 0 0 rgba(0,0,0,0)",
+                boxShadow: isScrolled ? "0 8px 30px rgba(0,0,0,0.08)" : (theme === "light" ? "0 4px 20px rgba(0,0,0,0.05)" : "0 0 0 rgba(0,0,0,0)"),
             }}
             transition={{
                 type: "spring",
@@ -56,10 +58,10 @@ export default function Navbar() {
                     {/* Logo */}
                     <div className="shrink cursor-pointer  flex items-center">
                         <Link href="/" className="flex flex-col justify-center items-start group cursor-pointer pl-1">
-                            <span className={`font-black text-[22px] tracking-tight leading-none font-heading ${isScrolled ? "text-[#0F172A]" : "text-white"}`}>
+                            <span className={`font-black text-[22px] tracking-tight leading-none font-heading ${isSolidText ? "text-[#0F172A]" : "text-white"}`}>
                                 AGRWAL
                             </span>
-                            <span className={`text-[9.5px] font-bold tracking-widest md:tracking-[0.22em]  ${isScrolled ? "text-slate-500" : "text-white/80"}`}>
+                            <span className={`text-[9.5px] font-bold tracking-widest md:tracking-[0.22em]  ${isSolidText ? "text-slate-500" : "text-white/80"}`}>
                                 PROPERTIES
                             </span>
                         </Link>
@@ -71,7 +73,7 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className={`font-medium text-[15px] cursor-pointer transition-colors duration-200 relative group py-2 ${isScrolled ? "text-slate-600 hover:text-[#0F172A]" : "text-white/90 hover:text-white"}`}
+                                className={`font-medium text-[15px] cursor-pointer transition-colors duration-200 relative group py-2 ${isSolidText ? "text-slate-600 hover:text-[#0F172A]" : "text-white/90 hover:text-white"}`}
                             >
                                 {link.name}
                                 <span className="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
@@ -81,7 +83,7 @@ export default function Navbar() {
 
                     {/* Call to Action Button */}
                     <div className="hidden md:flex items-center">
-                        <button className={`flex items-center gap-2 font-bold cursor-pointer transition-colors duration-200 ${isScrolled ? "text-[#0F172A] hover:text-blue-600" : "text-white hover:text-blue-200"}`}>
+                        <button className={`flex items-center gap-2 font-bold cursor-pointer transition-colors duration-200 ${isSolidText ? "text-[#0F172A] hover:text-blue-600" : "text-white hover:text-blue-200"}`}>
                             <Phone className="h-[18px] w-[18px]" strokeWidth={2} />
                             <span className="text-[15px]">Call Now</span>
                         </button>
@@ -91,7 +93,7 @@ export default function Navbar() {
                     <div className="flex md:hidden items-center">
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none cursor-pointer focus:ring-2 focus:ring-inset focus:ring-slate-500 transition-colors ${isScrolled ? "text-slate-500 hover:text-[#0F172A] hover:bg-slate-100" : "text-white hover:bg-white/10"}`}
+                            className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none cursor-pointer focus:ring-2 focus:ring-inset focus:ring-slate-500 transition-colors ${isSolidText ? "text-slate-500 hover:text-[#0F172A] hover:bg-slate-100" : "text-white hover:bg-white/10"}`}
                             aria-expanded="false"
                         >
                             <span className="sr-only">Open main menu</span>

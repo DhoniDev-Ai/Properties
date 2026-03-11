@@ -1,14 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, MapPin, Home, IndianRupee, BedDouble, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Hero() {
+    const router = useRouter();
     const [activeTab, setActiveTab] = useState("All");
 
+    const [keyword, setKeyword] = useState("");
+    const [city, setCity] = useState("jaipur");
+    const [propertyType, setPropertyType] = useState("");
+    const [bhk, setBhk] = useState("");
+    const [budget, setBudget] = useState("");
+
     const tabs = ["All", "For Rent", "For Sale"];
+
+    const handleSearch = () => {
+        const type = activeTab === "All" ? "all" : activeTab === "For Rent" ? "rent" : "sale";
+        const query = new URLSearchParams({
+            type,
+            ...(keyword && { keyword }),
+            ...(city && { city }),
+            ...(propertyType && { propertyType }),
+            ...(bhk && { bhk }),
+            ...(budget && { budget })
+        }).toString();
+
+        router.push(`/properties?${query}`);
+    };
 
     return (
         <div className="relative h-screen w-full flex items-center justify-center">
@@ -56,20 +78,23 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="max-w-[1050px] max-md:pt-6 mx-auto"
                 >
-                    {/* Tabs */}
-                    <div className="flex justify-start space-x-2 md:space-x-3 mb-3 max-sm:mb-[5] px-1">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl font-semibold text-[14px] md:text-[15px] cursor-pointer transition-all duration-300 md:backdrop-blur-md active:scale-95 ${activeTab === tab
-                                    ? "bg-white text-slate-800 shadow-md md:shadow-lg"
-                                    : "bg-black/40 md:bg-black/30 hover:bg-black/40 text-white shadow-sm border border-white/10 md:border-white/10 backdrop-blur-md"
-                                    }`}
-                            >
-                                {tab}
-                            </button>
-                        ))}
+                    {/* Tabs & Login */}
+                    <div className="flex justify-between items-center mb-3 max-sm:mb-[5] px-1">
+                        <div className="flex justify-start space-x-2 md:space-x-3">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`px-5 md:px-8 py-2 md:py-3 rounded-xl md:rounded-2xl font-semibold text-[14px] md:text-[15px] cursor-pointer transition-all duration-300 md:backdrop-blur-md active:scale-95 ${activeTab === tab
+                                        ? "bg-white text-slate-800 shadow-md md:shadow-lg"
+                                        : "bg-black/40 md:bg-black/30 hover:bg-black/40 text-white shadow-sm border border-white/10 md:border-white/10 backdrop-blur-md"
+                                        }`}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+
                     </div>
 
                     {/* Search Inputs area */}
@@ -81,7 +106,11 @@ export default function Hero() {
                                 <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">CITY</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <MapPin className="h-[17px] w-[17px] text-blue-600 mr-1.5 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
+                                    <select
+                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer"
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
+                                    >
                                         <option value="jaipur">Jaipur</option>
                                         <option value="delhi">Delhi</option>
                                         <option value="mumbai">Mumbai</option>
@@ -99,6 +128,9 @@ export default function Hero() {
                                         placeholder="Search..."
                                         className="w-full bg-transparent border-none outline-none focus:ring-0 text-[14px] md:text-[15px] font-medium placeholder-slate-400"
                                         style={{ fontSize: '16px' }}
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                                     />
                                 </div>
                             </div>
@@ -108,8 +140,12 @@ export default function Hero() {
                                 <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">PROPERTY TYPE</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <Home className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
-                                        <option value="apartment">Apartment</option>
+                                    <select
+                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer"
+                                        value={propertyType}
+                                        onChange={(e) => setPropertyType(e.target.value)}
+                                    >
+                                        <option value="">Apartment</option>
                                         <option value="villa">Villa</option>
                                         <option value="commercial">Commercial</option>
                                     </select>
@@ -121,8 +157,12 @@ export default function Hero() {
                                 <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BHK</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <BedDouble className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
-                                        <option value="any">Any</option>
+                                    <select
+                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer"
+                                        value={bhk}
+                                        onChange={(e) => setBhk(e.target.value)}
+                                    >
+                                        <option value="">Any</option>
                                         <option value="1">1 BHK</option>
                                         <option value="2">2 BHK</option>
                                         <option value="3">3 BHK</option>
@@ -136,18 +176,37 @@ export default function Hero() {
                                 <label className="block text-[11px] font-bold text-slate-500 mb-[2px] tracking-wider">BUDGET</label>
                                 <div className="flex items-center text-slate-700 w-full">
                                     <IndianRupee className="h-[18px] w-[18px] text-blue-600 mr-2 shrink-0" strokeWidth={1.5} />
-                                    <select className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer">
-                                        <option value="10-30">From ₹10L</option>
-                                        <option value="30-50">From ₹30L</option>
-                                        <option value="50-100">From ₹50L</option>
-                                        <option value="100+">From ₹1Cr</option>
+                                    <select
+                                        className="w-full bg-transparent border-none outline-none focus:ring-0 text-[15px] font-medium appearance-none cursor-pointer"
+                                        value={budget}
+                                        onChange={(e) => setBudget(e.target.value)}
+                                    >
+                                        <option value="">Max Budget</option>
+                                        {activeTab === "For Rent" ? (
+                                            <>
+                                                <option value="20000">₹20,000</option>
+                                                <option value="50000">₹50,000</option>
+                                                <option value="100000">₹1 Lac</option>
+                                                <option value="200000">₹2 Lacs+</option>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <option value="5000000">₹50 Lacs</option>
+                                                <option value="10000000">₹1 Cr</option>
+                                                <option value="25000000">₹2.5 Cr</option>
+                                                <option value="50000000">₹5 Cr+</option>
+                                            </>
+                                        )}
                                     </select>
                                 </div>
                             </div>
 
                             {/* Search Button */}
                             <div className="md:w-[18%] w-auto md:ml-auto flex justify-center items-center shrink-0">
-                                <button className="bg-[#1D4ED8] hover:bg-blue-800 px-2  md:w-full text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]">
+                                <button
+                                    onClick={handleSearch}
+                                    className="bg-[#1D4ED8] hover:bg-blue-800 px-2  md:w-full text-white font-medium py-3 md:py-4 rounded-2xl md:rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]"
+                                >
                                     <Search className="h-5 w-5 shrink-0" strokeWidth={2.5} />
                                     <span className="font-semibold text-[14px] md:text-base whitespace-nowrap hidden md:inline">Search Property</span>
                                 </button>
@@ -162,7 +221,11 @@ export default function Hero() {
                         {/* City — full width */}
                         <div className="col-span-2 flex items-center gap-2 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <MapPin className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
+                            <select
+                                className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            >
                                 <option value="jaipur" className="text-slate-800">Jaipur</option>
                                 <option value="delhi" className="text-slate-800">Delhi</option>
                                 <option value="mumbai" className="text-slate-800">Mumbai</option>
@@ -173,7 +236,12 @@ export default function Hero() {
                         {/* Property Type */}
                         <div className="flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <Home className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
+                            <select
+                                className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full"
+                                value={propertyType}
+                                onChange={(e) => setPropertyType(e.target.value)}
+                            >
+                                <option value="" className="text-slate-800">Any Type</option>
                                 <option value="apartment" className="text-slate-800">Apartment</option>
                                 <option value="villa" className="text-slate-800">Villa</option>
                                 <option value="commercial" className="text-slate-800">Commercial</option>
@@ -184,8 +252,12 @@ export default function Hero() {
                         {/* BHK */}
                         <div className="flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <BedDouble className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
-                                <option value="any" className="text-slate-800">Any BHK</option>
+                            <select
+                                className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full"
+                                value={bhk}
+                                onChange={(e) => setBhk(e.target.value)}
+                            >
+                                <option value="" className="text-slate-800">Any BHK</option>
                                 <option value="1" className="text-slate-800">1 BHK</option>
                                 <option value="2" className="text-slate-800">2 BHK</option>
                                 <option value="3" className="text-slate-800">3 BHK</option>
@@ -197,13 +269,40 @@ export default function Hero() {
                         {/* Budget — full width */}
                         <div className="col-span-2 flex items-center gap-1.5 bg-black/35 backdrop-blur-md border border-white/15 text-white rounded-xl px-3 py-2.5">
                             <IndianRupee className="h-[14px] w-[14px] text-white/80 shrink-0" strokeWidth={1.8} />
-                            <select className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full">
-                                <option value="10-30" className="text-slate-800">Budget: From ₹10L</option>
-                                <option value="30-50" className="text-slate-800">Budget: From ₹30L</option>
-                                <option value="50-100" className="text-slate-800">Budget: From ₹50L</option>
-                                <option value="100+" className="text-slate-800">Budget: From ₹1Cr</option>
+                            <select
+                                className="bg-transparent border-none outline-none text-white text-[13px] font-semibold appearance-none cursor-pointer w-full"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
+                            >
+                                <option value="" className="text-slate-800">Max Budget</option>
+                                {activeTab === "For Rent" ? (
+                                    <>
+                                        <option value="20000" className="text-slate-800">Budget: ₹20,000</option>
+                                        <option value="50000" className="text-slate-800">Budget: ₹50,000</option>
+                                        <option value="100000" className="text-slate-800">Budget: ₹1 Lac</option>
+                                        <option value="200000" className="text-slate-800">Budget: ₹2 Lacs+</option>
+                                    </>
+                                ) : (
+                                    <>
+                                        <option value="5000000" className="text-slate-800">Budget: ₹50 Lacs</option>
+                                        <option value="10000000" className="text-slate-800">Budget: ₹1 Cr</option>
+                                        <option value="25000000" className="text-slate-800">Budget: ₹2.5 Cr</option>
+                                        <option value="50000000" className="text-slate-800">Budget: ₹5 Cr+</option>
+                                    </>
+                                )}
                             </select>
                             <svg className="w-3 h-3 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" /></svg>
+                        </div>
+
+                        {/* Mobile Search Button (Visible only on mobile) */}
+                        <div className="col-span-2 mt-2">
+                            <button
+                                onClick={handleSearch}
+                                className="w-full bg-[#1D4ED8] hover:bg-blue-800 text-white font-medium py-3 rounded-xl cursor-pointer transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(29,78,216,0.39)]"
+                            >
+                                <Search className="h-5 w-5 shrink-0" strokeWidth={2.5} />
+                                <span className="font-semibold text-[14px]">Search Property</span>
+                            </button>
                         </div>
 
                     </div>
