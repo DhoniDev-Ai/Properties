@@ -4,11 +4,11 @@ import { getPropertyBySlug, getProperties } from "@/lib/data";
 import PropertyPageClient from "@/components/PropertyPageClient";
 
 interface Props {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = params;
+    const { slug } = await params;
     const property = await getPropertyBySlug(slug);
 
     if (!property) {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PropertyPage({ params }: Props) {
-    const { slug } = params;
+    const { slug } = await params;
     const property = await getPropertyBySlug(slug);
 
     if (!property) {
