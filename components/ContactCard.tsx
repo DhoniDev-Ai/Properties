@@ -5,17 +5,16 @@ import { Phone, MessageSquare, ShieldCheck } from "lucide-react";
 
 interface ContactCardProps {
     propertyTitle: string;
+    owner: {
+        name: string;
+        photo: string;
+        phone: string;
+        type: string;
+    };
 }
 
-export default function ContactCard({ propertyTitle }: ContactCardProps) {
+export default function ContactCard({ propertyTitle, owner }: ContactCardProps) {
     const [showNumber, setShowNumber] = useState(false);
-
-    const owner = {
-        name: "Agrwal Properties",
-        photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-        phone: "+91 99999 99999",
-        type: "Property Consultant"
-    };
 
     const whatsappLink = `https://wa.me/${owner.phone.replace(/\D/g, '')}?text=Hi, I'm interested in "${propertyTitle}"`;
 

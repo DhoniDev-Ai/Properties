@@ -41,7 +41,9 @@ export default function PropertyTabs({ property }: PropertyTabsProps) {
             <div className="bg-white">
                 {activeTab === "overview" && (
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                        {Object.entries(property.specs).map(([key, value]) => (
+                        {Object.entries(property.specs)
+                            .filter(([_, value]) => value !== 0 && value !== null && value !== 'N/A' && value !== '0' && value !== '')
+                            .map(([key, value]) => (
                             <div key={key} className="flex justify-between py-3 border-b border-slate-50">
                                 <span className="text-slate-500 font-medium capitalize">
                                     {key.replace(/([A-Z])/g, ' $1').trim()}
@@ -65,14 +67,25 @@ export default function PropertyTabs({ property }: PropertyTabsProps) {
 
                 {activeTab === "location" && (
                     <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200">
-                         {/* Placeholder for Map */}
+                         {/* Placeholder for Map or Link */}
                          <div className="h-[400px] bg-slate-100 flex items-center justify-center flex-col text-slate-400 p-8 text-center">
                             <MapPin className="w-12 h-12 mb-4 opacity-50" />
-                            <p className="font-bold text-slate-600 mb-1">Interactive Google Map</p>
+                            <p className="font-bold text-slate-600 mb-1">Property Location</p>
                             <p className="text-sm">Location: {property.location.address}, {property.location.city}</p>
-                            <div className="mt-6 px-6 py-2 bg-white rounded-lg border border-slate-200 text-[#1D4ED8] font-bold shadow-sm">
-                                View Entire Neighborhood
-                            </div>
+                            {property.location.googleMapLink ? (
+                                <a 
+                                    href={property.location.googleMapLink} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="mt-6 px-6 py-2 bg-[#1D4ED8] text-white rounded-lg border border-slate-200 font-bold shadow-sm hover:bg-blue-800 transition-all"
+                                >
+                                    View on Google Maps
+                                </a>
+                            ) : (
+                                <div className="mt-6 px-6 py-2 bg-white rounded-lg border border-slate-200 text-[#1D4ED8] font-bold shadow-sm">
+                                    Map Pin Available on Request
+                                </div>
+                            )}
                          </div>
                     </div>
                 )}

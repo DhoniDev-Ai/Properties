@@ -53,11 +53,8 @@ export default function Contact() {
                                     </div>
                                     <div className="pt-2">
                                         <p className="text-base font-bold text-slate-900 mb-1">Phone Number</p>
-                                        <a href="tel:+919876543210" className="text-slate-600 text-base hover:text-blue-600 transition-colors block">
-                                            +91 98765 43210
-                                        </a>
-                                        <a href="tel:+919876543211" className="text-slate-600 text-base hover:text-blue-600 transition-colors block mt-1">
-                                            +91 98765 43211
+                                        <a href="tel:+918426022000" className="text-slate-600 text-base hover:text-blue-600 transition-colors block">
+                                            +91 84260 22000
                                         </a>
                                     </div>
                                 </div>
@@ -68,8 +65,8 @@ export default function Contact() {
                                     </div>
                                     <div className="pt-2">
                                         <p className="text-base font-bold text-slate-900 mb-1">Email Address</p>
-                                        <a href="mailto:info@agrwalrealestate.com" className="text-slate-600 text-base hover:text-blue-600 transition-colors">
-                                            info@agrwalrealestate.com
+                                        <a href="mailto:anilgoyal@propdesk.com" className="text-slate-600 text-base hover:text-blue-600 transition-colors">
+                                            anilgoyal@propdesk.com
                                         </a>
                                     </div>
                                 </div>
@@ -89,7 +86,7 @@ export default function Contact() {
                             {/* WhatsApp Button */}
                             <div className="mt-10 pt-8 border-t border-slate-200">
                                 <a
-                                    href="https://wa.me/919876543210"
+                                    href="https://wa.me/918426022000"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="w-full bg-[#25D366] hover:bg-[#20BE5A] text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center transition-colors shadow-lg shadow-[#25D366]/30 text-lg"

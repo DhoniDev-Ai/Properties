@@ -14,7 +14,7 @@ export default function FloatingWhatsApp() {
         return () => clearTimeout(timer);
     }, []);
 
-    const phoneNumber = "918271310911";
+    const phoneNumber = "918426022000";
     const message = encodeURIComponent("Hi! I'm interested in properties in Jaipur. Can you help me?");
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
 

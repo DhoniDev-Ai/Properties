@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { properties } from "@/data/properties";
+import { getProperties } from "@/lib/data";
+import { PropertyGridSkeleton } from "@/components/PropertySkeleton";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -10,6 +11,7 @@ import ListingHero from "@/components/ListingHero";
 import ResultsHeader from "@/components/ResultsHeader";
 import PropertyGrid from "@/components/PropertyGrid";
 import { SlidersHorizontal } from "lucide-react";
+import { Property } from "@/data/properties";
 
 function PropertiesContent() {
     const searchParams = useSearchParams();
@@ -17,8 +19,9 @@ function PropertiesContent() {
     // UI State
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [sortBy, setSortBy] = useState("relevance");
-
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+    const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
     const propertiesPerPage = 6;
 
     // Read initial filters from URL params
@@ -38,6 +41,48 @@ function PropertiesContent() {
         furnishing: [] as string[]
     });
 
+    // Fetch properties from Supabase
+    useEffect(() => {
+        const fetchProps = async () => {
+            setLoading(true);
+            try {
+                const data = await getProperties(filters);
+                
+                // Client-side sorting (since Supabase query is simple for now)
+                let result = [...data];
+                
+                // Extra keyword filtering if needed (though getProperties does some)
+                if (filters.keyword) {
+                    const kw = filters.keyword.toLowerCase();
+                    result = result.filter(p =>
+                        p.title.toLowerCase().includes(kw) ||
+                        p.location.address.toLowerCase().includes(kw) ||
+                        p.location.city.toLowerCase().includes(kw)
+                    );
+                }
+
+                switch (sortBy) {
+                    case "price-low":
+                        result.sort((a, b) => a.numericPrice - b.numericPrice);
+                        break;
+                    case "price-high":
+                        result.sort((a, b) => b.numericPrice - a.numericPrice);
+                        break;
+                    case "newest":
+                        // Convert ID to string for comparison as per DB schema (UUIDs)
+                        result.sort((a, b) => String(b.id).localeCompare(String(a.id)));
+                        break;
+                }
+                
+                setFilteredProperties(result);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProps();
+    }, [filters, sortBy]);
+
     // Handle Search from Hero
     const handleHeroSearch = (heroFilters: any) => {
         setFilters(prev => ({
@@ -51,80 +96,6 @@ function PropertiesContent() {
         }));
         setCurrentPage(1);
     };
-
-    // Filter Logic
-    const filteredProperties = useMemo(() => {
-        let result = [...properties];
-
-        // Type Filter (Sale/Rent)
-        if (filters.type !== "all") {
-            const matchType = filters.type === "sale" ? "For Sale" : "For Rent";
-            result = result.filter(p => p.listingType === matchType);
-        }
-
-        // Keyword Filter
-        if (filters.keyword) {
-            const kw = filters.keyword.toLowerCase();
-            result = result.filter(p =>
-                p.title.toLowerCase().includes(kw) ||
-                p.location.address.toLowerCase().includes(kw) ||
-                p.location.city.toLowerCase().includes(kw)
-            );
-        }
-
-        // City Filter
-        if (filters.city) {
-            result = result.filter(p => p.location.city.toLowerCase() === filters.city.toLowerCase());
-        }
-
-        // Advanced Filters
-        if (filters.location.length > 0) {
-            result = result.filter(p => filters.location.includes(p.location.address));
-        }
-
-        if (filters.propertyType.length > 0) {
-            // Map our UI labels back to data labels if needed or just direct match
-            const typeMatch = (t: string) => {
-                if (t.includes('Villa')) return ['Villa', 'Independent House', 'Farmhouse'];
-                if (t.includes('Commercial')) return ['Commercial Office', 'Commercial Shop', 'Warehouse'];
-                return [t];
-            };
-            const allowedTypes = filters.propertyType.flatMap(typeMatch);
-            result = result.filter(p => allowedTypes.includes(p.type));
-        }
-
-        if (filters.bhk.length > 0) {
-            result = result.filter(p => {
-                // simple matching logic for the mock
-                return filters.bhk.some(val => p.specs.bhk.includes(val.split(' ')[0]));
-            });
-        }
-
-        if (filters.budget) {
-            const maxBudget = parseInt(filters.budget);
-            result = result.filter(p => p.numericPrice <= maxBudget);
-        }
-
-        // Sort Logic
-        switch (sortBy) {
-            case "price-low":
-                result.sort((a, b) => a.numericPrice - b.numericPrice);
-                break;
-            case "price-high":
-                result.sort((a, b) => b.numericPrice - a.numericPrice);
-                break;
-            case "newest":
-                // In real app, sort by date. Here we use 'isNew' flag or ID
-                result.sort((a, b) => a.id - b.id);
-                break;
-            case "relevance":
-            default:
-                // Keep default order (which has some mix of featured etc)
-                break;
-        }
-
-        return result;
-    }, [filters, sortBy]);
 
     // Pagination Logic
     const indexOfLastProp = currentPage * propertiesPerPage;
@@ -143,7 +114,7 @@ function PropertiesContent() {
 
 
             <ListingHero
-                totalCount={properties.length}
+                totalCount={filteredProperties.length}
                 initialType={filters.type}
                 onSearch={handleHeroSearch}
             />
@@ -166,10 +137,14 @@ function PropertiesContent() {
                             setSortBy={setSortBy}
                         />
 
-                        <PropertyGrid
-                            properties={currentProperties}
-                            viewMode={viewMode}
-                        />
+                        {loading ? (
+                            <PropertyGridSkeleton count={4} />
+                        ) : (
+                            <PropertyGrid
+                                properties={currentProperties}
+                                viewMode={viewMode}
+                            />
+                        )}
 
                         {/* Pagination */}
                         {totalPages > 1 && (

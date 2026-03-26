@@ -15,7 +15,7 @@ interface SpecsBarProps {
 export default function SpecsBar({ specs, amenities }: SpecsBarProps) {
     const mainSpecs = [
         { icon: <BedDouble className="w-5 h-5" />, label: specs.bhk },
-        { icon: <Bath className="w-5 h-5" />, label: `${specs.bathrooms} Bathrooms` },
+        ...(specs.bathrooms > 0 ? [{ icon: <Bath className="w-5 h-5" />, label: `${specs.bathrooms} Bathrooms` }] : []),
         { icon: <Square className="w-5 h-5" />, label: specs.carpetArea },
         { icon: <Layers className="w-5 h-5" />, label: specs.floor },
     ];

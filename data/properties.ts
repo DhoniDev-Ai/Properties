@@ -11,8 +11,9 @@ export interface Property {
         city: string;
         state: string;
         pincode: string;
-        lat: number;
-        lng: number;
+        lat?: number;
+        lng?: number;
+        googleMapLink?: string;
     };
     specs: {
         bhk: string;
@@ -24,6 +25,7 @@ export interface Property {
         floor: string;
         totalFloors: number;
         facing: string;
+        roadInfo?: string;
         age: string;
         furnishing: string;
     };
@@ -39,6 +41,7 @@ export interface Property {
     };
     isFeatured: boolean;
     isNew: boolean;
+    status?: string;
     views: number;
     updatedAt: string;
 }

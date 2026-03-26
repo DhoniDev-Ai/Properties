@@ -24,7 +24,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
     }, []);
 
     const navLinks = [
-        { name: "About Us", href: "/#about" },
+        { name: "About Us", href: "/about" },
         { name: "Properties", href: "/properties" },
         { name: "EMI Calculator", href: "/#Emicalculator" },
         { name: "Contact us", href: "/#contact" },
@@ -83,10 +83,13 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
 
                     {/* Call to Action Button */}
                     <div className="hidden md:flex items-center">
-                        <button className={`flex items-center gap-2 font-bold cursor-pointer transition-colors duration-200 ${isSolidText ? "text-[#0F172A] hover:text-blue-600" : "text-white hover:text-blue-200"}`}>
+                        <a 
+                            href="tel:+918426022000"
+                            className={`flex items-center gap-2 font-bold cursor-pointer transition-colors duration-200 ${isSolidText ? "text-[#0F172A] hover:text-blue-600" : "text-white hover:text-blue-200"}`}
+                        >
                             <Phone className="h-[18px] w-[18px]" strokeWidth={2} />
                             <span className="text-[15px]">Call Now</span>
-                        </button>
+                        </a>
                     </div>
 
                     {/* Mobile menu button */}
@@ -126,10 +129,13 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                         </Link>
                     ))}
                     <div className="pt-4 pb-2 px-3">
-                        <button className="w-full flex justify-center items-center gap-2 bg-[#0F172A] hover:bg-slate-800 cursor-pointer text-white px-6 py-3.5 rounded-xl font-medium transition-colors shadow-sm">
+                        <a 
+                            href="tel:+918426022000"
+                            className="w-full flex justify-center items-center gap-2 bg-[#0F172A] hover:bg-slate-800 cursor-pointer text-white px-6 py-3.5 rounded-xl font-medium transition-colors shadow-sm"
+                        >
                             <Phone className="h-[18px] w-[18px]" strokeWidth={2} />
                             <span>Call Now</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

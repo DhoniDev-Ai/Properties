@@ -56,26 +56,20 @@ export default function Footer() {
                         <h3 className="text-white text-lg font-bold mb-6 font-heading">Quick Links</h3>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="#about" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
+                                <Link href="/about" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
                                     About Us
                                     <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#rent" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
+                                <Link href="/properties?type=rent" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
                                     For Rent
                                     <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#sale" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
+                                <Link href="/properties?type=sale" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
                                     For Sale
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#blog" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    Blog
                                     <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
                             </li>
@@ -86,13 +80,13 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group mt-2">
+                                <Link href="/privacy" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group mt-2">
                                     Privacy Policy
                                     <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
+                                <Link href="/terms" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
                                     Terms & Conditions
                                     <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
@@ -114,15 +108,15 @@ export default function Footer() {
 
                             <div className="flex items-center">
                                 <Phone className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0" />
-                                <a href="tel:+919876543210" className="text-slate-400 hover:text-white transition-colors">
-                                    +91 98765 43210
+                                <a href="tel:+918426022000" className="text-slate-400 hover:text-white transition-colors">
+                                    +91 84260 22000
                                 </a>
                             </div>
 
                             <div className="flex items-center">
                                 <Mail className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0" />
-                                <a href="mailto:info@agrwalrealestate.com" className="text-slate-400 hover:text-white transition-colors">
-                                    info@agrwalrealestate.com
+                                <a href="mailto:anilgoyal@propdesk.com" className="text-slate-400 hover:text-white transition-colors">
+                                    anilgoyal@propdesk.com
                                 </a>
                             </div>
 
