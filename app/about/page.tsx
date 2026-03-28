@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle, Award, Users, Phone, ArrowRight } from "lucide-react";
+import { CheckCircle, Award, Users, Phone, ArrowRight, FileText, Landmark, ShieldCheck, PieChart } from "lucide-react";
 
 export default function AboutPage() {
     return (
@@ -137,6 +137,91 @@ export default function AboutPage() {
                                 <div className="text-blue-100 font-medium">{stat.label}</div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Professional Services Integration */}
+            <section className="py-24 bg-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full bg-slate-50/50 -z-10" />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div className="text-center mb-16">
+                        <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em] mb-4">Comprehensive Solutions</p>
+                        <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter uppercase italic">
+                            Elite <span className="text-blue-600">Professional</span> Services
+                        </h2>
+                        <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mb-8" />
+                        <p className="max-w-2xl mx-auto text-slate-500 font-bold text-lg">
+                            We go beyond property matching to provide a full-spectrum financial and legal ecosystem for our clients.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { 
+                                title: "ITR Services", 
+                                desc: "Expert Income Tax Return filing and optimization for property owners and investors.",
+                                icon: FileText,
+                                color: "bg-blue-50 text-blue-600"
+                            },
+                            { 
+                                title: "GST Solutions", 
+                                desc: "Comprehensive GST registration and compliance management for commercial real estate.",
+                                icon: PieChart,
+                                color: "bg-orange-50 text-orange-600"
+                            },
+                            { 
+                                title: "Loan & Housing", 
+                                desc: "Elite tie-ups with leading banks for seamless home and commercial loan approvals.",
+                                icon: Landmark,
+                                color: "bg-green-50 text-green-600"
+                            },
+                            { 
+                                title: "JDA Licensing", 
+                                desc: "Professional assistance with JDA, HB, and other essential land-use licensing.",
+                                icon: ShieldCheck,
+                                color: "bg-purple-50 text-purple-600"
+                            }
+                        ].map((service, idx) => (
+                            <div key={idx} className="bg-white border border-slate-100 rounded-4xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-50 transition-colors" />
+                                <div className={`w-14 h-14 rounded-2xl ${service.color} flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform`}>
+                                    <service.icon className="w-7 h-7" />
+                                </div>
+                                <h3 className="text-xl font-black text-slate-900 mb-4 uppercase tracking-tight italic">{service.title}</h3>
+                                <p className="text-slate-500 font-bold text-sm leading-relaxed mb-6">
+                                    {service.desc}
+                                </p>
+                                <Link 
+                                    href="https://wa.me/918426022000" 
+                                    target="_blank"
+                                    className="inline-flex items-center gap-2 text-blue-600 font-black text-xs uppercase tracking-widest hover:gap-3 transition-all"
+                                >
+                                    Enquire Now <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Unified Support CTA */}
+                    <div className="mt-20 bg-[#0F172A] rounded-4xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+                        <div className="absolute top-0 right-0 w-full h-full bg-blue-600/10 skew-x-12 transform translate-x-1/2" />
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div className="text-center md:text-left">
+                                <h3 className="text-2xl md:text-4xl font-black mb-4 uppercase tracking-tighter">Need Professional Guidance?</h3>
+                                <p className="text-slate-400 font-bold max-w-xl">
+                                    Our experts are ready to handle your legal and financial complexities while you focus on your property goals.
+                                </p>
+                            </div>
+                            <div className="flex gap-4">
+                                <Link 
+                                    href="tel:+918426022000" 
+                                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+                                >
+                                    Call Expert
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

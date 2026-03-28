@@ -42,6 +42,7 @@ export interface Property {
     isFeatured: boolean;
     isNew: boolean;
     status?: string;
+    approvalType?: string;
     views: number;
     updatedAt: string;
 }

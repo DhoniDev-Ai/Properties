@@ -31,6 +31,8 @@ export default function ResultsHeader({ count, viewMode, setViewMode, sortBy, se
                         <option value="price-low">Price: Low to High</option>
                         <option value="price-high">Price: High to Low</option>
                         <option value="newest">Newest First</option>
+                        <option value="approval-jda">JDA Approved First</option>
+                        <option value="approval-hb">HB Approved First</option>
                     </select>
                 </div>
 

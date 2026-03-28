@@ -1,7 +1,8 @@
+import { cache } from 'react';
 import { supabase } from './supabase';
 import { Property } from '@/data/properties';
 
-export async function getProperties(filters: any = {}) {
+export const getProperties = cache(async (filters: any = {}) => {
     let query = supabase
         .from('properties')
         .select('*')
@@ -26,7 +27,8 @@ export async function getProperties(filters: any = {}) {
             'Penthouse': 'penthouse',
             'Warehouse': 'commercial',
             'Farmhouse': 'farmhouse',
-            'Builder Floor': 'apartment'
+            'Builder Floor': 'apartment',
+            'Agriculture-Land': 'land'
         };
         const dbTypes = filters.propertyType.map((t: string) => typeMap[t] || t.toLowerCase());
         query = query.in('property_type', dbTypes);
@@ -40,6 +42,9 @@ export async function getProperties(filters: any = {}) {
             query = query.in('bhk', bhkNums);
         }
     }
+    if (filters.approvalType && filters.approvalType !== 'all') {
+        query = query.eq('approval_type', filters.approvalType);
+    }
 
     const { data, error } = await query;
     console.log(`getProperties results for city="${filters.city}":`, data?.length || 0, 'rows');
@@ -50,9 +55,9 @@ export async function getProperties(filters: any = {}) {
     }
 
     return (data || []).map(mapDbToProperty);
-}
+});
 
-export async function getPropertyBySlug(slug: string) {
+export const getPropertyBySlug = cache(async (slug: string) => {
     const { data, error } = await supabase
         .from('properties')
         .select('*', { count: 'exact' })
@@ -67,7 +72,7 @@ export async function getPropertyBySlug(slug: string) {
     }
 
     return mapDbToProperty(data);
-}
+});
 
 export async function getFeaturedProperties(limit = 4) {
     const { data, error } = await supabase
@@ -132,6 +137,7 @@ function mapDbToProperty(db: any): Property {
         isFeatured: db.is_featured || false,
         isNew: db.is_new || false,
         status: db.status || 'available',
+        approvalType: db.approval_type || null,
         views: Math.floor(Math.random() * 800) + 150,
         updatedAt: 'Just now'
     };
@@ -156,4 +162,20 @@ function formatPrice(price: number, type: string) {
         return `${formatted} / month`;
     }
     return formatted;
+}
+export async function getAllPropertySlugs() {
+    const { data, error } = await supabase
+        .from('properties')
+        .select('property_type, slug')
+        .eq('is_deleted', false);
+
+    if (error) {
+        console.error('Error fetching all slugs:', error.message);
+        return [];
+    }
+
+    return (data || []).map(p => ({
+        type: p.property_type.toLowerCase().replace('_', '-'),
+        slug: p.slug
+    }));
 }

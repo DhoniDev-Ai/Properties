@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch all properties to generate dynamic routes
   const properties = await getProperties();
   const propertyEntries = properties.map((prop) => ({
-    url: `${baseUrl}/properties/${prop.slug}`,
+    url: `${baseUrl}/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

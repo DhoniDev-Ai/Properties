@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
     // Handle scroll effect
     useEffect(() => {
@@ -25,8 +27,17 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
 
     const navLinks = [
         { name: "About Us", href: "/about" },
+        { 
+            name: "Services", 
+            href: "#", 
+            dropdown: [
+                { name: "ITR Filing", href: "/services/itr-filing" },
+                { name: "GST Registration", href: "/services/gst-registration" },
+                { name: "Loan & Housing", href: "/services/loan-housing" },
+                { name: "License - JDA | HB", href: "/services/license-jda-hb" },
+            ]
+        },
         { name: "Properties", href: "/properties" },
-        { name: "EMI Calculator", href: "/#Emicalculator" },
         { name: "Contact us", href: "/#contact" },
     ];
 
@@ -70,20 +81,52 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex flex-1 justify-center items-center space-x-10">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className={`font-medium text-[15px] cursor-pointer transition-colors duration-200 relative group py-2 ${isSolidText ? "text-slate-600 hover:text-[#0F172A]" : "text-white/90 hover:text-white"}`}
+                            <div 
+                                key={link.name} 
+                                className="relative group/nav"
+                                onMouseEnter={() => link.dropdown && setIsServicesOpen(true)}
+                                onMouseLeave={() => link.dropdown && setIsServicesOpen(false)}
                             >
-                                {link.name}
-                                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-                            </Link>
+                                <Link
+                                    href={link.href}
+                                    className={`font-medium text-[15px] cursor-pointer transition-colors duration-200 relative py-2 flex items-center gap-1 ${isSolidText ? "text-slate-600 hover:text-[#0F172A]" : "text-white/90 hover:text-white"}`}
+                                >
+                                    {link.name}
+                                    {link.dropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />}
+                                    <span className="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover/nav:scale-x-100"></span>
+                                </Link>
+
+                                {link.dropdown && (
+                                    <AnimatePresence>
+                                        {isServicesOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 10 }}
+                                                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64"
+                                            >
+                                                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden p-2">
+                                                    {link.dropdown.map((sub) => (
+                                                        <Link
+                                                            key={sub.name}
+                                                            href={sub.href}
+                                                            className="block px-4 py-3 rounded-xl text-[14px] font-bold text-slate-600 hover:text-[#1D4ED8] hover:bg-blue-50 transition-all uppercase tracking-tight"
+                                                        >
+                                                            {sub.name}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                )}
+                            </div>
                         ))}
                     </div>
 
                     {/* Call to Action Button */}
                     <div className="hidden md:flex items-center">
-                        <a 
+                        <a
                             href="tel:+918426022000"
                             className={`flex items-center gap-2 font-bold cursor-pointer transition-colors duration-200 ${isSolidText ? "text-[#0F172A] hover:text-blue-600" : "text-white hover:text-blue-200"}`}
                         >
@@ -119,17 +162,42 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             >
                 <div className="px-4 pt-2 pb-3 space-y-1 sm:px-6">
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="block px-3 py-3 rounded-md text-base font-medium cursor-pointer text-slate-700 hover:text-[#0F172A] hover:bg-slate-50 transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            {link.name}
-                        </Link>
+                        <div key={link.name}>
+                            {link.dropdown ? (
+                                <>
+                                    <button
+                                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                                        className="w-full flex justify-between items-center px-3 py-3 rounded-md text-base font-medium cursor-pointer text-slate-700 hover:text-[#0F172A] hover:bg-slate-50 transition-colors"
+                                    >
+                                        <span>{link.name}</span>
+                                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-64 mt-1 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                        {link.dropdown.map((sub) => (
+                                            <Link
+                                                key={sub.name}
+                                                href={sub.href}
+                                                className="block px-3 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-[#1D4ED8] uppercase tracking-tight"
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                            >
+                                                {sub.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </>
+                            ) : (
+                                <Link
+                                    href={link.href}
+                                    className="block px-3 py-3 rounded-md text-base font-medium cursor-pointer text-slate-700 hover:text-[#0F172A] hover:bg-slate-50 transition-colors"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            )}
+                        </div>
                     ))}
                     <div className="pt-4 pb-2 px-3">
-                        <a 
+                        <a
                             href="tel:+918426022000"
                             className="w-full flex justify-center items-center gap-2 bg-[#0F172A] hover:bg-slate-800 cursor-pointer text-white px-6 py-3.5 rounded-xl font-medium transition-colors shadow-sm"
                         >

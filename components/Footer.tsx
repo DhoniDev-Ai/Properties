@@ -8,7 +8,11 @@ import {
     Facebook,
     Instagram,
     Linkedin,
-    Twitter
+    Twitter,
+    ShieldCheck,
+    FileText,
+    PieChart,
+    Landmark
 } from "lucide-react";
 import Link from "next/link";
 
@@ -17,8 +21,8 @@ export default function Footer() {
         <footer className="bg-[#0f172a] text-slate-300 pt-16 pb-8 border-t-4 border-[#1D4ED8]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* 3-Column Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
+                {/* 4-Column Layout for Elite Professionalism */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
 
                     {/* Column 1 - ABOUT */}
                     <div>
@@ -53,54 +57,101 @@ export default function Footer() {
 
                     {/* Column 2 - QUICK LINKS */}
                     <div>
-                        <h3 className="text-white text-lg font-bold mb-6 font-heading">Quick Links</h3>
-                        <ul className="space-y-3">
+                        <h3 className="text-white text-[15px] font-black uppercase tracking-[0.2em] mb-8 font-heading">Sitemap</h3>
+                        <ul className="space-y-4">
                             <li>
-                                <Link href="/about" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    About Us
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
+                                <Link href="/about" className="text-slate-400 hover:text-[#3b82f6] transition-all flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-0.5 group-hover:bg-[#3b82f6]" />
+                                    Company Profile
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/properties?type=rent" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    For Rent
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
+                                <Link href="/properties?type=rent" className="text-slate-400 hover:text-[#3b82f6] transition-all flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-0.5 group-hover:bg-[#3b82f6]" />
+                                    Rental Inventory
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/properties?type=sale" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    For Sale
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
+                                <Link href="/properties?type=sale" className="text-slate-400 hover:text-[#3b82f6] transition-all flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-0.5 group-hover:bg-[#3b82f6]" />
+                                    Sales Catalog
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#contact" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    Contact
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/privacy" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group mt-2">
-                                    Privacy Policy
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/terms" className="text-slate-400 hover:text-[#3b82f6] transition-colors inline-block relative group">
-                                    Terms & Conditions
-                                    <span className="absolute left-0 bottom-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full"></span>
+                                <Link href="#contact" className="text-slate-400 hover:text-[#3b82f6] transition-all flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-0.5 group-hover:bg-[#3b82f6]" />
+                                    Property Inquiry
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Column 3 - CONTACT INFO */}
+                    {/* Column 3 - ELITE SERVICES (SEO Focused) */}
                     <div>
-                        <h3 className="text-white text-lg font-bold mb-6 font-heading">Contact Info</h3>
+                        <h3 className="text-white text-[15px] font-black uppercase tracking-[0.2em] mb-8 font-heading">Services</h3>
+                        <ul className="space-y-4">
+                            <li>
+                                <Link 
+                                    href="/about#services" 
+                                    className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
+                                    title="Income Tax Return Services for Real Estate Investors"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        <FileText className="w-3.5 h-3.5 text-blue-500" />
+                                        ITR Services
+                                    </span>
+                                    <span className="text-[10px] text-slate-600 ml-5">Tax optimization for investors</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link 
+                                    href="/about#services" 
+                                    className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
+                                    title="GST Registration and Compliance for Commercial Properties"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        <PieChart className="w-3.5 h-3.5 text-orange-500" />
+                                        GST Solutions
+                                    </span>
+                                    <span className="text-[10px] text-slate-600 ml-5">Commercial property compliance</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link 
+                                    href="/about#services" 
+                                    className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
+                                    title="Home and Commercial Loan Approvals"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        <Landmark className="w-3.5 h-3.5 text-green-500" />
+                                        Loan & Housing
+                                    </span>
+                                    <span className="text-[10px] text-slate-600 ml-5">Home & business financing</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link 
+                                    href="/about#services" 
+                                    className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
+                                    title="JDA HB and Property Licensing Assistance"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        <ShieldCheck className="w-3.5 h-3.5 text-purple-500" />
+                                        JDA Licensing
+                                    </span>
+                                    <span className="text-[10px] text-slate-600 ml-5">Legal & approval support</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Column 4 - CONTACT INFO */}
+                    <div>
+                        <h3 className="text-white text-[15px] font-black uppercase tracking-[0.2em] mb-8 font-heading">Contact</h3>
                         <div className="space-y-5">
                             <div className="flex items-start">
                                 <MapPin className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0 mt-0.5" />
-                                <p className="text-slate-400 leading-relaxed">
+                                <p className="text-slate-400 text-sm leading-relaxed">
                                     123 Platinum Tower, JLN Marg,<br />
                                     Malviya Nagar, Jaipur, RJ 302017
                                 </p>
@@ -108,14 +159,14 @@ export default function Footer() {
 
                             <div className="flex items-center">
                                 <Phone className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0" />
-                                <a href="tel:+918426022000" className="text-slate-400 hover:text-white transition-colors">
+                                <a href="tel:+918426022000" className="text-slate-400 hover:text-white transition-colors text-sm">
                                     +91 84260 22000
                                 </a>
                             </div>
 
                             <div className="flex items-center">
                                 <Mail className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0" />
-                                <a href="mailto:anilgoyal@propdesk.com" className="text-slate-400 hover:text-white transition-colors">
+                                <a href="mailto:anilgoyal@propdesk.com" className="text-slate-400 hover:text-white transition-colors text-sm">
                                     anilgoyal@propdesk.com
                                 </a>
                             </div>
@@ -123,8 +174,9 @@ export default function Footer() {
                             <div className="flex items-start">
                                 <Clock className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0 mt-0.5" />
                                 <div>
-                                    <p className="text-slate-400">Mon - Sat: 9:00 AM - 9:00 PM</p>
-                                    <p className="text-slate-400">Sunday: 10:00 AM - 6:00 PM</p>
+                                    <p className="text-slate-400 text-sm italic mb-1 uppercase tracking-tighter">Business Hours</p>
+                                    <p className="text-slate-400 text-[12px]">Mon - Sat: 9:00 AM - 9:00 PM</p>
+                                    <p className="text-slate-400 text-[12px]">Sunday: 10:00 AM - 6:00 PM</p>
                                 </div>
                             </div>
                         </div>
