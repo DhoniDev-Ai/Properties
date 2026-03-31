@@ -177,8 +177,8 @@ export default function AboutPage() {
                                 color: "bg-green-50 text-green-600"
                             },
                             { 
-                                title: "JDA Licensing", 
-                                desc: "Professional assistance with JDA, HB, and other essential land-use licensing.",
+                                title: "JDA Liaison", 
+                                desc: "Professional assistance with JDA, HB, and other essential land-use Liaison.",
                                 icon: ShieldCheck,
                                 color: "bg-purple-50 text-purple-600"
                             }

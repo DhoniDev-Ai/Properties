@@ -51,14 +51,14 @@ const serviceData: Record<string, any> = {
         ]
     },
     "license-jda-hb": {
-        title: "JDA | HB Licensing & Approvals",
+        title: "JDA | HB Liaison & Approvals",
         icon: ShieldCheck,
         color: "text-orange-600",
         bgColor: "bg-orange-50",
-        description: "Specialized assistance for Jaipur Development Authority (JDA) and Housing Board (HB) licensing. We navigate the government bureaucracy to get your property perfectly documented.",
+        description: "Specialized assistance for Jaipur Development Authority (JDA) and Housing Board (HB) liaison. We navigate the government bureaucracy to get your property perfectly documented.",
         features: [
             "JDA Patta & Documentation Support",
-            "Housing Board Transfer & Licensing",
+            "Housing Board Transfer & Liaison",
             "Building Plan Approvals (Maps)",
             "Mutation & Name Transfer Services",
             "Conversion of Land (Agriculture to Residential)"

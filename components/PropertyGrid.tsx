@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, MessageSquareCode, BadgeCheck } from "lucide-react";
+import { MapPin, MessageSquareCode, BadgeCheck, LayoutGrid } from "lucide-react";
 import Image from "next/image";
 
 interface PropertyGridProps {
@@ -56,6 +56,12 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                                         {prop.approvalType}
                                     </span>
                                 )}
+                                {prop.projectName && (
+                                    <span className="px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] shadow-md bg-orange-600/90 text-white border border-white/10 backdrop-blur-md flex items-center gap-1.5 w-fit">
+                                        <LayoutGrid className="w-3.5 h-3.5" />
+                                        {prop.projectName}
+                                    </span>
+                                )}
                             </div>
                         </div>
 
@@ -64,7 +70,10 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             <div className="flex justify-between items-start mb-4 gap-4">
                                 <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic">{prop.title}</h3>
                                 <span className="bg-slate-50 text-slate-400 px-3 py-1 rounded-lg text-[11px] font-black uppercase tracking-widest border border-slate-100 shrink-0">
-                                    {(prop.type.toLowerCase().includes('flat') || prop.type.toLowerCase().includes('apartment'))
+                                    {(prop.type.toLowerCase().includes('flat') || 
+                                      prop.type.toLowerCase().includes('apartment') || 
+                                      prop.type.toLowerCase().includes('house') || 
+                                      prop.type.toLowerCase().includes('villa'))
                                         ? prop.specs.bhk
                                         : prop.specs.carpetArea}
                                 </span>
@@ -132,13 +141,22 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                                     {prop.approvalType}
                                 </span>
                             )}
+                            {prop.projectName && (
+                                <span className="px-2 md:px-3 py-1 rounded-lg text-[7px] md:text-[9px] font-black uppercase tracking-widest shadow-lg bg-orange-600 text-white border border-white/20 flex items-center gap-1 w-fit">
+                                    <LayoutGrid className="w-2.5 h-2.5" />
+                                    {prop.projectName}
+                                </span>
+                            )}
                         </div>
                     </div>
                     <div className="p-4 md:p-6 flex-1 flex flex-col">
                         <div className="flex justify-between items-start mb-2 gap-2">
                             <h3 className="text-[15px] md:text-xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors line-clamp-2 uppercase shrink min-w-0 italic h-[2.4em]">{prop.title}</h3>
                             <span className="text-[10px] md:text-[12px] font-black text-slate-400 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 uppercase shrink-0">
-                                {(prop.type.toLowerCase().includes('flat') || prop.type.toLowerCase().includes('apartment'))
+                                {(prop.type.toLowerCase().includes('flat') || 
+                                  prop.type.toLowerCase().includes('apartment') || 
+                                  prop.type.toLowerCase().includes('house') || 
+                                  prop.type.toLowerCase().includes('villa'))
                                     ? prop.specs.bhk
                                     : prop.specs.carpetArea}
                             </span>

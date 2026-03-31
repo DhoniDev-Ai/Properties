@@ -13,6 +13,7 @@ interface CategoryCard {
 
 const categories: CategoryCard[] = [
     { id: "Plot", label: "Plots", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
+    { id: "Project", label: "Gated Society", image: "/gpplot.png" },
     { id: "Apartment", label: "Apartments", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
     { id: "Villa", label: "Villas", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811" },
     { id: "Independent-House", label: "Independent House", image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914" },
@@ -23,23 +24,30 @@ const categories: CategoryCard[] = [
 ];
 
 interface CategoryCardsProps {
-    activePropertyTypes: string[];
-    onTogglePropertyType: (type: string) => void;
+    activePropertyTypes?: string[];
+    onTogglePropertyType?: (type: string) => void;
 }
 
-export default function CategoryCards({ 
-    activePropertyTypes, 
-    onTogglePropertyType 
+export default function CategoryCards({
+    activePropertyTypes = [],
+    onTogglePropertyType
 }: CategoryCardsProps) {
     const router = useRouter();
 
     const handleCategoryClick = (cat: CategoryCard) => {
+        if (cat.id === 'Project') {
+            router.push('/properties/plots/projects');
+            return;
+        }
+
         // Use clean URL for navigation for property types
         const urlType = cat.id.toLowerCase();
         router.push(`/properties/${urlType}`);
-        
-        // Still trigger the callback for existing logic
-        onTogglePropertyType(cat.id);
+
+        // Only trigger callback if provided (prevents error on server components like home page)
+        if (onTogglePropertyType) {
+            onTogglePropertyType(cat.id);
+        }
     };
 
     return (
@@ -50,8 +58,8 @@ export default function CategoryCards({
                     Browse By Category
                 </h3>
             </div>
-            
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
+
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-6">
                 {categories.map((cat) => {
                     const isActive = activePropertyTypes.includes(cat.id);
 
@@ -60,9 +68,9 @@ export default function CategoryCards({
                             key={cat.id}
                             onClick={() => handleCategoryClick(cat)}
                             className={`
-                                group relative h-36 sm:h-48 lg:h-56 rounded-3xl overflow-hidden border-2 transition-all duration-700
-                                ${isActive 
-                                    ? 'border-[#1D4ED8] ring-8 ring-blue-500/5 scale-[1.03]' 
+                                group cursor-pointer relative h-36 sm:h-48 lg:h-56 rounded-3xl overflow-hidden border-2 transition-all duration-700
+                                ${isActive
+                                    ? 'border-[#1D4ED8] ring-8 ring-blue-500/5 scale-[1.03]'
                                     : 'border-transparent hover:border-slate-300'
                                 }
                             `}
@@ -81,7 +89,7 @@ export default function CategoryCards({
                                 absolute inset-0 transition-all duration-700
                                 ${isActive ? 'bg-[#1D4ED8]/30' : 'bg-black/40 group-hover:bg-black/20'}
                             `} />
-                            
+
                             <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 flex flex-col items-start text-left bg-linear-to-t from-black/80 via-black/20 to-transparent">
                                 {cat.id === 'Agriculture-Land' && (
                                     <div className="mb-2 bg-green-600 text-white p-1.5 rounded-lg shadow-xl">

@@ -15,6 +15,7 @@ import { Property } from "@/data/properties";
 
 interface PropertyListingClientProps {
     initialFilters?: any;
+    initialProperties?: Property[];
     hideHero?: boolean;
     hideCategoryCards?: boolean;
     showBackButton?: boolean;
@@ -24,6 +25,7 @@ interface PropertyListingClientProps {
 
 export default function PropertyListingClient({
     initialFilters = {},
+    initialProperties,
     hideHero = false,
     hideCategoryCards = false,
     showBackButton = false,

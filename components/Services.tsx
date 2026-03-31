@@ -31,8 +31,8 @@ const serviceList = [
     },
     {
         id: "license-jda-hb",
-        title: "License - JDA | HB",
-        desc: "Expert government approvals, JDA/HB documentation, and hassle-free licensing.",
+        title: "Liaison - JDA | HB",
+        desc: "Expert government approvals, JDA/HB documentation, and hassle-free liaison.",
         icon: ShieldCheck,
         color: "bg-orange-500",
         path: "/services/license-jda-hb"
@@ -56,7 +56,7 @@ export default function Services() {
                             Legal & <span className="text-blue-400">Financial Excellence</span>
                         </h2>
                         <p className="text-slate-400 text-lg font-medium border-l-4 border-blue-500 pl-6">
-                            Beyond real estate: Seamlessly manage your ITR, GST, Housing Loans, and JDA Licensing under one expert roof.
+                            Beyond real estate: Seamlessly manage your ITR, GST, Housing Loans, and JDA Liaison under one expert roof.
                         </p>
                     </div>
                     <div className="flex items-center gap-6">
@@ -107,7 +107,7 @@ export default function Services() {
                 <div className="mt-20 bg-white rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10">
                     <div className="md:max-w-md">
                         <h4 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight uppercase italic mb-2">Need Direct <span className="text-[#1D4ED8]">Expertise?</span></h4>
-                        <p className="text-slate-500 font-medium leading-snug">Connect directly with Anil Goyal for expert advice on ITR, GST, and Licensing today.</p>
+                        <p className="text-slate-500 font-medium leading-snug">Connect directly with Anil Goyal for expert advice on ITR, GST, and Liaison today.</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                         <a

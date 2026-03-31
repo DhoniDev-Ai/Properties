@@ -163,7 +163,10 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                                     <div className="mt-auto flex justify-between items-center border-t border-slate-50 pt-4">
                                         <div className="text-[#1D4ED8] font-black text-xl tracking-tighter">{prop.price}</div>
                                         <div className="text-slate-500 text-[11px] font-black uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                                            {(prop.type.toLowerCase().includes('flat') || prop.type.toLowerCase().includes('apartment')) 
+                                            {(prop.type.toLowerCase().includes('flat') || 
+                                              prop.type.toLowerCase().includes('apartment') || 
+                                              prop.type.toLowerCase().includes('house') || 
+                                              prop.type.toLowerCase().includes('villa')) 
                                                 ? prop.specs.bhk 
                                                 : prop.specs.carpetArea}
                                         </div>

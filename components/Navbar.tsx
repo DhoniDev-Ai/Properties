@@ -35,7 +35,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                 { name: "ITR Filing", href: "/services/itr-filing" },
                 { name: "GST Registration", href: "/services/gst-registration" },
                 { name: "Loan & Housing", href: "/services/loan-housing" },
-                { name: "License - JDA | HB", href: "/services/license-jda-hb" },
+                { name: "Liaison - JDA | HB", href: "/services/license-jda-hb" },
             ]
         },
 

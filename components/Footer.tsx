@@ -133,11 +133,11 @@ export default function Footer() {
                                 <Link
                                     href="/services/license-jda-hb"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
-                                    title="JDA HB and Property Licensing Assistance"
+                                    title="JDA HB and Property Liaison Assistance"
                                 >
                                     <span className="flex items-center gap-2">
                                         <ShieldCheck className="w-3.5 h-3.5 text-purple-500" />
-                                        JDA Licensing
+                                        JDA Liaison
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Legal & approval support</span>
                                 </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
                             <div className="flex items-start">
                                 <MapPin className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0 mt-0.5" />
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    117/349, Sector 7,<br />
+                                    117/349, Sector 12,<br />
                                     Mansarovar, Jaipur, RJ 302020
                                 </p>
                             </div>

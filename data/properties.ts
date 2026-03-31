@@ -45,6 +45,7 @@ export interface Property {
     approvalType?: string;
     views: number;
     updatedAt: string;
+    projectName?: string;
 }
 
 export const properties: Property[] = [

@@ -111,7 +111,12 @@ function mapDbToProperty(db: any): Property {
             googleMapLink: db.google_maps_url || db.google_map_link || null
         },
         specs: {
-            bhk: db.bhk && db.bhk > 0 ? `${db.bhk} BHK` : `${db.area_sqft} ${db.area_unit || 'sqft'}`,
+            bhk: (() => {
+                if (Array.isArray(db.bhk)) {
+                    return db.bhk.length > 0 ? `${db.bhk.join(', ')} BHK` : `${db.area_sqft} ${db.area_unit || 'sqft'}`;
+                }
+                return db.bhk && db.bhk > 0 ? `${db.bhk} BHK` : `${db.area_sqft} ${db.area_unit || 'sqft'}`;
+            })(),
             bedrooms: db.bedrooms || 0,
             bathrooms: db.bathrooms || 0,
             balconies: db.balconies || 0,
@@ -139,7 +144,8 @@ function mapDbToProperty(db: any): Property {
         status: db.status || 'available',
         approvalType: db.approval_type || null,
         views: Math.floor(Math.random() * 800) + 150,
-        updatedAt: 'Just now'
+        updatedAt: 'Just now',
+        projectName: db.group || null
     };
 }
 
@@ -179,3 +185,35 @@ export async function getAllPropertySlugs() {
         slug: p.slug
     }));
 }
+
+export const getAllProjects = cache(async () => {
+    const { data, error } = await supabase
+        .from('properties')
+        .select('group')
+        .not('group', 'is', null)
+        .eq('is_deleted', false);
+
+    if (error) {
+        console.error('Error fetching all projects:', error.message);
+        return [];
+    }
+
+    // Get unique groups
+    const projects = Array.from(new Set(data.map(p => p.group))).filter(Boolean);
+    return projects;
+});
+
+export const getPropertiesByProject = cache(async (projectName: string) => {
+    const { data, error } = await supabase
+        .from('properties')
+        .select('*')
+        .eq('group', projectName)
+        .eq('is_deleted', false);
+
+    if (error) {
+        console.error(`Error fetching properties for project ${projectName}:`, error.message);
+        return [];
+    }
+
+    return (data || []).map(mapDbToProperty);
+});

@@ -41,7 +41,7 @@ export default function Contact() {
                                     <div className="pt-2">
                                         <p className="text-base font-bold text-slate-900 mb-1">Office Address</p>
                                         <p className="text-slate-600 text-base leading-relaxed">
-                                            117/349 Sector 7,<br />
+                                            117/349 Sector 12,<br />
                                             Mansarovar, Jaipur, Rajasthan 302020
                                         </p>
                                     </div>
