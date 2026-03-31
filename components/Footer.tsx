@@ -88,11 +88,11 @@ export default function Footer() {
 
                     {/* Column 3 - ELITE SERVICES (SEO Focused) */}
                     <div>
-                        <h3 className="text-white text-[15px] font-black uppercase tracking-[0.2em] mb-8 font-heading">Services</h3>
+                        <h3 className="text-white text-[15px] font-black uppercase tracking-[0.2em] mb-8 font-heading">Other Services</h3>
                         <ul className="space-y-4">
                             <li>
-                                <Link 
-                                    href="/about#services" 
+                                <Link
+                                    href="services/itr-filing"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
                                     title="Income Tax Return Services for Real Estate Investors"
                                 >
@@ -104,8 +104,8 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/about#services" 
+                                <Link
+                                    href="/services/gst-registration"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
                                     title="GST Registration and Compliance for Commercial Properties"
                                 >
@@ -117,8 +117,8 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/about#services" 
+                                <Link
+                                    href="/about#services"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
                                     title="Home and Commercial Loan Approvals"
                                 >
@@ -130,8 +130,8 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/about#services" 
+                                <Link
+                                    href="/services/license-jda-hb"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
                                     title="JDA HB and Property Licensing Assistance"
                                 >
@@ -152,8 +152,8 @@ export default function Footer() {
                             <div className="flex items-start">
                                 <MapPin className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0 mt-0.5" />
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    123 Platinum Tower, JLN Marg,<br />
-                                    Malviya Nagar, Jaipur, RJ 302017
+                                    117/349, Sector 7,<br />
+                                    Mansarovar, Jaipur, RJ 302020
                                 </p>
                             </div>
 

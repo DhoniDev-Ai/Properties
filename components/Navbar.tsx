@@ -27,9 +27,10 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
 
     const navLinks = [
         { name: "About Us", href: "/about" },
-        { 
-            name: "Services", 
-            href: "#", 
+        { name: "Properties", href: "/properties" },
+        {
+            name: "Other Services",
+            href: "#",
             dropdown: [
                 { name: "ITR Filing", href: "/services/itr-filing" },
                 { name: "GST Registration", href: "/services/gst-registration" },
@@ -37,7 +38,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                 { name: "License - JDA | HB", href: "/services/license-jda-hb" },
             ]
         },
-        { name: "Properties", href: "/properties" },
+
         { name: "Contact us", href: "/#contact" },
     ];
 
@@ -81,8 +82,8 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex flex-1 justify-center items-center space-x-10">
                         {navLinks.map((link) => (
-                            <div 
-                                key={link.name} 
+                            <div
+                                key={link.name}
                                 className="relative group/nav"
                                 onMouseEnter={() => link.dropdown && setIsServicesOpen(true)}
                                 onMouseLeave={() => link.dropdown && setIsServicesOpen(false)}

@@ -41,8 +41,8 @@ export default function Contact() {
                                     <div className="pt-2">
                                         <p className="text-base font-bold text-slate-900 mb-1">Office Address</p>
                                         <p className="text-slate-600 text-base leading-relaxed">
-                                            123 Platinum Tower, JLN Marg,<br />
-                                            Malviya Nagar, Jaipur, Rajasthan 302017
+                                            117/349 Sector 7,<br />
+                                            Mansarovar, Jaipur, Rajasthan 302020
                                         </p>
                                     </div>
                                 </div>

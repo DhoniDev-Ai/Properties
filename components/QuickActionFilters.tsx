@@ -42,8 +42,8 @@ export default function QuickActionFilters({
                             }}
                             className={`
                                 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-all
-                                ${activeApprovalType === "JDA" 
-                                    ? 'bg-amber-100 text-amber-800 border-amber-200 shadow-sm' 
+                                ${activeApprovalType === "JDA"
+                                    ? 'bg-amber-100 text-amber-800 border-amber-200 shadow-sm'
                                     : 'bg-white border text-slate-600 hover:border-amber-200 hover:bg-amber-50'
                                 }
                                 border
@@ -60,8 +60,8 @@ export default function QuickActionFilters({
                             }}
                             className={`
                                 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-all
-                                ${activeApprovalType === "HB" 
-                                    ? 'bg-blue-100 text-blue-800 border-blue-200 shadow-sm' 
+                                ${activeApprovalType === "HB"
+                                    ? 'bg-blue-100 text-blue-800 border-blue-200 shadow-sm'
                                     : 'bg-white border text-slate-600 hover:border-blue-200 hover:bg-blue-50'
                                 }
                                 border
@@ -86,6 +86,7 @@ export default function QuickActionFilters({
                         Budget Plots
                     </button>
                 )}
+
 
                 {/* Flat Specifics */}
                 {isFlat && (

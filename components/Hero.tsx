@@ -77,7 +77,7 @@ export default function Hero() {
                 </motion.div>
 
                 {/* Trust Indicators - Repositioned for impact */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -94,7 +94,7 @@ export default function Hero() {
                             <span>{badge}</span>
                         </div>
                     ))}
-                </motion.div>
+                </motion.div> */}
             </div>
         </div>
     );
