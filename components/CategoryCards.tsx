@@ -36,7 +36,7 @@ export default function CategoryCards({
 
     const handleCategoryClick = (cat: CategoryCard) => {
         if (cat.id === 'Project') {
-            router.push('/properties/plots/projects');
+            router.push('/properties/plot?filter=gated');
             return;
         }
 

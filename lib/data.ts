@@ -28,7 +28,8 @@ export const getProperties = cache(async (filters: any = {}) => {
             'Warehouse': 'commercial',
             'Farmhouse': 'farmhouse',
             'Builder Floor': 'apartment',
-            'Agriculture-Land': 'land'
+            'Agriculture-Land': 'farmer_land',
+            'Agriculture Land': 'farmer_land'
         };
         const dbTypes = filters.propertyType.map((t: string) => typeMap[t] || t.toLowerCase());
         query = query.in('property_type', dbTypes);
@@ -44,6 +45,9 @@ export const getProperties = cache(async (filters: any = {}) => {
     }
     if (filters.approvalType && filters.approvalType !== 'all') {
         query = query.eq('approval_type', filters.approvalType);
+    }
+    if (filters.isGated) {
+        query = query.not('group', 'is', null);
     }
 
     const { data, error } = await query;
@@ -74,7 +78,7 @@ export const getPropertyBySlug = cache(async (slug: string) => {
     return mapDbToProperty(data);
 });
 
-export async function getFeaturedProperties(limit = 4) {
+export async function getFeaturedProperties(limit = 20) {
     const { data, error } = await supabase
         .from('properties')
         .select('*')
@@ -97,7 +101,11 @@ function mapDbToProperty(db: any): Property {
         id: db.id,
         slug: db.slug || db.id,
         title: db.title,
-        type: capitalizeFirstLetter(db.property_type.replace('_', ' ')),
+        type: (() => {
+            const rawType = db.property_type;
+            if (rawType === 'farmer_land') return 'Agriculture Land';
+            return capitalizeFirstLetter(rawType.replace(/_/g, ' '));
+        })(),
         listingType: db.listing_type === 'rent' ? 'For Rent' : 'For Sale',
         price: formatPrice(db.price, db.listing_type),
         numericPrice: parseFloat(db.price),

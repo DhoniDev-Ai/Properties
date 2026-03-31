@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MapPin, MessageSquareCode, BadgeCheck, LayoutGrid } from "lucide-react";
 import Image from "next/image";
+import { getPropertyHighlights, PropertyHighlight } from "@/lib/property-utils";
 
 interface PropertyGridProps {
     properties: any[];
@@ -150,29 +151,23 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                         </div>
                     </div>
                     <div className="p-4 md:p-6 flex-1 flex flex-col">
-                        <div className="flex justify-between items-start mb-2 gap-2">
-                            <h3 className="text-[15px] md:text-xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors line-clamp-2 uppercase shrink min-w-0 italic h-[2.4em]">{prop.title}</h3>
-                            <span className="text-[10px] md:text-[12px] font-black text-slate-400 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 uppercase shrink-0">
-                                {(prop.type.toLowerCase().includes('flat') || 
-                                  prop.type.toLowerCase().includes('apartment') || 
-                                  prop.type.toLowerCase().includes('house') || 
-                                  prop.type.toLowerCase().includes('villa'))
-                                    ? prop.specs.bhk
-                                    : prop.specs.carpetArea}
-                            </span>
+                        {/* Smart Highlights Section */}
+                        <div className="grid grid-cols-3 gap-2 mt-auto pt-4 border-t border-slate-50 mb-4">
+                            {getPropertyHighlights(prop).map((highlight: PropertyHighlight, idx: number) => (
+                                <div key={idx} className="flex flex-col items-center justify-center p-2 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-blue-50 transition-colors">
+                                    <highlight.icon className="w-3.5 h-3.5 text-[#1D4ED8] mb-1" />
+                                    <span className="text-[10px] font-black text-slate-900 uppercase tracking-tighter truncate max-w-full text-center">
+                                        {highlight.value}
+                                    </span>
+                                    <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">
+                                        {highlight.label}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
-                        {/* <div className="flex items-center text-slate-500 text-[11px] md:text-[13px] font-bold mb-4 md:mb-6">
-                            <div className="bg-blue-50 p-1 rounded-md mr-2">
-                                <MapPin className="w-3 h-3 text-blue-600" />
-                            </div>
-                            <span className="truncate">{prop.location.city}</span>
-                        </div> */}
-                        <div className="flex justify-between items-center text-slate-900  border-t border-slate-100 py-2 mb-4 max-md:mb-0 mt-auto">
+
+                        <div className="flex justify-between items-center text-slate-900 py-2 mb-4 max-md:mb-0">
                             <div className="font-black text-base md:text-xl tracking-tighter text-[#1D4ED8]">{prop.price}</div>
-                            {/* <div className="flex flex-col items-end">
-                                <p className="text-[9px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">Elite Status</p>
-                                <p className="font-bold text-slate-900 text-[11px] uppercase tracking-tighter">Verified</p>
-                            </div> */}
                         </div>
                         <div className="mt-auto flex flex-col sm:flex-row gap-2">
                             <Link href={`/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`} className="flex-1 bg-[#1D4ED8] hover:bg-blue-800 text-white font-black uppercase tracking-widest py-3 px-1 rounded-xl transition-all flex items-center justify-center gap-1 shadow-md text-[10px] md:text-[13px] active:scale-95">

@@ -53,16 +53,23 @@ export default function PropertyListingClient({
         bhk: [] as string[],
         budget: "",
         furnishing: [] as string[],
-        approvalType: ""
+        approvalType: initialFilters.approvalType || searchParams.get("approval") || "",
+        isGated: initialFilters.isGated || searchParams.get("filter") === "gated"
     });
 
     // Handle URL param changes for Rent discovery
     useEffect(() => {
         const typeParam = searchParams.get("type");
-        if (typeParam === "rent" || typeParam === "sale") {
-            setFilters(prev => ({ ...prev, type: typeParam }));
-            setCurrentPage(1);
-        }
+        const filterParam = searchParams.get("filter");
+        const approvalParam = searchParams.get("approval");
+
+        setFilters(prev => ({ 
+            ...prev, 
+            type: typeParam || prev.type,
+            isGated: filterParam === "gated" || (initialFilters.isGated ?? prev.isGated),
+            approvalType: approvalParam || prev.approvalType
+        }));
+        setCurrentPage(1);
     }, [searchParams]);
 
     // Fetch properties from Supabase
@@ -141,7 +148,17 @@ export default function PropertyListingClient({
     const handleToggleApprovalType = (type: string) => {
         setFilters(prev => ({
             ...prev,
-            approvalType: prev.approvalType === type ? "" : type
+            approvalType: prev.approvalType === type ? "" : type,
+            isGated: type === "GATED" ? !prev.isGated : prev.isGated
+        }));
+        setCurrentPage(1);
+    };
+
+    const handleToggleGated = () => {
+        setFilters(prev => ({
+            ...prev,
+            isGated: !prev.isGated,
+            approvalType: !prev.isGated ? "" : prev.approvalType // Mutual exclusivity if preferred or just toggle
         }));
         setCurrentPage(1);
     };
@@ -215,7 +232,9 @@ export default function PropertyListingClient({
                 <QuickActionFilters
                     activeCategory={filters.propertyType}
                     activeApprovalType={filters.approvalType}
+                    isGated={filters.isGated}
                     onToggleApprovalType={handleToggleApprovalType}
+                    onToggleGated={handleToggleGated}
                     sortBy={sortBy}
                     onSortChange={setSortBy}
                 />

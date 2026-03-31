@@ -22,6 +22,7 @@ function CategoryPageContent({ params }: Props) {
         'villa': 'LUXURY VILLAS',
         'commercial': 'COMMERCIAL SPACES',
         'farmhouse': 'FARMHOUSES',
+        'agriculture-land': 'AGRICULTURE LAND',
     };
 
     // Mapping back to data-friendly types
@@ -34,6 +35,7 @@ function CategoryPageContent({ params }: Props) {
         'villa': 'Villa',
         'commercial': 'Commercial',
         'farmhouse': 'Farmhouse',
+        'agriculture-land': 'Agriculture Land',
     };
 
     const title = typeMap[type.toLowerCase()] || type.toUpperCase() + 'S';

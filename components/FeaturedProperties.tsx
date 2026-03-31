@@ -140,11 +140,11 @@ export default function FeaturedProperties() {
                                             <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-[1.1] uppercase group-hover:text-[#1D4ED8] transition-colors">{property.title}</h3>
                                             <div className="text-right shrink-0">
                                                 <span className="bg-slate-50 text-slate-500 px-4 py-2 rounded-xl text-sm font-black border border-slate-200 uppercase tracking-widest shadow-sm">
-                                                    {(property.type.toLowerCase().includes('flat') || 
-                                                      property.type.toLowerCase().includes('apartment') || 
-                                                      property.type.toLowerCase().includes('house') || 
-                                                      property.type.toLowerCase().includes('villa')) 
-                                                        ? property.specs.bhk 
+                                                    {(property.type.toLowerCase().includes('flat') ||
+                                                        property.type.toLowerCase().includes('apartment') ||
+                                                        property.type.toLowerCase().includes('house') ||
+                                                        property.type.toLowerCase().includes('villa'))
+                                                        ? property.specs.bhk
                                                         : property.specs.carpetArea}
                                                 </span>
                                             </div>

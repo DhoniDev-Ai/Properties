@@ -4,6 +4,7 @@ import FeaturedProperties from "@/components/FeaturedProperties";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import EmiCalculator from "@/components/EmiCalculator";
+import PostProperty from "@/components/PostProperty";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -26,6 +27,7 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
       <EmiCalculator />
+      <PostProperty />
       <Testimonials />
       <Contact />
       <Footer />
