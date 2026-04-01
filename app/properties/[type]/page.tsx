@@ -1,6 +1,7 @@
 "use client";
 
 import { use, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PropertyListingClient from "@/components/PropertyListingClient";
@@ -11,13 +12,16 @@ interface Props {
 
 function CategoryPageContent({ params }: Props) {
     const { type } = use(params);
+    const searchParams = useSearchParams();
+    const approval = searchParams.get('approval');
     
     // Clean mappings for large display titles
     const typeMap: Record<string, string> = {
         'plot': 'PLOTS',
-        'flat': 'FLATS & APARTMENTS',
+        'project': 'PROJECTS & GROUPS',
         'apartment': 'APARTMENTS',
-        'penthouse': 'PENTHOUSES',
+        'housing-board': 'HOUSING BOARD',
+        'hb': 'HOUSING BOARD',
         'independent-house': 'INDEPENDENT HOUSES',
         'villa': 'LUXURY VILLAS',
         'commercial': 'COMMERCIAL SPACES',
@@ -26,32 +30,44 @@ function CategoryPageContent({ params }: Props) {
     };
 
     // Mapping back to data-friendly types
-    const dataMap: Record<string, string> = {
-        'plot': 'Plot',
-        'flat': 'Apartment',
-        'apartment': 'Apartment',
-        'penthouse': 'Penthouse',
-        'independent-house': 'Independent House',
-        'villa': 'Villa',
-        'commercial': 'Commercial',
-        'farmhouse': 'Farmhouse',
-        'agriculture-land': 'Agriculture Land',
+    const dataMap: Record<string, string[]> = {
+        'plot': ['Plot'],
+        'project': [],
+        'apartment': ['Apartment'],
+        'flat': ['Flat'],
+        'independent-house': ['Independent House'],
+        'penthouse': ['Penthouse'],
+        'hb': [], // isHB logic in lib/data.ts will handle this, leave empty to avoid property_type conflict
+        'housing-board': [],
+        'villa': ['Villa'],
+        'commercial': ['Commercial'],
+        'farmhouse': ['Farmhouse'],
+        'agriculture-land': ['Agriculture Land', 'farmer_land'],
     };
 
-    const title = typeMap[type.toLowerCase()] || type.toUpperCase() + 'S';
-    const dataType = dataMap[type.toLowerCase()] || type.charAt(0).toUpperCase() + type.slice(1);
+    let title = typeMap[type.toLowerCase()] || type.toUpperCase().replace(/-/g, ' ') + 'S';
+    if (approval) {
+        // Special case for "JDA Scheme Plots" etc
+        const cleanApproval = approval.toUpperCase();
+        title = `${cleanApproval} ${title}`;
+    }
+
+    const dataTypes = dataMap[type.toLowerCase()] || [type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')];
 
     return (
         <main className="min-h-screen bg-slate-50 flex flex-col">
             <Navbar theme="light" />
             
             <PropertyListingClient 
-                initialFilters={{ propertyType: [dataType] }}
+                initialFilters={{ 
+                    propertyType: dataTypes,
+                    approvalType: approval || ""
+                }}
                 hideHero={true}
                 hideCategoryCards={true}
                 showBackButton={true}
                 title={title}
-                description={`Premium ${dataType} listings in Jaipur. Carefully selected for location, quality, and investment value.`}
+                description={`Premium ${dataTypes.length ? dataTypes.join(' & ') : 'Property'} listings in Jaipur. Carefully selected for location, quality, and investment value.`}
             />
 
             <Footer />

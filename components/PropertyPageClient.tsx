@@ -46,14 +46,14 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
             {/* Image Gallery */}
             <PropertyGallery images={property.images} />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 ">
                 <div className="flex flex-col lg:flex-row gap-12 md:gap-16">
                     {/* Left Column: Content */}
                     <div className="lg:w-[68%]">
                         {/* Authoritative Header Info */}
                         <div className="bg-slate-50/50 rounded-[2.5rem] p-6 md:p-10 border border-slate-100 mb-10 shadow-sm relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                            
+
                             <div className="relative z-10">
                                 <div className="flex flex-wrap gap-3 mb-6">
                                     <span className={`px-5 py-2 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-sm border ${property.listingType === "For Sale" ? "bg-white text-[#1E3A8A] border-blue-100" : "bg-[#1D4ED8] text-white border-blue-600"}`}>
@@ -65,11 +65,11 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                                         </span>
                                     )}
                                 </div>
-                                
+
                                 <h1 className="text-[32px] md:text-5xl font-black text-slate-900 mb-4 tracking-tighter leading-tight uppercase italic">
                                     {property.title}
                                 </h1>
-                                
+
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mt-8 pt-8 border-t border-slate-200/60">
                                     <div className="flex flex-col gap-1">
                                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Elite Location</p>
@@ -163,12 +163,7 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                                     <div className="mt-auto flex justify-between items-center border-t border-slate-50 pt-4">
                                         <div className="text-[#1D4ED8] font-black text-xl tracking-tighter">{prop.price}</div>
                                         <div className="text-slate-500 text-[11px] font-black uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                                            {(prop.type.toLowerCase().includes('flat') || 
-                                              prop.type.toLowerCase().includes('apartment') || 
-                                              prop.type.toLowerCase().includes('house') || 
-                                              prop.type.toLowerCase().includes('villa')) 
-                                                ? prop.specs.bhk 
-                                                : prop.specs.carpetArea}
+                                            {prop.specs.bhk ? prop.specs.bhk : prop.specs.area}
                                         </div>
                                     </div>
                                 </div>

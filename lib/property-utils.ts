@@ -22,7 +22,7 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
 
     if (isResidential) {
         // BHK
-        if (property.specs.bhk && property.specs.bhk !== 'N/A') {
+        if (property.specs.bhk && property.specs.bhk !== 'N/A' && property.specs.bhk !== '0') {
             highlights.push({ label: 'BHK', value: property.specs.bhk.replace("BHK", ""), icon: Bed });
         }
         // Bathrooms
@@ -35,8 +35,8 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
         }
     } else if (isPlot) {
         // Area
-        if (property.specs.carpetArea && property.specs.carpetArea !== 'N/A') {
-            highlights.push({ label: 'Area', value: property.specs.carpetArea, icon: Move });
+        if (property.specs.area && property.specs.area !== 'N/A') {
+            highlights.push({ label: 'Area', value: property.specs.area, icon: Move });
         }
         // Facing
         if (property.specs.facing && property.specs.facing !== 'N/A') {
@@ -48,8 +48,8 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
         }
     } else if (isCommercial) {
         // Area
-        if (property.specs.carpetArea && property.specs.carpetArea !== 'N/A') {
-            highlights.push({ label: 'Area', value: property.specs.carpetArea, icon: Move });
+        if (property.specs.area && property.specs.area !== 'N/A') {
+            highlights.push({ label: 'Area', value: property.specs.area, icon: Move });
         }
         // Facing
         if (property.specs.facing && property.specs.facing !== 'N/A') {

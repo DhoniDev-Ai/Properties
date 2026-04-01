@@ -16,15 +16,15 @@ export const getProperties = cache(async (filters: any = {}) => {
         query = query.ilike('city', `%${filters.city}%`);
     }
     if (filters.propertyType && filters.propertyType.length > 0) {
-        // Map UI types to DB types
         const typeMap: Record<string, string> = {
             'Apartment': 'apartment',
+            'Flat': 'apartment',
+            'Independent House': 'apartment',
+            'Penthouse': 'apartment',
             'Villa': 'villa',
-            'Independent House': 'independent_house',
             'Plot': 'plot',
             'Commercial Office': 'commercial',
             'Commercial Shop': 'commercial',
-            'Penthouse': 'penthouse',
             'Warehouse': 'commercial',
             'Farmhouse': 'farmhouse',
             'Builder Floor': 'apartment',
@@ -34,6 +34,21 @@ export const getProperties = cache(async (filters: any = {}) => {
         const dbTypes = filters.propertyType.map((t: string) => typeMap[t] || t.toLowerCase());
         query = query.in('property_type', dbTypes);
     }
+    if (filters.isHB || filters.approvalType === 'HB') {
+        query = query.or('approval_type.eq.HB,property_type.eq.independent_house');
+    }
+    if (filters.isSocietyPatta || filters.approvalType === 'Society Patta') {
+        query = query.ilike('group', '%Society Patta%');
+    } else if (filters.isJDAScheme || filters.approvalType === 'JDA Scheme') {
+        query = query.ilike('group', '%JDA Scheme%');
+    } else if (filters.approvalType === 'Gated Society') {
+        query = query.ilike('group', '%gated%');
+    } else if (['shop', 'space', 'land'].includes(filters.approvalType?.toLowerCase())) {
+        query = query.eq('commercial_type', filters.approvalType.toLowerCase());
+    } else if (filters.approvalType && filters.approvalType !== 'all') {
+        query = query.eq('approval_type', filters.approvalType);
+    }
+
     if (filters.budget) {
         query = query.lte('price', parseInt(filters.budget));
     }
@@ -43,11 +58,8 @@ export const getProperties = cache(async (filters: any = {}) => {
             query = query.in('bhk', bhkNums);
         }
     }
-    if (filters.approvalType && filters.approvalType !== 'all') {
-        query = query.eq('approval_type', filters.approvalType);
-    }
     if (filters.isGated) {
-        query = query.not('group', 'is', null);
+        query = query.ilike('group', '%gated%');
     }
 
     const { data, error } = await query;
@@ -103,6 +115,8 @@ function mapDbToProperty(db: any): Property {
         title: db.title,
         type: (() => {
             const rawType = db.property_type;
+            const resTypes = ['flat', 'apartment', 'independent_house', 'penthouse', 'builder_floor'];
+            if (resTypes.includes(rawType.toLowerCase())) return 'Apartment';
             if (rawType === 'farmer_land') return 'Agriculture Land';
             return capitalizeFirstLetter(rawType.replace(/_/g, ' '));
         })(),
@@ -120,22 +134,28 @@ function mapDbToProperty(db: any): Property {
         },
         specs: {
             bhk: (() => {
+                const resTypes = ['flat', 'apartment', 'independent_house', 'penthouse', 'builder_floor', 'villa', 'farmhouse'];
+                const isResidential = resTypes.includes(db.property_type?.toLowerCase());
+                if (!isResidential) return null; // Area will be shown elsewhere for plots
+
                 if (Array.isArray(db.bhk)) {
-                    return db.bhk.length > 0 ? `${db.bhk.join(', ')} BHK` : `${db.area_sqft} ${db.area_unit || 'sqft'}`;
+                    return db.bhk.length > 0 ? `${db.bhk.join(', ')} BHK` : null;
                 }
-                return db.bhk && db.bhk > 0 ? `${db.bhk} BHK` : `${db.area_sqft} ${db.area_unit || 'sqft'}`;
+                return db.bhk && db.bhk > 0 ? `${db.bhk} BHK` : null;
             })(),
             bedrooms: db.bedrooms || 0,
             bathrooms: db.bathrooms || 0,
             balconies: db.balconies || 0,
-            carpetArea: `${db.area_sqft} ${db.area_unit || 'sqft'}`,
-            builtUpArea: `${db.area_sqft} ${db.area_unit || 'sqft'}`,
-            floor: db.floor_number || 'N/A',
-            totalFloors: parseInt(db.total_floors) || 0,
+            area: `${db.area_sqft} ${db.area_unit || 'sqft'}`,
+            floor: db.floor_number,
+            totalFloors: db.total_floors,
             facing: db.facing,
-            roadInfo: db.road_info || 'N/A',
-            age: 'New',
-            furnishing: capitalizeFirstLetter(db.furnishing?.replace('_', ' ') || 'unfurnished')
+            roadInfo: db.road_info,
+            furnishing: db.furnishing ? capitalizeFirstLetter(db.furnishing.replace('_', ' ')) : null,
+            dimensions: db.dimensions,
+            commercialType: db.commercial_type ? capitalizeFirstLetter(db.commercial_type) : null,
+            maintenanceCharge: db.maintenance_charge ? `₹${db.maintenance_charge}` : null,
+            parking: db.parking ? capitalizeFirstLetter(db.parking) : null,
         },
         amenities: db.amenities || [],
         description: db.description || '',

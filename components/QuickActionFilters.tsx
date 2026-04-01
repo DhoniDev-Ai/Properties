@@ -120,6 +120,30 @@ export default function QuickActionFilters({
                     </button>
                 )}
 
+                {/* Commercial Specifics */}
+                {activeCategory.includes("Commercial") && (
+                    <>
+                        {['shop', 'space', 'land'].map(type => (
+                            <button
+                                key={type}
+                                onClick={() => {
+                                    onToggleApprovalType(type);
+                                    onSortChange("relevance");
+                                }}
+                                className={`
+                                    flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all border-2
+                                    ${activeApprovalType === type
+                                        ? 'bg-blue-600 text-white border-blue-700 shadow-lg scale-[1.02]'
+                                        : 'bg-white text-slate-600 border-slate-100 hover:border-blue-200 hover:bg-blue-50'
+                                    }
+                                `}
+                            >
+                                {type}
+                            </button>
+                        ))}
+                    </>
+                )}
+
                 {/* Clear Type Action */}
                 <button
                     onClick={() => {

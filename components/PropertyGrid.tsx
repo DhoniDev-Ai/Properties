@@ -73,12 +73,7 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             <div className="flex justify-between items-start mb-4 gap-4">
                                 <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic">{prop.title}</h3>
                                 <span className="bg-slate-50 text-slate-400 px-3 py-1 rounded-lg text-[11px] font-black uppercase tracking-widest border border-slate-100 shrink-0">
-                                    {(prop.type.toLowerCase().includes('flat') ||
-                                        prop.type.toLowerCase().includes('apartment') ||
-                                        prop.type.toLowerCase().includes('house') ||
-                                        prop.type.toLowerCase().includes('villa'))
-                                        ? prop.specs.bhk
-                                        : prop.specs.carpetArea}
+                                    {prop.specs.bhk ? prop.specs.bhk : prop.specs.area}
                                 </span>
                             </div>
 

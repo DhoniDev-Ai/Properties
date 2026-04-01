@@ -12,13 +12,14 @@ interface CategoryCard {
 }
 
 const categories: CategoryCard[] = [
+    { id: "Apartment", label: "Apartments", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
     { id: "Plot", label: "Plots", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
     { id: "Project", label: "Gated Society", image: "/gpplot.png" },
-    { id: "Apartment", label: "Apartments", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
+    { id: "HB", label: "Housing Board", image: "/hero.png" }, // Assuming hb.png exists or fallback
+    { id: "Society-Patta", label: "Society Patta", image: "/gpplot.png" },
+    { id: "JDA-Scheme", label: "JDA Scheme", image: "/gpplot.png" },
     { id: "Villa", label: "Villas", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811" },
-    { id: "Independent-House", label: "Independent House", image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914" },
-    { id: "Farmhouse", label: "Farmhouses", image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83" },
-    { id: "Penthouse", label: "Penthouses", image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd" },
+    { id: "Farmhouse", label: "Farm House", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
     { id: "Commercial", label: "Commercial", image: "https://images.unsplash.com/photo-1497366216548-37526070297c" },
     { id: "Agriculture-Land", label: "Agriculture Land", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
 ];
@@ -36,7 +37,19 @@ export default function CategoryCards({
 
     const handleCategoryClick = (cat: CategoryCard) => {
         if (cat.id === 'Project') {
-            router.push('/properties/plot?filter=gated');
+            router.push('/properties/project?approval=Gated%20Society');
+            return;
+        }
+        if (cat.id === 'HB') {
+            router.push('/properties/hb');
+            return;
+        }
+        if (cat.id === 'Society-Patta') {
+            router.push('/properties/project?approval=Society%20Patta');
+            return;
+        }
+        if (cat.id === 'JDA-Scheme') {
+            router.push('/properties/project?approval=JDA%20Scheme');
             return;
         }
 
