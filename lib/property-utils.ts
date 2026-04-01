@@ -11,19 +11,19 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
     const type = property.type.toLowerCase();
     const highlights: PropertyHighlight[] = [];
 
-    const isResidential = type.includes('flat') || 
-                          type.includes('apartment') || 
-                          type.includes('house') || 
-                          type.includes('villa') || 
-                          type.includes('penthouse');
-    
+    const isResidential = type.includes('flat') ||
+        type.includes('apartment') ||
+        type.includes('house') ||
+        type.includes('villa') ||
+        type.includes('penthouse');
+
     const isPlot = type.includes('plot') || type.includes('land');
     const isCommercial = type.includes('commercial') || type.includes('shop') || type.includes('office');
 
     if (isResidential) {
         // BHK
         if (property.specs.bhk && property.specs.bhk !== 'N/A') {
-            highlights.push({ label: 'BHK', value: property.specs.bhk, icon: Bed });
+            highlights.push({ label: 'BHK', value: property.specs.bhk.replace("BHK", ""), icon: Bed });
         }
         // Bathrooms
         if (property.specs.bathrooms && property.specs.bathrooms > 0) {

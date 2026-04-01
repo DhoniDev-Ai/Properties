@@ -67,7 +67,7 @@ export const getPropertyBySlug = cache(async (slug: string) => {
         .select('*', { count: 'exact' })
         .eq('slug', slug)
         .maybeSingle();
-    
+
     console.log(`getPropertyBySlug("${slug}") - Data:`, data ? 'YES' : 'NO', 'Error:', error);
 
     if (error || !data) {
@@ -132,7 +132,7 @@ function mapDbToProperty(db: any): Property {
             builtUpArea: `${db.area_sqft} ${db.area_unit || 'sqft'}`,
             floor: db.floor_number || 'N/A',
             totalFloors: parseInt(db.total_floors) || 0,
-            facing: db.facing || 'East',
+            facing: db.facing,
             roadInfo: db.road_info || 'N/A',
             age: 'New',
             furnishing: capitalizeFirstLetter(db.furnishing?.replace('_', ' ') || 'unfurnished')

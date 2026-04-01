@@ -27,7 +27,7 @@ export default function Hero() {
             {/* Background Image — next/image with priority for fastest LCP */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
-                    src="/image.png"
+                    src="/hero.png"
                     alt="Hero background"
                     fill
                     priority
@@ -39,7 +39,7 @@ export default function Hero() {
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
                 />
                 {/* Elite Gradient Overlay for maximum text pop on mobile */}
-                <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black/60 md:bg-black/45 backdrop-blur-[0.5px]" />
+                <div className="absolute inset-0 bg-linear-to-b opacity-80 from-black/60 via-black/30 to-black/60 md:bg-black/45 backdrop-blur-[0.5px]" />
             </div>
 
             {/* Content Container */}

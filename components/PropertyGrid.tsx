@@ -11,6 +11,8 @@ interface PropertyGridProps {
 }
 
 export default function PropertyGrid({ properties, viewMode }: PropertyGridProps) {
+
+
     if (properties.length === 0) {
         return (
             <div className="bg-white rounded-3xl border border-slate-200 p-12 md:p-16 text-center shadow-sm">
@@ -71,10 +73,10 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             <div className="flex justify-between items-start mb-4 gap-4">
                                 <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic">{prop.title}</h3>
                                 <span className="bg-slate-50 text-slate-400 px-3 py-1 rounded-lg text-[11px] font-black uppercase tracking-widest border border-slate-100 shrink-0">
-                                    {(prop.type.toLowerCase().includes('flat') || 
-                                      prop.type.toLowerCase().includes('apartment') || 
-                                      prop.type.toLowerCase().includes('house') || 
-                                      prop.type.toLowerCase().includes('villa'))
+                                    {(prop.type.toLowerCase().includes('flat') ||
+                                        prop.type.toLowerCase().includes('apartment') ||
+                                        prop.type.toLowerCase().includes('house') ||
+                                        prop.type.toLowerCase().includes('villa'))
                                         ? prop.specs.bhk
                                         : prop.specs.carpetArea}
                                 </span>
@@ -132,7 +134,7 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             sizes="(max-width: 1024px) 50vw, 33vw"
                             className="object-cover transition-transform duration-1000 group-hover:scale-110"
                         />
-                        <div className="absolute top-2 left-2 md:top-4 md:left-4 flex flex-col gap-1.5">
+                        <div className="absolute top-2 left-2 md:top-4 md:left-4 flex flex-col   gap-1.5">
                             <span className={`px-2 md:px-3 py-1 rounded-lg text-[9px] md:text-[11px] font-black uppercase tracking-widest shadow-lg ${prop.listingType === "For Sale" ? "bg-white text-[#1D4ED8]" : "bg-orange-500 text-white"}`}>
                                 {prop.listingType}
                             </span>
@@ -150,11 +152,26 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             )}
                         </div>
                     </div>
-                    <div className="p-4 md:p-6 flex-1 flex flex-col">
+                    <div className="p-3 md:p-6 flex-1 flex flex-col justify-between">
+                        <div className="mb-4">
+                            {/* Property Title - Max 2 Lines */}
+                            <h3 className="text-[22px] md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic line-clamp-2 mb-2">
+                                {prop.title}
+                            </h3>
+
+                            {/* Address/Location - Simple Text with Icon */}
+                            <div className="flex items-start text-slate-500 text-[11px] md:text-[13px] font-bold">
+                                <MapPin className="w-3.5 h-3.5 mr-1.5 shrink-0 text-slate-400 mt-0.5" />
+                                <span className="line-clamp-1 truncate w-full pr-2">
+                                    {prop.location.address}, {prop.location.city}
+                                </span>
+                            </div>
+                        </div>
+
                         {/* Smart Highlights Section */}
-                        <div className="grid grid-cols-3 gap-2 mt-auto pt-4 border-t border-slate-50 mb-4">
+                        <div className="grid grid-cols-3 gap-2 mt-auto pt-2 border-slate-50 mb-2">
                             {getPropertyHighlights(prop).map((highlight: PropertyHighlight, idx: number) => (
-                                <div key={idx} className="flex flex-col items-center justify-center p-2 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-blue-50 transition-colors">
+                                <div key={idx} className="flex flex-col items-center justify-center p-2 max-md:p-1 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-blue-50 transition-colors">
                                     <highlight.icon className="w-3.5 h-3.5 text-[#1D4ED8] mb-1" />
                                     <span className="text-[10px] font-black text-slate-900 uppercase tracking-tighter truncate max-w-full text-center">
                                         {highlight.value}
@@ -176,7 +193,7 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                             <a
                                 target="_blank"
                                 href={`https://wa.me/918426022000?text=Hi, I'm interested in the property: "${prop.title}" - ${typeof window !== 'undefined' ? window.location.origin : ''}/properties/${prop.slug}`}
-                                className="flex-1 bg-white border-2 border-slate-100 text-[#1e3a8a] font-black uppercase tracking-widest py-3 px-1 rounded-xl transition-all flex items-center justify-center gap-1 text-[10px] md:text-[13px] hover:bg-blue-50 active:scale-95"
+                                className="flex-1 bg-white border-2 border-slate-100 text-[#1e3a8a] font-black uppercase tracking-widest py-2 px-1 rounded-xl transition-all flex items-center justify-center gap-1 text-[10px] md:text-[13px] hover:bg-blue-50 active:scale-95"
                             >
                                 WhatsApp
                             </a>

@@ -36,7 +36,7 @@ export default function PropertyListingClient({
     const router = useRouter();
 
     // UI State
-    const [viewMode, setViewMode] = useState<"grid" | "list">("list");
+    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [sortBy, setSortBy] = useState("relevance");
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);

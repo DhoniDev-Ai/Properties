@@ -26,7 +26,7 @@ export default function FeaturedProperties() {
         const fetchFeatured = async () => {
             setLoading(true);
             try {
-                const data = await getFeaturedProperties(4);
+                const data = await getFeaturedProperties(8);
                 setFeaturedProperties(data);
             } finally {
                 setLoading(false);
@@ -135,26 +135,20 @@ export default function FeaturedProperties() {
                                     </div>
 
                                     {/* Content Side */}
-                                    <div className="p-8 sm:p-10 flex-1 flex flex-col">
-                                        <div className="flex justify-between items-start mb-4 gap-6">
-                                            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-[1.1] uppercase group-hover:text-[#1D4ED8] transition-colors">{property.title}</h3>
-                                            <div className="text-right shrink-0">
-                                                <span className="bg-slate-50 text-slate-500 px-4 py-2 rounded-xl text-sm font-black border border-slate-200 uppercase tracking-widest shadow-sm">
-                                                    {(property.type.toLowerCase().includes('flat') ||
-                                                        property.type.toLowerCase().includes('apartment') ||
-                                                        property.type.toLowerCase().includes('house') ||
-                                                        property.type.toLowerCase().includes('villa'))
-                                                        ? property.specs.bhk
-                                                        : property.specs.carpetArea}
+                                    <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                                        <div className="mb-4">
+                                            {/* Property Title - Max 2 Lines */}
+                                            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-[1.1] uppercase group-hover:text-[#1D4ED8] transition-colors line-clamp-2 mb-2">
+                                                {property.title}
+                                            </h3>
+
+                                            {/* Address/Location - Simple Text with Icon */}
+                                            <div className="flex items-start text-slate-500 text-[13px] md:text-[15px] font-bold">
+                                                <MapPin className="w-4 h-4 mr-1.5 shrink-0 text-slate-400 mt-0.5" />
+                                                <span className="line-clamp-1 truncate w-full pr-2">
+                                                    {property.location.address}, {property.location.city}
                                                 </span>
                                             </div>
-                                        </div>
-
-                                        <div className="flex items-center text-slate-500 text-[15px] font-semibold mb-8 group/loc">
-                                            <div className="bg-blue-50 p-2 rounded-lg mr-3 group-hover/loc:bg-blue-100 transition-colors">
-                                                <MapPin className="w-4 h-4 text-[#1D4ED8]" />
-                                            </div>
-                                            <span className="truncate group-hover:text-slate-900 transition-colors tracking-tight">{property.location.address}, {property.location.city}</span>
                                         </div>
 
                                         <div className="grid grid-cols-2 gap-4 mt-auto">

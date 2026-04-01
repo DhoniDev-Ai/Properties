@@ -19,13 +19,13 @@ export default function ContactCard({ propertyTitle, owner }: ContactCardProps) 
     const whatsappLink = `https://wa.me/${owner.phone.replace(/\D/g, '')}?text=Hi, I'm interested in "${propertyTitle}"`;
 
     return (
-        <div className="sticky top-24 bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
+        <div className="sticky max-md:hidden top-24 bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
             {/* Owner Header */}
             <div className="p-6 bg-slate-50 border-b border-slate-100">
                 <div className="flex items-center gap-4 mb-5">
-                    <img 
-                        src={owner.photo} 
-                        alt={owner.name} 
+                    <img
+                        src={owner.photo}
+                        alt={owner.name}
                         className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-200 shadow-sm"
                     />
                     <div>
@@ -35,7 +35,7 @@ export default function ContactCard({ propertyTitle, owner }: ContactCardProps) 
                 </div>
 
                 <div className="space-y-3">
-                    <button 
+                    <button
                         onClick={() => setShowNumber(true)}
                         className="w-full py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-semibold flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
                     >
@@ -50,13 +50,13 @@ export default function ContactCard({ propertyTitle, owner }: ContactCardProps) 
 
             {/* Quick Actions */}
             <div className="p-6 space-y-3">
-                <a 
+                <a
                     href={`tel:${owner.phone}`}
                     className="w-full py-3.5 bg-[#1E3A8A] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-900 transition-colors shadow-blue-100 shadow-lg cursor-pointer"
                 >
                     <Phone className="w-4 h-4" /> Call Now
                 </a>
-                <a 
+                <a
                     href={whatsappLink}
                     target="_blank"
                     className="w-full py-3.5 bg-[#25D366] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors shadow-green-100 shadow-lg cursor-pointer"

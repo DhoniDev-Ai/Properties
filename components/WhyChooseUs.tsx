@@ -30,7 +30,7 @@ const highValueProps = [
 const counters = [
     { value: 500, suffix: "+", label: "PROPERTIES" },
     { value: 1000, suffix: "+", label: "HAPPY CLIENTS" },
-    { value: 15, suffix: "+", label: "YEARS EXP" },
+    { value: 45, suffix: "+", label: "YEARS EXP" },
     { value: 100, suffix: "%", label: "VERIFIED" }
 ];
 
