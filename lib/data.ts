@@ -51,7 +51,7 @@ export const getProperties = cache(async (filters: any = {}) => {
     }
 
     const { data, error } = await query;
-    console.log(`getProperties results for city="${filters.city}":`, data?.length || 0, 'rows');
+    // console.log(`getProperties results for city="${filters.city}":`, data?.length || 0, 'rows');
 
     if (error) {
         console.error('Error fetching properties:', error.message, error.hint, error.details);
@@ -68,7 +68,7 @@ export const getPropertyBySlug = cache(async (slug: string) => {
         .eq('slug', slug)
         .maybeSingle();
 
-    console.log(`getPropertyBySlug("${slug}") - Data:`, data ? 'YES' : 'NO', 'Error:', error);
+    // console.log(`getPropertyBySlug("${slug}") - Data:`, data ? 'YES' : 'NO', 'Error:', error);
 
     if (error || !data) {
         console.error('Error fetching property by slug:', error?.message || 'Property not found');
