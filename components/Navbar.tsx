@@ -9,7 +9,9 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isPropertiesOpen, setIsPropertiesOpen] = useState(false);
     const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+    const [isMobilePropertiesOpen, setIsMobilePropertiesOpen] = useState(false);
 
     // Handle scroll effect
     useEffect(() => {
@@ -27,7 +29,14 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
 
     const navLinks = [
         { name: "About Us", href: "/about" },
-        { name: "Properties", href: "/properties" },
+        { 
+            name: "Properties", 
+            href: "#",
+            dropdown: [
+                { name: "Purchase Property", href: "/properties" },
+                { name: "Sell Property", href: "/sell" },
+            ]
+        },
         {
             name: "Other Services",
             href: "#",
@@ -85,21 +94,27 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                             <div
                                 key={link.name}
                                 className="relative group/nav"
-                                onMouseEnter={() => link.dropdown && setIsServicesOpen(true)}
-                                onMouseLeave={() => link.dropdown && setIsServicesOpen(false)}
+                                onMouseEnter={() => {
+                                    if (link.name === "Properties") setIsPropertiesOpen(true);
+                                    if (link.name === "Other Services") setIsServicesOpen(true);
+                                }}
+                                onMouseLeave={() => {
+                                    if (link.name === "Properties") setIsPropertiesOpen(false);
+                                    if (link.name === "Other Services") setIsServicesOpen(false);
+                                }}
                             >
                                 <Link
                                     href={link.href}
                                     className={`font-medium text-[15px] cursor-pointer transition-colors duration-200 relative py-2 flex items-center gap-1 ${isSolidText ? "text-slate-600 hover:text-[#0F172A]" : "text-white/90 hover:text-white"}`}
                                 >
                                     {link.name}
-                                    {link.dropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />}
+                                    {link.dropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${link.name === "Properties" ? (isPropertiesOpen ? 'rotate-180' : '') : (isServicesOpen ? 'rotate-180' : '')}`} />}
                                     <span className="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover/nav:scale-x-100"></span>
                                 </Link>
 
                                 {link.dropdown && (
                                     <AnimatePresence>
-                                        {isServicesOpen && (
+                                        {((link.name === "Properties" && isPropertiesOpen) || (link.name === "Other Services" && isServicesOpen)) && (
                                             <motion.div
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
@@ -167,13 +182,16 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                             {link.dropdown ? (
                                 <>
                                     <button
-                                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                                        onClick={() => {
+                                            if (link.name === "Properties") setIsMobilePropertiesOpen(!isMobilePropertiesOpen);
+                                            if (link.name === "Other Services") setIsMobileServicesOpen(!isMobileServicesOpen);
+                                        }}
                                         className="w-full flex justify-between items-center px-3 py-3 rounded-md text-base font-medium cursor-pointer text-slate-700 hover:text-[#0F172A] hover:bg-slate-50 transition-colors"
                                     >
                                         <span>{link.name}</span>
-                                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+                                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${(link.name === "Properties" ? isMobilePropertiesOpen : isMobileServicesOpen) ? 'rotate-180' : ''}`} />
                                     </button>
-                                    <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-64 mt-1 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-300 ${(link.name === "Properties" ? isMobilePropertiesOpen : isMobileServicesOpen) ? 'max-h-64 mt-1 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         {link.dropdown.map((sub) => (
                                             <Link
                                                 key={sub.name}

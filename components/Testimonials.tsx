@@ -2,28 +2,29 @@
 
 import { Star, Quote, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const testimonials = [
     {
         id: 1,
-        name: "Rahul Sharma",
+        name: "Ramchandra Jat",
         property: "Bought 3BHK in Malviya Nagar",
-        text: "The buying process was incredibly smooth. They understood exactly what my family needed and handled all the complex paperwork effortlessly.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        text: " The buying process was incredibly smooth. They understood exactly what my family needed and handled all the complex paperwork effortlessly. ",
+        image: "/rm.png",
     },
     {
         id: 2,
-        name: "Priya Patel",
+        name: "Gajendra Singh",
         property: "Rented Villa in Vaishali Nagar",
         text: "Excellent service and guidance throughout our search. We moved from out of state and their team made finding a premium rental completely stress-free.",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        image: "/gj.png",
     },
     {
         id: 3,
-        name: "Amit Desai",
+        name: "Kunal Agarwal",
         property: "Bought Plot in Jagatpura",
         text: "Found our dream property within just two weeks! Their vast network and transparent dealings gave us complete peace of mind.",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        image: "/kn.png",
     },
 ];
 
@@ -65,14 +66,14 @@ export default function Testimonials() {
                     </div>
 
                     {/* Google Reviews Badge */}
-                    <div className="bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-200 flex items-center shrink-0 hover:shadow-md transition-shadow cursor-pointer group">
+                    <Link target="_blank" href={"https://www.google.com/search?sca_esv=df25ec6ca4037ad0&cs=1&sxsrf=ANbL-n72eT6lGhjWOimQMBgwyF3YgZdsbw:1775031116153&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXPXZsKuBa7AOj5EBlsKPxy0wqbE57ZDGIsfZKJ3OysPXlTS1nMm9XL66GzAt8-m3EGq08_3Z-aqgXTjKMRdUSEeEfTF5HfsisXoVxFiG_EjeePfGw%3D%3D&q=Agarwal+Properties+Reviews&sa=X&ved=2ahUKEwjs2ZKZmsyTAxXd-zgGHUexDUMQ0bkNegQIKBAH&biw=1470&bih=835&dpr=2"} className="bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-200 flex items-center shrink-0 hover:shadow-md transition-shadow  group">
                         <div className="mr-5 border-r border-slate-100 pr-5">
                             <div className="flex items-center gap-1 mb-1">
                                 <span className="text-xl font-bold text-slate-900">4.8</span>
                                 <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                             </div>
                             <p className="text-xs text-slate-500 font-medium whitespace-nowrap">
-                                Based on 150+ reviews
+                                Based on 10+ reviews
                             </p>
                         </div>
                         <div className="flex flex-col items-center">
@@ -89,7 +90,7 @@ export default function Testimonials() {
                                 Review us <ExternalLink className="w-2.5 h-2.5 ml-1" />
                             </span>
                         </div>
-                    </div>
+                    </Link>
                 </div>
 
                 {/* Testimonials Grid */}
@@ -108,7 +109,7 @@ export default function Testimonials() {
                         >
                             <Quote className="absolute top-8 right-8 w-10 h-10 text-slate-100 group-hover:text-blue-50 transition-colors duration-300 z-0" />
 
-                            <div className="relative z-10">
+                            <div className="relative h-[250] z-10">
                                 <div className="flex gap-1 mb-6">
                                     {[1, 2, 3, 4, 5].map((star) => (
                                         <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />

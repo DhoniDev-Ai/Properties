@@ -10,7 +10,7 @@ import PropertyGrid from "@/components/PropertyGrid";
 import CategoryCards from "@/components/CategoryCards";
 import QuickActionFilters from "@/components/QuickActionFilters";
 import SearchBar from "@/components/SearchBar";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Send } from "lucide-react";
 import { Property } from "@/data/properties";
 
 interface PropertyListingClientProps {
@@ -36,7 +36,7 @@ export default function PropertyListingClient({
     const router = useRouter();
 
     // UI State
-    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+    const [viewMode, setViewMode] = useState<"grid" | "list">("list");
     const [sortBy, setSortBy] = useState("relevance");
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -63,8 +63,8 @@ export default function PropertyListingClient({
         const filterParam = searchParams.get("filter");
         const approvalParam = searchParams.get("approval");
 
-        setFilters(prev => ({ 
-            ...prev, 
+        setFilters(prev => ({
+            ...prev,
             type: typeParam || prev.type,
             isGated: filterParam === "gated" || (initialFilters.isGated ?? prev.isGated),
             approvalType: approvalParam || prev.approvalType
@@ -297,6 +297,34 @@ export default function PropertyListingClient({
                                 </button>
                             </div>
                         )}
+
+                        {/* Sell Property CTA */}
+                        <div className="mt-24 bg-[#0F172A] rounded-[3rem] p-10 md:p-16 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-1000" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-600/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-1000" />
+
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                                <div className="max-w-xl text-center md:text-left">
+                                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+                                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+                                        <span className="text-[10px] font-black uppercase tracking-[.2em] text-blue-400">Owner Services</span>
+                                    </div>
+                                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9] uppercase italic mb-6">
+                                        Want to sell your <span className="text-blue-500">property?</span>
+                                    </h2>
+                                    <p className="text-xl text-slate-400 font-bold leading-relaxed">
+                                        List your property directly with us and get high-intent buyers via WhatsApp. No middlemen, just direct leads.
+                                    </p>
+                                </div>
+                                <button
+                                    onClick={() => router.push('/sell')}
+                                    className="shrink-0 bg-white hover:bg-blue-50 text-[#0F172A] px-10 py-6 rounded-3xl font-black uppercase tracking-widest text-sm flex items-center gap-3 transition-all active:scale-95 shadow-xl shadow-white/5"
+                                >
+                                    Get Started Now
+                                    <Send className="w-4 h-4 text-blue-600" />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

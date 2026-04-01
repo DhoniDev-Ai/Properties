@@ -115,12 +115,12 @@ export default function FeaturedProperties() {
                                             priority
                                         />
                                         {/* Glass Overlay Badges */}
-                                        <div className="absolute top-6 left-6 flex flex-col gap-3">
-                                            <span className={`px-5 py-2.5 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-white/20 ${property.listingType === "For Sale" ? "bg-white/90 text-[#1E3A8A]" : "bg-orange-500 text-white"}`}>
+                                        <div className="absolute top-6 left-6 flex flex-col  max-md:flex-row max-md:gap-1 max-md:top-3 max-md:left-3 gap-3">
+                                            <span className={`px-5 py-2.5 max-md:p-2 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-white/20 ${property.listingType === "For Sale" ? "bg-white/90 text-[#1E3A8A]" : "bg-orange-500 text-white"}`}>
                                                 {property.listingType}
                                             </span>
                                             {property.projectName && (
-                                                <span className="px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl bg-orange-600 text-white border border-white/20 backdrop-blur-xl flex items-center gap-2 w-fit">
+                                                <span className="px-5 py-2.5 max-md:p-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl bg-orange-600 text-white border border-white/20  backdrop-blur-xl flex items-center gap-2 w-fit">
                                                     <LayoutGrid className="w-4 h-4" />
                                                     {property.projectName}
                                                 </span>
@@ -128,7 +128,7 @@ export default function FeaturedProperties() {
                                         </div>
 
                                         {/* Price Tag Overlay */}
-                                        <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-3 rounded-2xl shadow-2xl border border-slate-100 backdrop-blur-md">
+                                        <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-3 max-md:px-3 max-md:py-2 max-md:left-3 max-md:bottom-3 rounded-2xl shadow-2xl border border-slate-100 backdrop-blur-md">
                                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Price Guide</p>
                                             <p className="text-xl font-black text-[#1D4ED8] tracking-tighter">{property.price}</p>
                                         </div>
