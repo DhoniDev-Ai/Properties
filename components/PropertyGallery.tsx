@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 
 interface PropertyGalleryProps {
@@ -12,7 +13,16 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
     const imageCount = images.length;
 
     return (
-        <section className="pt-28">
+        <section className="pt-28 relative">
+            <div className=" px-4 absolute sm:px-6 lg:px-8 py-4">
+                <button
+                    onClick={() => window.history.back()}
+                    className="flex items-center gap-2 text-slate-200  z-500 bg-[#1D4ED8] hover:text-[#1D4ED8] font-bold text-sm   hover:bg-blue-50 px-4 py-2 rounded-xl transition-all cursor-pointer border border-slate-100 w-fit active:scale-95 shadow-sm"
+                >
+                    <ChevronLeft className="w-4 h-4" />
+                    Back to Listings
+                </button>
+            </div>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className={`grid gap-3 grid-cols-1 md:grid-cols-4 rounded-2xl overflow-hidden shadow-md`}>
                     {/* Main Image - Spans 2 cols and 2 rows to force 3:2 among neighbors */}
@@ -35,7 +45,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
                                 <div
                                     key={idx}
                                     className={`relative group overflow-hidden cursor-pointer aspect-3/2 ${imageCount === 2 ? 'md:col-span-2 md:row-span-2' :
-                                            imageCount === 3 ? 'md:col-span-2' : ''
+                                        imageCount === 3 ? 'md:col-span-2' : ''
                                         }`}
                                 >
                                     <Image
@@ -57,6 +67,9 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
                     )}
                 </div>
             </div>
+
         </section>
+
+
     );
 }

@@ -23,7 +23,7 @@ const serviceData: Record<string, any> = {
         ]
     },
     "gst-registration": {
-        title: "GST Registration & Filing",
+        title: "GST Filing",
         icon: Briefcase,
         color: "text-indigo-600",
         bgColor: "bg-indigo-50",
@@ -37,7 +37,7 @@ const serviceData: Record<string, any> = {
         ]
     },
     "loan-housing": {
-        title: "Loan & Housing Finance",
+        title: "Housing Loan",
         icon: Landmark,
         color: "text-emerald-600",
         bgColor: "bg-emerald-50",

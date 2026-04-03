@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { getPropertyHighlights, PropertyHighlight } from "@/lib/property-utils";
 import { MapPin, MessageSquareCode, ArrowRight, Heart, Star, LayoutGrid, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { getFeaturedProperties } from "@/lib/data";
@@ -26,7 +27,7 @@ export default function FeaturedProperties() {
         const fetchFeatured = async () => {
             setLoading(true);
             try {
-                const data = await getFeaturedProperties(8);
+                const data = await getFeaturedProperties(6);
                 setFeaturedProperties(data);
             } finally {
                 setLoading(false);
@@ -116,7 +117,7 @@ export default function FeaturedProperties() {
                                         />
                                         {/* Glass Overlay Badges */}
                                         <div className="absolute top-6 left-6 flex flex-col  max-md:flex-row max-md:gap-1 max-md:top-3 max-md:left-3 gap-3">
-                                            <span className={`px-5 py-2.5 max-md:p-2 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-white/20 ${property.listingType === "For Sale" ? "bg-white/90 text-[#1E3A8A]" : "bg-orange-500 text-white"}`}>
+                                            <span className={`px-5 py-2.5 max-md:p-2 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-white/20 ${property.listingType === "For Sale" ? "hidden" : "bg-orange-500 text-white"}`}>
                                                 {property.listingType}
                                             </span>
                                             {property.projectName && (
@@ -128,8 +129,8 @@ export default function FeaturedProperties() {
                                         </div>
 
                                         {/* Price Tag Overlay */}
-                                        <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-3 max-md:px-3 max-md:py-2 max-md:left-3 max-md:bottom-3 rounded-2xl shadow-2xl border border-slate-100 backdrop-blur-md">
-                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Price Guide</p>
+                                        <div className="absolute w-fit bottom-3 left-4 bg-white/95 px-6 py-3 max-md:px-3 max-md:py-2 max-md:left-3 max-md:bottom-3 rounded-2xl shadow-2xl border border-slate-100 backdrop-blur-md">
+                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Price</p>
                                             <p className="text-xl font-black text-[#1D4ED8] tracking-tighter">{property.price}</p>
                                         </div>
                                     </div>
@@ -149,6 +150,20 @@ export default function FeaturedProperties() {
                                                     {property.location.address}, {property.location.city}
                                                 </span>
                                             </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-3 gap-2  pb-2 border-slate-50 ">
+                                            {getPropertyHighlights(property).map((highlight: PropertyHighlight, idx: number) => (
+                                                <div key={idx} className="flex flex-col items-center justify-center p-1 max-md:p-1 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-blue-50 transition-colors">
+                                                    <highlight.icon className="w-3.5 h-3.5 text-[#1D4ED8] mb-1" />
+                                                    <span className="text-[8px] font-black text-slate-900 uppercase tracking-tighter truncate max-w-full text-center">
+                                                        {highlight.value}
+                                                    </span>
+                                                    <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">
+                                                        {highlight.label}
+                                                    </span>
+                                                </div>
+                                            ))}
                                         </div>
 
                                         <div className="grid grid-cols-2 gap-4 mt-auto">

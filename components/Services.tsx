@@ -15,7 +15,7 @@ const serviceList = [
     },
     {
         id: "gst-registration",
-        title: "GST Registration",
+        title: "GST Filing",
         desc: "Smooth business registration and compliance for commercial ventures and retailers.",
         icon: Briefcase,
         color: "bg-indigo-600",
@@ -23,7 +23,7 @@ const serviceList = [
     },
     {
         id: "loan-housing",
-        title: "Loan & Housing",
+        title: "Housing Loan",
         desc: "Best home loan rates and financing from top public & private sector banks.",
         icon: Landmark,
         color: "bg-emerald-600",
@@ -31,7 +31,7 @@ const serviceList = [
     },
     {
         id: "license-jda-hb",
-        title: "Liaison - JDA | HB",
+        title: "Liaison with JDA | HB",
         desc: "Expert government approvals, JDA/HB documentation, and hassle-free liaison.",
         icon: ShieldCheck,
         color: "bg-orange-500",
@@ -88,14 +88,14 @@ export default function Services() {
                                 <service.icon className="w-6 h-6 text-white" strokeWidth={2.5} />
                             </div>
 
-                            <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-tight leading-tight italic">{service.title}</h3>
+                            <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight leading-tight italic">{service.title}</h3>
                             <p className="text-slate-400 text-sm leading-relaxed mb-10 font-medium opacity-80 group-hover:opacity-100 transition-opacity">
                                 {service.desc}
                             </p>
 
                             <Link
                                 href={service.path}
-                                className="inline-flex items-center gap-2 text-blue-400 font-black uppercase tracking-widest text-[11px] group-hover:text-white transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1"
+                                className="inline-flex absolute bottom-5 items-center gap-2 text-blue-400 font-black uppercase tracking-widest text-[11px] group-hover:text-white transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1"
                             >
                                 Detailed Overview <ArrowRight className="w-3.5 h-3.5 translate-x-1 group-hover:translate-x-2 transition-transform" />
                             </Link>

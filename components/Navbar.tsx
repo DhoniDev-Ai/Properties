@@ -29,8 +29,8 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
 
     const navLinks = [
         { name: "About Us", href: "/about" },
-        { 
-            name: "Properties", 
+        {
+            name: "Properties",
             href: "#",
             dropdown: [
                 { name: "Purchase Property", href: "/properties" },
@@ -42,9 +42,9 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             href: "#",
             dropdown: [
                 { name: "ITR Filing", href: "/services/itr-filing" },
-                { name: "GST Registration", href: "/services/gst-registration" },
-                { name: "Loan & Housing", href: "/services/loan-housing" },
-                { name: "Liaison - JDA | HB", href: "/services/license-jda-hb" },
+                { name: "GST Filing", href: "/services/gst-registration" },
+                { name: "Housing Loan", href: "/services/loan-housing" },
+                { name: "Liaison with JDA | HB", href: "/services/license-jda-hb" },
             ]
         },
 

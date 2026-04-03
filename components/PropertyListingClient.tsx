@@ -184,7 +184,7 @@ export default function PropertyListingClient({
                         {showBackButton && (
                             <button
                                 onClick={() => router.push('/properties')}
-                                className="flex items-center gap-2 text-slate-500 font-black hover:text-[#1D4ED8] transition-all group text-[11px] uppercase tracking-[0.2em] active:scale-95 bg-white px-5 py-2.5 rounded-xl border border-slate-100 shadow-sm"
+                                className="flex items-center gap-2 text-slate-200 font-black bg-[#1D4ED8] transition-all group text-[11px] uppercase tracking-[0.2em] active:scale-95 cursor-pointer px-5 py-2.5 rounded-xl border border-slate-100 shadow-sm"
                             >
                                 <ChevronLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                                 Return to Inventory

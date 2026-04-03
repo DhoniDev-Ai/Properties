@@ -1,6 +1,6 @@
 "use client";
 
-import { BedDouble, Bath, Square, Layers, CheckCircle2, ShieldCheck, Ruler } from "lucide-react";
+import { BedDouble, Bath, Square, Layers, CheckCircle2, ShieldCheck, Ruler, FenceIcon, CompassIcon } from "lucide-react";
 
 interface SpecsBarProps {
     specs: {
@@ -9,6 +9,8 @@ interface SpecsBarProps {
         bathrooms: number;
         area: string;
         floor?: string | null;
+        balconies: number;
+        facing: string | null;
     };
     amenities: string[];
 }
@@ -22,6 +24,14 @@ export default function SpecsBar({ specs, amenities }: SpecsBarProps) {
             icon: <BedDouble className="w-5 h-5" />,
             label: "Bedroom",
             value: specs.bhk,
+            color: "bg-blue-50 text-[#1D4ED8]"
+        });
+    }
+    if (specs.facing && specs.facing !== 'N/A' && specs.facing !== '0') {
+        mainSpecs.push({
+            icon: <CompassIcon className="w-5 h-5" />,
+            label: "Facing",
+            value: specs.facing,
             color: "bg-blue-50 text-[#1D4ED8]"
         });
     }
@@ -45,6 +55,14 @@ export default function SpecsBar({ specs, amenities }: SpecsBarProps) {
             color: "bg-orange-50 text-orange-600"
         });
     }
+    if (specs.balconies > 0) {
+        mainSpecs.push({
+            icon: <FenceIcon className="w-5 h-5" />,
+            label: "Balconies",
+            value: `${specs.balconies}`,
+            color: "bg-orange-50 text-orange-600"
+        });
+    }
 
     // Only show Floor if not N/A
     if (specs.floor && specs.floor !== 'N/A' && specs.floor !== '0') {
@@ -57,37 +75,23 @@ export default function SpecsBar({ specs, amenities }: SpecsBarProps) {
     }
 
     return (
-        <div className="mb-2">
+        <div className="py-3">
             {/* Elite Specs Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-5">
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 ">
                 {mainSpecs.map((spec, idx) => (
-                    <div key={idx} className="bg-white border border-slate-100 rounded-4xl p-5 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
-                        <div className={`w-12 h-12 rounded-2xl ${spec.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-110`}>
+                    <div key={idx} className="bg-white border border-slate-300 rounded-4xl p-3 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                        <div className={`w-12 h-12 rounded-2xl ${spec.color} border  flex items-center justify-center mb-4 transition-transform group-hover:scale-110`}>
                             {spec.icon}
                         </div>
                         <div>
                             <p className="text-[10px] font-black text-slate-400 tracking-widest uppercase mb-1">{spec.label}</p>
-                            <p className="text-lg font-black text-slate-900 tracking-tight">{spec.value}</p>
+                            <p className="text-lg font-semibold text-slate-900 tracking-tight">{spec.value}</p>
                         </div>
                     </div>
                 ))}
             </div>
 
             {/* Premium Highlights */}
-            <div className="flex flex-col gap-3">
-                <p className="text-[11px] font-black text-slate-400 tracking-[0.2em] uppercase">Marketed Highlights</p>
-                <div className="flex flex-wrap gap-2">
-                    {amenities.slice(0, 8).map((amenity, idx) => (
-                        <div
-                            key={idx}
-                            className="flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-700 border border-slate-200/60 rounded-xl text-[13px] font-bold hover:bg-white hover:border-[#1D4ED8] hover:text-[#1D4ED8] transition-all cursor-default"
-                        >
-                            <ShieldCheck className="w-4 h-4 text-[#1D4ED8]" />
-                            {amenity}
-                        </div>
-                    ))}
-                </div>
-            </div>
         </div>
     );
 }

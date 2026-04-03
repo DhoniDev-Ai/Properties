@@ -17,8 +17,9 @@ export default function DescriptionSection({ description }: DescriptionSectionPr
     const displayText = isExpanded ? description : description.slice(0, limit) + (shouldTruncate ? "..." : "");
 
     return (
-        <div className="my-10">
+        <div className="my-6">
             <h2 className="text-2xl font-bold text-[#1E3A8A] mb-2">About This Property</h2>
+
             <div className="text-slate-600 leading-relaxed text-lg whitespace-pre-line">
                 {displayText}
             </div>

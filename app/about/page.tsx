@@ -106,8 +106,8 @@ export default function AboutPage() {
                                     With over 20 years of experience in the Rajasthan real estate market, Anil Goyal has built a reputation for unmatched expertise and unwavering integrity. Under his leadership, Agarwal Properties has closed over 1,000 successful deals.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
-                                    <Link 
-                                        href="https://wa.me/918426022000" 
+                                    <Link
+                                        href="https://wa.me/918426022000"
                                         target="_blank"
                                         className="bg-[#0F172A] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-black transition-all shadow-lg shadow-black/10"
                                     >
@@ -158,26 +158,26 @@ export default function AboutPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
-                            { 
-                                title: "ITR Services", 
+                            {
+                                title: "ITR Services",
                                 desc: "Expert Income Tax Return filing and optimization for property owners and investors.",
                                 icon: FileText,
                                 color: "bg-blue-50 text-blue-600"
                             },
-                            { 
-                                title: "GST Solutions", 
+                            {
+                                title: "GST Filing",
                                 desc: "Comprehensive GST registration and compliance management for commercial real estate.",
                                 icon: PieChart,
                                 color: "bg-orange-50 text-orange-600"
                             },
-                            { 
-                                title: "Loan & Housing", 
+                            {
+                                title: "Housing Loan",
                                 desc: "Elite tie-ups with leading banks for seamless home and commercial loan approvals.",
                                 icon: Landmark,
                                 color: "bg-green-50 text-green-600"
                             },
-                            { 
-                                title: "JDA Liaison", 
+                            {
+                                title: "JDA Liaison",
                                 desc: "Professional assistance with JDA, HB, and other essential land-use Liaison.",
                                 icon: ShieldCheck,
                                 color: "bg-purple-50 text-purple-600"
@@ -192,8 +192,8 @@ export default function AboutPage() {
                                 <p className="text-slate-500 font-bold text-sm leading-relaxed mb-6">
                                     {service.desc}
                                 </p>
-                                <Link 
-                                    href="https://wa.me/918426022000" 
+                                <Link
+                                    href="https://wa.me/918426022000"
                                     target="_blank"
                                     className="inline-flex items-center gap-2 text-blue-600 font-black text-xs uppercase tracking-widest hover:gap-3 transition-all"
                                 >
@@ -214,8 +214,8 @@ export default function AboutPage() {
                                 </p>
                             </div>
                             <div className="flex gap-4">
-                                <Link 
-                                    href="tel:+918426022000" 
+                                <Link
+                                    href="tel:+918426022000"
                                     className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95"
                                 >
                                     Call Expert

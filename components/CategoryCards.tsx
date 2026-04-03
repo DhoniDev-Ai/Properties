@@ -12,10 +12,10 @@ interface CategoryCard {
 }
 
 const categories: CategoryCard[] = [
-    { id: "Apartment", label: "Apartments", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
+    { id: "Apartment", label: "Apartments / Flats", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
     { id: "Plot", label: "Plots", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
     { id: "Project", label: "Gated Society", image: "/gpplot.png" },
-    { id: "HB", label: "Housing Board", image: "/hero.png" }, // Assuming hb.png exists or fallback
+    { id: "HB", label: "HB Homes", image: "/hero.png" }, // Assuming hb.png exists or fallback
     { id: "Society-Patta", label: "Society Patta", image: "/gpplot.png" },
     { id: "JDA-Scheme", label: "JDA Scheme", image: "/gpplot.png" },
     { id: "Villa", label: "Villas", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811" },

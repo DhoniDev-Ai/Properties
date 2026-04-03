@@ -25,13 +25,12 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
         if (property.specs.bhk && property.specs.bhk !== 'N/A' && property.specs.bhk !== '0') {
             highlights.push({ label: 'BHK', value: property.specs.bhk.replace("BHK", ""), icon: Bed });
         }
-        // Bathrooms
-        if (property.specs.bathrooms && property.specs.bathrooms > 0) {
-            highlights.push({ label: 'Baths', value: property.specs.bathrooms, icon: Bath });
-        }
         // Floor
         if (property.specs.floor && property.specs.floor !== 'N/A' && property.specs.floor !== '0') {
             highlights.push({ label: 'Floor', value: property.specs.floor, icon: Layers });
+        }
+        if (property.specs.area && property.specs.area !== 'N/A') {
+            highlights.push({ label: 'Area', value: property.specs.area, icon: Move });
         }
     } else if (isPlot) {
         // Area
