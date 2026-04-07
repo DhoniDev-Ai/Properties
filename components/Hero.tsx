@@ -10,15 +10,17 @@ export default function Hero() {
     const router = useRouter();
 
     const handleSearch = (filters: any) => {
-        const query = new URLSearchParams({
+        const queryParams: any = {
             type: filters.type || "all",
-            ...(filters.keyword && { q: filters.keyword }),
-            ...(filters.city && { city: filters.city }),
-            ...(filters.propertyType && { propertyType: filters.propertyType }),
-            ...(filters.bhk && { bhk: filters.bhk }),
-            ...(filters.budget && { budget: filters.budget })
-        }).toString();
+        };
 
+        if (filters.keyword) queryParams.q = filters.keyword;
+        if (filters.city && filters.city.toLowerCase() !== "jaipur") queryParams.city = filters.city;
+        if (filters.propertyType) queryParams.propertyType = filters.propertyType;
+        if (filters.bhk) queryParams.bhk = filters.bhk;
+        if (filters.budget) queryParams.budget = filters.budget;
+
+        const query = new URLSearchParams(queryParams).toString();
         router.push(`/properties?${query}`);
     };
 

@@ -68,7 +68,7 @@ export default function SpecsBar({ specs, amenities }: SpecsBarProps) {
     if (specs.floor && specs.floor !== 'N/A' && specs.floor !== '0') {
         mainSpecs.push({
             icon: <Layers className="w-5 h-5" />,
-            label: "Position",
+            label: "Floor",
             value: specs.floor,
             color: "bg-purple-50 text-purple-700"
         });

@@ -27,13 +27,24 @@ const categories: CategoryCard[] = [
 interface CategoryCardsProps {
     activePropertyTypes?: string[];
     onTogglePropertyType?: (type: string) => void;
+    listingType?: string;
 }
 
 export default function CategoryCards({
     activePropertyTypes = [],
-    onTogglePropertyType
+    onTogglePropertyType,
+    listingType = "all"
 }: CategoryCardsProps) {
     const router = useRouter();
+
+    // Filter categories based on listing type (Sale/Rent)
+    const filteredCategories = categories.filter(cat => {
+        if (listingType.toLowerCase() === 'rent') {
+            const rentFriendlyIds = ['Apartment', 'Villa', 'Farmhouse', 'Commercial'];
+            return rentFriendlyIds.includes(cat.id);
+        }
+        return true; // Show all for 'sale' or 'all'
+    });
 
     const handleCategoryClick = (cat: CategoryCard) => {
         if (cat.id === 'Project') {
@@ -64,16 +75,16 @@ export default function CategoryCards({
     };
 
     return (
-        <div className="w-full mb-10">
-            <div className="flex items-center justify-between mb-8">
+        <div className="w-full ">
+            <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2">
                     <LayoutGrid className="w-4 h-4 text-[#1D4ED8]" />
                     Browse By Category
                 </h3>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-6">
-                {categories.map((cat) => {
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
+                {filteredCategories.map((cat) => {
                     const isActive = activePropertyTypes.includes(cat.id);
 
                     return (

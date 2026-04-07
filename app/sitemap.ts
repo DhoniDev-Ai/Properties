@@ -1,49 +1,37 @@
-import { MetadataRoute } from 'next';
-import { getProperties } from '@/lib/data';
-
+import { MetadataRoute } from 'next'
+import { getProperties } from '@/lib/data'
+ 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://agrwalproperties.com';
-
-  // Fetch all properties to generate dynamic routes
-  const properties = await getProperties();
+  const baseUrl = 'https://agrwalproperties.com'
+  
+  // Basic Routes
+  const routes = [
+    '',
+    '/properties',
+    '/sell',
+    '/properties/apartment',
+    '/properties/plot',
+    '/properties/villa',
+    '/properties/commercial',
+    '/properties/agriculture-land',
+    '/properties/farmhouse',
+    '/properties/hb',
+    '/properties/project',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: 'daily' as const,
+    priority: route === '' ? 1 : 0.8,
+  }))
+ 
+  // Dynamic Property Routes
+  const properties = await getProperties()
   const propertyEntries = properties.map((prop) => ({
     url: `${baseUrl}/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/properties`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    ...propertyEntries,
-  ];
+    priority: 0.6,
+  }))
+ 
+  return [...routes, ...propertyEntries]
 }

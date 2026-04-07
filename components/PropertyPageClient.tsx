@@ -1,8 +1,9 @@
 "use client";
 
-import { getPropertyHighlights, PropertyHighlight } from "@/lib/property-utils"
+import { getPropertyHighlights, PropertyHighlight, getPropertyImage, hasPropertyImage } from "@/lib/property-utils"
 import { Share2, Eye, Clock, MapPin, Check, CheckCircle2, BadgeCheck, LayoutGrid, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ interface PropertyPageClientProps {
 }
 
 export default function PropertyPageClient({ property, similarProperties }: PropertyPageClientProps) {
+    const router = useRouter();
     const handleShare = async () => {
         const shareData = {
             title: property.title,
@@ -47,7 +49,7 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
 
 
             {/* Image Gallery */}
-            <PropertyGallery images={property.images} />
+            <PropertyGallery images={property.images && property.images.length > 0 ? property.images : [getPropertyImage(property)]} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex flex-col lg:flex-row gap-12 md:gap-16">
@@ -132,19 +134,24 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                     <h2 className="text-3xl font-bold text-[#1E3A8A] mb-10 tracking-tight">Similar Properties</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {similarProperties.map((prop) => (
-                            <Link
+                            <div
                                 key={prop.id}
-                                href={`/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`}
-                                className="group bg-white rounded-4xl border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col shadow-sm"
+                                onClick={() => router.push(`/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`)}
+                                className="group bg-white rounded-4xl border border-slate-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col shadow-sm cursor-pointer"
                             >
                                 <div className="relative aspect-4/3 sm:aspect-3/2 w-full overflow-hidden">
                                     <Image
-                                        src={prop.images[0]}
+                                        src={getPropertyImage(prop)}
                                         alt={prop.title}
                                         fill
                                         sizes="(max-width: 1024px) 50vw, 33vw"
                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
+                                    {!hasPropertyImage(prop) && (
+                                        <div className="absolute inset-x-0 bottom-0 py-1.5 bg-black/50 backdrop-blur-sm text-white text-[8px] font-black uppercase tracking-widest text-center">
+                                            Representative Image
+                                        </div>
+                                    )}
                                     <div className="absolute top-2 left-2 md:top-4 md:left-4 flex flex-col   gap-1.5">
                                         <span className={`px-2 md:px-3 py-1 rounded-lg text-[8px] md:text-[11px] font-black uppercase tracking-widest shadow-lg ${prop.listingType === "For Sale" ? "hidden" : "bg-orange-500 text-white"}`}>
                                             {prop.listingType}
@@ -198,11 +205,12 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                                     </div>
 
                                     <div className="pt-2 flex flex-row gap-2">
-                                        <Link href={`/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`} className="flex-1 bg-[#1D4ED8] hover:bg-blue-800 text-white font-black uppercase tracking-widest py-2 px-1  rounded-xl transition-all flex items-center justify-center gap-1 shadow-md text-[8px] md:text-[12px] active:scale-95">
+                                        <div className="flex-1 bg-[#1D4ED8] hover:bg-blue-800 text-white font-black uppercase tracking-widest py-2 px-1  rounded-xl transition-all flex items-center justify-center gap-1 shadow-md text-[8px] md:text-[12px] active:scale-95 cursor-pointer">
                                             Details
-                                        </Link>
+                                        </div>
                                         <a
                                             target="_blank"
+                                            onClick={(e) => e.stopPropagation()}
                                             href={`https://wa.me/918426022000?text=Hi, I'm interested in the property: "${prop.title}" - ${typeof window !== 'undefined' ? window.location.origin : ''}/properties/${prop.slug}`}
                                             className="flex-1 bg-white border-2 border-[#25D366] text-[#25D366] font-black uppercase tracking-widest py-2 px-1 rounded-xl transition-all flex items-center justify-center gap-1 text-[8px] md:text-[12px] hover:bg-[#25D366]/10 active:scale-95"
                                         >
@@ -210,7 +218,7 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
                                         </a>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </section>

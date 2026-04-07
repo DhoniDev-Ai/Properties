@@ -166,6 +166,15 @@ export default function PropertyListingClient({
     const totalPages = Math.ceil(filteredProperties.length / propertiesPerPage);
     const currentProperties = filteredProperties.slice((currentPage - 1) * propertiesPerPage, currentPage * propertiesPerPage);
 
+    const hasActiveFilters =
+        filters.keyword !== "" ||
+        filters.propertyType.length > 0 ||
+        filters.bhk.length > 0 ||
+        filters.approvalType !== "" ||
+        filters.isGated ||
+        (filters.city.toLowerCase() !== "jaipur" && filters.city !== "") ||
+        filters.budget !== "";
+
     return (
         <div className="flex flex-col mt-20 min-h-[600px] animate-in fade-in duration-700">
             {!hideHero && (
@@ -222,10 +231,11 @@ export default function PropertyListingClient({
                     </div>
                 )}
 
-                {!hideCategoryCards && (
+                {(!hideCategoryCards && !hasActiveFilters) && (
                     <CategoryCards
                         activePropertyTypes={filters.propertyType}
                         onTogglePropertyType={handleTogglePropertyType}
+                        listingType={filters.type}
                     />
                 )}
 

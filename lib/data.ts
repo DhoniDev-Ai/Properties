@@ -162,7 +162,7 @@ function mapDbToProperty(db: any): Property {
         images: db.image_urls && db.image_urls.length > 0 ? db.image_urls : [db.cover_image_url].filter(Boolean),
         owner: {
             name: 'Anil Goyal',
-            photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a',
+            photo: '/AG.webp',
             phone: '84260 22000',
             email: 'anilgoyal@propdesk.com',
             type: 'Property Consultant'

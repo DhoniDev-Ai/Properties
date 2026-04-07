@@ -68,6 +68,37 @@ export default function RootLayout({
         <Navbar />
         {children}
         <FloatingWhatsApp />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "RealEstateAgent",
+              "name": "Agrwal Properties",
+              "description": "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
+              "url": "https://agrwalproperties.com",
+              "logo": "https://agrwalproperties.com/logo.png", // Assume there's a logo or use favicon later
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jaipur",
+                "addressRegion": "Rajasthan",
+                "postalCode": "302001", // Placeholder
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+918426022000",
+                "contactType": "Sales and Consultation",
+                "areaServed": "Jaipur",
+                "availableLanguage": ["English", "Hindi"]
+              },
+              "founder": {
+                "@type": "Person",
+                "name": "Anil Goyal"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );

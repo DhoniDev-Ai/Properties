@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MapPin, MessageSquareCode, BadgeCheck, LayoutGrid } from "lucide-react";
 import Image from "next/image";
-import { getPropertyHighlights, PropertyHighlight } from "@/lib/property-utils";
+import { getPropertyHighlights, PropertyHighlight, getPropertyImage, hasPropertyImage } from "@/lib/property-utils";
 
 interface PropertyGridProps {
     properties: any[];
@@ -43,12 +43,17 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                         {/* Image Side */}
                         <div className="md:w-2/5 aspect-4/3 md:aspect-auto overflow-hidden relative shrink-0">
                             <Image
-                                src={prop.images[0]}
+                                src={getPropertyImage(prop)}
                                 alt={prop.title}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 40vw"
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
                             />
+                            {!hasPropertyImage(prop) && (
+                                <div className="absolute inset-x-0 bottom-0 py-1.5 bg-black/50 backdrop-blur-sm text-white text-[8px] font-black uppercase tracking-widest text-center">
+                                    Representative Image
+                                </div>
+                            )}
                             <div className="absolute top-4 left-4 flex flex-col gap-2">
                                 <span className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-md border border-white/20 backdrop-blur-md ${prop.listingType === "For Sale" ? "hidden" : "bg-orange-500 text-white"}`}>
                                     {prop.listingType}
@@ -130,12 +135,17 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                 <div key={prop.id} className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-slate-200 flex flex-col relative h-full">
                     <div className="relative aspect-4/3 sm:aspect-3/2 w-full overflow-hidden">
                         <Image
-                            src={prop.images[0]}
+                            src={getPropertyImage(prop)}
                             alt={prop.title}
                             fill
                             sizes="(max-width: 1024px) 50vw, 33vw"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
+                        {!hasPropertyImage(prop) && (
+                            <div className="absolute inset-x-0 bottom-0 py-1.5 bg-black/50 backdrop-blur-sm text-white text-[8px] font-black uppercase tracking-widest text-center">
+                                Representative Image
+                            </div>
+                        )}
                         <div className="absolute top-2 left-2 md:top-4 md:left-4 flex flex-col   gap-1.5">
                             <span className={`px-2 md:px-3 py-1 rounded-lg text-[8px] md:text-[11px] font-black uppercase tracking-widest shadow-lg ${prop.listingType === "For Sale" ? "hidden" : "bg-orange-500 text-white"}`}>
                                 {prop.listingType}

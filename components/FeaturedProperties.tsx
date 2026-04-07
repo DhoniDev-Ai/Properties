@@ -43,7 +43,7 @@ export default function FeaturedProperties() {
     };
 
     return (
-        <section id="properties" className="py-24 bg-slate-50 relative overflow-hidden">
+        <section id="properties" className="py-24 bg-slate-100 relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
@@ -136,10 +136,10 @@ export default function FeaturedProperties() {
                                     </div>
 
                                     {/* Content Side */}
-                                    <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                                    <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
                                         <div className="mb-4">
                                             {/* Property Title - Max 2 Lines */}
-                                            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tighter leading-[1.1] uppercase group-hover:text-[#1D4ED8] transition-colors line-clamp-2 mb-2">
+                                            <h3 className="text-xl sm:text-xl font-black text-slate-900 tracking-tighter leading-[1.1] uppercase group-hover:text-[#1D4ED8] transition-colors line-clamp-2 mb-2">
                                                 {property.title}
                                             </h3>
 

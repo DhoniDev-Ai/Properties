@@ -8,7 +8,19 @@ interface PropertyGalleryProps {
 }
 
 export default function PropertyGallery({ images }: PropertyGalleryProps) {
-    // We expect at least 5 images for the grid layout
+    const hasImages = images && images.length > 0 && images[0] && !images[0].includes("unsplash.com/photo-154532441") && !images[0].includes("unsplash.com/photo-1613490493") && !images[0].includes("unsplash.com/photo-150038201");
+    
+    // Actually, check if the image matches any of our category fallbacks
+    // But it's easier to just pass a 'isFallback' prop if we want to be precise.
+    // For now, if we have only 1 image and it's our known fallback, show badge.
+    const isFallback = images.length === 1 && (
+        images[0].includes("unsplash.com/photo-1545324418-cc1a3fa10c00") ||
+        images[0].includes("unsplash.com/photo-1613490493576-7fde63acd811") ||
+        images[0].includes("unsplash.com/photo-1500382017468-9049fed747ef") ||
+        images[0].includes("unsplash.com/photo-1497366216548-37526070297c") ||
+        images[0] === "/hero.png"
+    );
+
     const mainImage = images[0];
     const imageCount = images.length;
 
@@ -35,6 +47,11 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             priority
                         />
+                        {isFallback && (
+                             <div className="absolute inset-x-0 bottom-0 py-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] text-center">
+                                Representative Image
+                            </div>
+                        )}
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                     </div>
 

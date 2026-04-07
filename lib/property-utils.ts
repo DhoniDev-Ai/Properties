@@ -67,3 +67,41 @@ export function getPropertyHighlights(property: Property): PropertyHighlight[] {
 
     return highlights.slice(0, 3); // Max 3 highlights for UI consistency
 }
+
+/**
+ * Returns a high-quality category-based placeholder image if the property has no photos.
+ */
+export function getPropertyImage(property: Property): string {
+    if (property.images && property.images.length > 0 && property.images[0] !== "") {
+        return property.images[0];
+    }
+
+    const type = property.type.toLowerCase();
+
+    // Map types to category images from CategoryCards.tsx
+    if (type.includes('apartment') || type.includes('flat')) {
+        return "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00";
+    }
+    if (type.includes('villa') || type.includes('house')) {
+        return "https://images.unsplash.com/photo-1613490493576-7fde63acd811";
+    }
+    if (type.includes('farmhouse')) {
+        return "https://images.unsplash.com/photo-1500382017468-9049fed747ef";
+    }
+    if (type.includes('commercial') || type.includes('shop') || type.includes('office')) {
+        return "https://images.unsplash.com/photo-1497366216548-37526070297c";
+    }
+    if (type.includes('land') || type.includes('plot')) {
+        return "https://images.unsplash.com/photo-1500382017468-9049fed747ef";
+    }
+
+    // Default fallback
+    return "/hero.png";
+}
+
+/**
+ * Checks if the property has at least one real image.
+ */
+export function hasPropertyImage(property: Property): boolean {
+    return !!(property.images && property.images.length > 0 && property.images[0] !== "");
+}

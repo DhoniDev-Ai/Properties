@@ -86,5 +86,29 @@ export default async function PropertyDetailPage({ params }: Props) {
         similarProperties = [...similarProperties, ...finalFallback];
     }
 
-    return <PropertyPageClient property={property} similarProperties={similarProperties} />;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "RealEstateListing",
+                        "name": property.title,
+                        "description": property.description,
+                        "url": `https://agrwalproperties.com/properties/${property.type.toLowerCase().replace(' ', '-')}/${property.slug}`,
+                        "image": property.images,
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": property.location.city,
+                            "addressRegion": "Rajasthan",
+                            "streetAddress": property.location.address,
+                            "addressCountry": "IN"
+                        }
+                    })
+                }}
+            />
+            <PropertyPageClient property={property} similarProperties={similarProperties} />
+        </>
+    );
 }
