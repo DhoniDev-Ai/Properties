@@ -2,24 +2,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Terms & Conditions | Agrwal Properties",
-    description: "Terms and conditions for using the Agrwal Properties real estate platform.",
+    title: "Terms & Conditions | Agarwal Properties",
+    description: "Terms and conditions for using the Agarwal Properties real estate platform.",
 };
 
 export default function TermsPage() {
     return (
         <main className="min-h-screen bg-white">
             <Navbar theme="light" />
-            
+
             <section className="pt-32 pb-20 bg-slate-50">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl font-black text-[#0F172A] mb-8 tracking-tight">Terms & Conditions</h1>
                     <div className="prose prose-slate max-w-none text-slate-600 space-y-6 text-lg leading-relaxed">
                         <p className="font-medium text-slate-800">Effective Date: March 26, 2026</p>
-                        
+
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">1. Introduction</h2>
                         <p>
-                            Welcome to Agrwal Properties. By accessing this website (agrwalproperties.com) and using our real estate services, you agree to comply with and be bound by the following terms and conditions of use.
+                            Welcome to Agarwal Properties. By accessing this website (Agarwalproperties.com) and using our real estate services, you agree to comply with and be bound by the following terms and conditions of use.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">2. Listing Accuracy</h2>

@@ -79,7 +79,7 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                         {/* Content Side */}
                         <div className="p-2 md:p-3 flex-1 flex flex-col justify-center">
                             <div className="flex justify-between items-start ">
-                                <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic">{prop.title}</h3>
+                                <h3 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors ">{prop.title}</h3>
                             </div>
 
                             <div className="flex items-center text-slate-800 text-[13px] font-bold opacity-70">
@@ -170,7 +170,7 @@ export default function PropertyGrid({ properties, viewMode }: PropertyGridProps
                     <div className="p-2 md:p-3 flex-1 flex flex-col justify-between">
                         <div className="">
                             {/* Property Title - Max 2 Lines */}
-                            <h3 className="text-[10px] md:text-xl font-black text-slate-900 tracking-tighter leading-tight group-hover:text-[#1D4ED8] transition-colors uppercase italic line-clamp-1 ">
+                            <h3 className="text-[10px] md:text-xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-[#1D4ED8] transition-colors  line-clamp-1 ">
                                 {prop.title}
                             </h3>
 

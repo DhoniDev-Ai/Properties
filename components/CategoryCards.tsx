@@ -75,15 +75,23 @@ export default function CategoryCards({
     };
 
     return (
-        <div className="w-full ">
-            <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2">
+        <div className="w-full relative py-2">
+            <div className="flex items-center justify-between mb-4 px-1">
+                <h3 className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-[0.25em] flex items-center gap-2">
                     <LayoutGrid className="w-4 h-4 text-[#1D4ED8]" />
                     Browse By Category
                 </h3>
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-100 rounded-full">
+                    <span className="text-[8px] md:text-[10px] font-black text-slate-500 uppercase tracking-widest">Swipe to Explore</span>
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+                </div>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
+            <div className="relative group/scroll-container">
+                {/* Scroll hint gradient - Soft edge to indicate more content */}
+                <div className="absolute top-0 right-0 bottom-4 w-12 bg-linear-to-l from-white via-white/40 to-transparent z-10 pointer-events-none md:w-24 group-hover/scroll-container:opacity-0 transition-opacity duration-300" />
+                
+                <div className="flex overflow-x-auto no-scrollbar gap-3 md:gap-5 snap-x snap-mandatory scroll-smooth pb-4 px-1 relative z-0">
                 {filteredCategories.map((cat) => {
                     const isActive = activePropertyTypes.includes(cat.id);
 
@@ -92,9 +100,10 @@ export default function CategoryCards({
                             key={cat.id}
                             onClick={() => handleCategoryClick(cat)}
                             className={`
-                                group cursor-pointer relative h-36 sm:h-48 lg:h-56 rounded-3xl overflow-hidden border-2 transition-all duration-700
+                                shrink-0 snap-start group cursor-pointer relative 
+                                w-[150px] h-28 sm:w-[220px] sm:h-40 lg:w-[280px] lg:h-48 rounded-3xl overflow-hidden border-2 transition-all duration-700
                                 ${isActive
-                                    ? 'border-[#1D4ED8] ring-8 ring-blue-500/5 scale-[1.03]'
+                                    ? 'border-[#1D4ED8] ring-4 ring-blue-500/10 scale-[1.02]'
                                     : 'border-transparent hover:border-slate-300'
                                 }
                             `}
@@ -111,31 +120,42 @@ export default function CategoryCards({
                             />
                             <div className={`
                                 absolute inset-0 transition-all duration-700
-                                ${isActive ? 'bg-[#1D4ED8]/30' : 'bg-black/40 group-hover:bg-black/20'}
+                                ${isActive ? 'bg-[#1D4ED8]/25' : 'bg-black/30 group-hover:bg-black/15'}
                             `} />
 
-                            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 flex flex-col items-start text-left bg-linear-to-t from-black/80 via-black/20 to-transparent">
+                            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col items-start text-left bg-linear-to-t from-black/80 via-black/10 to-transparent">
                                 {cat.id === 'Agriculture-Land' && (
-                                    <div className="mb-2 bg-green-600 text-white p-1.5 rounded-lg shadow-xl">
-                                        <Tractor className="w-4 h-4" />
+                                    <div className="mb-1.5 bg-green-600 text-white p-1 rounded-lg shadow-xl">
+                                        <Tractor className="w-3 h-3" />
                                     </div>
                                 )}
                                 <span className={`
-                                    text-[14px] sm:text-[22px] font-black tracking-tight text-white transition-all duration-500 uppercase
+                                    text-[11px] sm:text-lg font-black tracking-tight text-white transition-all duration-500 uppercase
                                     ${isActive ? 'scale-105 drop-shadow-2xl' : 'group-hover:translate-x-1'}
                                 `}>
                                     {cat.label}
                                 </span>
                                 {isActive && (
-                                    <div className="mt-2 bg-white text-[#1D4ED8] px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                        Selected
+                                    <div className="mt-1.5 bg-white text-[#1D4ED8] px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                        Active
                                     </div>
                                 )}
                             </div>
                         </button>
                     );
                 })}
+                </div>
             </div>
+
+            <style jsx global>{`
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            `}</style>
         </div>
     );
 }

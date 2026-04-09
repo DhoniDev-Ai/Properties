@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getProperties } from '@/lib/data'
- 
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://agrwalproperties.com'
-  
+  const baseUrl = 'https://Agarwalproperties.com'
+
   // Basic Routes
   const routes = [
     '',
@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'daily' as const,
     priority: route === '' ? 1 : 0.8,
   }))
- 
+
   // Dynamic Property Routes
   const properties = await getProperties()
   const propertyEntries = properties.map((prop) => ({
@@ -32,6 +32,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }))
- 
+
   return [...routes, ...propertyEntries]
 }

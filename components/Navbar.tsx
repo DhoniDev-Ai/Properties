@@ -33,20 +33,29 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             name: "Properties",
             href: "#",
             dropdown: [
-                { name: "Purchase Property", href: "/properties" },
-                { name: "Sell Property", href: "/sell" },
+                { id: "Apartment", label: "Apartments / Flats" },
+                { id: "Plot", label: "Plots" },
+                { id: "Project", label: "Gated Society" },
+                { id: "HB", label: "HB Homes" },
+                { id: "Society-Patta", label: "Society Patta" },
+                { id: "JDA-Scheme", label: "JDA Scheme" },
+                { id: "Villa", label: "Villas" },
+                { id: "Farmhouse", label: "Farm House" },
+                { id: "Commercial", label: "Commercial" },
+                { id: "Agriculture-Land", label: "Agriculture Land" }
             ]
         },
         {
             name: "Other Services",
             href: "#",
             dropdown: [
-                { name: "ITR Filing", href: "/services/itr-filing" },
-                { name: "GST Filing", href: "/services/gst-registration" },
-                { name: "Housing Loan", href: "/services/loan-housing" },
-                { name: "Liaison with JDA | HB", href: "/services/license-jda-hb" },
+                { label: "ITR Filing", id: "services/itr-filing" },
+                { label: "GST Filing", id: "services/gst-registration" },
+                { label: "House Loan", id: "services/loan-housing" },
+                { label: "Liaison with JDA | HB", id: "services/license-jda-hb" },
             ]
         },
+        { name: "Post Property", href: "/sell" },
 
         { name: "Contact us", href: "/#contact" },
     ];
@@ -80,7 +89,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                     <div className="shrink cursor-pointer  flex items-center">
                         <Link href="/" className="flex flex-col justify-center items-start group cursor-pointer pl-1">
                             <span className={`font-black text-[22px] tracking-tight leading-none font-heading ${isSolidText ? "text-[#0F172A]" : "text-white"}`}>
-                                AGRWAL
+                                Agarwal
                             </span>
                             <span className={`text-[9.5px] font-bold tracking-widest md:tracking-[0.22em]  ${isSolidText ? "text-slate-500" : "text-white/80"}`}>
                                 PROPERTIES
@@ -89,7 +98,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex flex-1 justify-center items-center space-x-10">
+                    <div className="hidden md:flex flex-1 justify-center items-center  space-x-8">
                         {navLinks.map((link) => (
                             <div
                                 key={link.name}
@@ -124,11 +133,11 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                                                 <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden p-2">
                                                     {link.dropdown.map((sub) => (
                                                         <Link
-                                                            key={sub.name}
-                                                            href={sub.href}
-                                                            className="block px-4 py-3 rounded-xl text-[14px] font-bold text-slate-600 hover:text-[#1D4ED8] hover:bg-blue-50 transition-all uppercase tracking-tight"
+                                                            key={sub.id}
+                                                            href={`/properties/${sub.id}`}
+                                                            className="block px-4 py-2 rounded-xl text-[14px] font-bold text-slate-600 hover:text-[#1D4ED8] hover:bg-blue-50 transition-all uppercase tracking-tight"
                                                         >
-                                                            {sub.name}
+                                                            {sub.label}
                                                         </Link>
                                                     ))}
                                                 </div>
@@ -194,12 +203,12 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                                     <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-300 ${(link.name === "Properties" ? isMobilePropertiesOpen : isMobileServicesOpen) ? 'max-h-64 mt-1 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         {link.dropdown.map((sub) => (
                                             <Link
-                                                key={sub.name}
-                                                href={sub.href}
+                                                key={sub.id}
+                                                href={sub.label}
                                                 className="block px-3 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-[#1D4ED8] uppercase tracking-tight"
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
-                                                {sub.name}
+                                                {sub.label}
                                             </Link>
                                         ))}
                                     </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { getPropertyHighlights, PropertyHighlight } from "@/lib/property-utils";
+import { getPropertyHighlights, PropertyHighlight, getPropertyImage, hasPropertyImage } from "@/lib/property-utils";
 import { MapPin, MessageSquareCode, ArrowRight, Heart, Star, LayoutGrid, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { getFeaturedProperties } from "@/lib/data";
@@ -27,8 +27,10 @@ export default function FeaturedProperties() {
         const fetchFeatured = async () => {
             setLoading(true);
             try {
-                const data = await getFeaturedProperties(6);
+                const data = await getFeaturedProperties(8);
                 setFeaturedProperties(data);
+                console.log(featuredProperties);
+
             } finally {
                 setLoading(false);
             }
@@ -108,13 +110,18 @@ export default function FeaturedProperties() {
                                     {/* Image Wrapper */}
                                     <div className="relative aspect-16/10 w-full overflow-hidden">
                                         <Image
-                                            src={property.images[0]}
+                                            src={getPropertyImage(property)}
                                             alt={property.title}
                                             fill
                                             sizes="(max-width: 1024px) 100vw, 50vw"
                                             className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                             priority
                                         />
+                                        {!hasPropertyImage(property) && (
+                                            <div className="absolute inset-x-0 bottom-0 py-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] text-center z-10">
+                                                Representative Image
+                                            </div>
+                                        )}
                                         {/* Glass Overlay Badges */}
                                         <div className="absolute top-6 left-6 flex flex-col  max-md:flex-row max-md:gap-1 max-md:top-3 max-md:left-3 gap-3">
                                             <span className={`px-5 py-2.5 max-md:p-2 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-white/20 ${property.listingType === "For Sale" ? "hidden" : "bg-orange-500 text-white"}`}>

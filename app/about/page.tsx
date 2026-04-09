@@ -83,7 +83,7 @@ export default function AboutPage() {
                             <div className="lg:w-1/2 relative min-h-[400px]">
                                 {/* OWNER PHOTO PLACEHOLDER */}
                                 <Image
-                                    src="/AG.webp?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
+                                    src="/AG.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
                                     alt="Anil Goyal - Owner"
                                     fill
                                     className="object-cover object-top"

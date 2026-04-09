@@ -28,7 +28,7 @@ export default function Footer() {
                     <div>
                         <Link href="/" className="flex flex-col justify-center items-start group cursor-pointer mb-6">
                             <span className="font-black text-[22px] tracking-tight leading-none font-heading text-white">
-                                AGRWAL
+                                Agarwal
                             </span>
                             <span className="text-[10px] font-semibold tracking-[0.2em] text-[#3b82f6] uppercase mt-1">
                                 Real Estate
@@ -98,7 +98,7 @@ export default function Footer() {
                                 >
                                     <span className="flex items-center gap-2">
                                         <FileText className="w-3.5 h-3.5 text-blue-500" />
-                                        ITR Services
+                                        ITR Filing
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Tax optimization for investors</span>
                                 </Link>
@@ -111,20 +111,20 @@ export default function Footer() {
                                 >
                                     <span className="flex items-center gap-2">
                                         <PieChart className="w-3.5 h-3.5 text-orange-500" />
-                                        GST Solutions
+                                        GST Filing
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Commercial property compliance</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="/about#services"
+                                    href="/services/loan-housing"
                                     className="text-slate-400 hover:text-[#3b82f6] transition-all group flex flex-col"
                                     title="Home and Commercial Loan Approvals"
                                 >
                                     <span className="flex items-center gap-2">
                                         <Landmark className="w-3.5 h-3.5 text-green-500" />
-                                        Loan & Housing
+                                        House Loan
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Home & business financing</span>
                                 </Link>
@@ -137,7 +137,7 @@ export default function Footer() {
                                 >
                                     <span className="flex items-center gap-2">
                                         <ShieldCheck className="w-3.5 h-3.5 text-purple-500" />
-                                        JDA Liaison
+                                        Liaison with JDA & HB
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Legal & approval support</span>
                                 </Link>
@@ -187,7 +187,7 @@ export default function Footer() {
                 {/* BOTTOM BAR */}
                 <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm text-center md:text-left">
-                        &copy; 2026 AGRWAL Real Estate. All Rights Reserved.
+                        &copy; 2026 Agarwal Real Estate. All Rights Reserved.
                     </p>
                     <p className="text-slate-500 text-sm text-center md:text-right">
                         Designed & Developed by <span className="text-white font-medium">DhoniDev-ai</span>

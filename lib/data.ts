@@ -96,6 +96,8 @@ export async function getFeaturedProperties(limit = 20) {
         .select('*')
         .eq('is_featured', true)
         .eq('is_deleted', false)
+        .not('cover_image_url', 'is', null)
+        .order('created_at', { ascending: false })
         .limit(limit);
 
     if (error) {
@@ -162,7 +164,7 @@ function mapDbToProperty(db: any): Property {
         images: db.image_urls && db.image_urls.length > 0 ? db.image_urls : [db.cover_image_url].filter(Boolean),
         owner: {
             name: 'Anil Goyal',
-            photo: '/AG.webp',
+            photo: '/AG.png',
             phone: '84260 22000',
             email: 'anilgoyal@propdesk.com',
             type: 'Property Consultant'

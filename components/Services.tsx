@@ -65,7 +65,7 @@ export default function Services() {
                             <p className="text-lg font-black text-white">Anil Goyal</p>
                         </div>
                         <div className="w-12 h-12 rounded-full border-2 border-blue-500 overflow-hidden shrink-0">
-                            <img src="/AG.webp?auto=format&fit=crop&w=100&q=80" alt="Anil Goyal" />
+                            <img src="/AG.png?auto=format&fit=crop&w=100&q=80" alt="Anil Goyal" />
                         </div>
                     </div>
                 </div>

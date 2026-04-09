@@ -23,8 +23,8 @@ const greatVibes = Great_Vibes({
 
 export const metadata: Metadata = {
   title: {
-    default: "Agrwal Properties | Best Real Estate Agency in Jaipur",
-    template: "%s | Agrwal Properties"
+    default: "Agarwal Properties | Best Real Estate Agency in Jaipur",
+    template: "%s | Agarwal Properties"
   },
   description: "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
   keywords: ["Real Estate Jaipur", "Agarwal Properties", "Anil Goyal Real Estate", "Properties in Jaipur", "Buy House Jaipur", "Rent Apartment Jaipur"],
@@ -32,22 +32,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://agrwalproperties.com",
-    siteName: "Agrwal Properties",
-    title: "Agrwal Properties | Best Real Estate Agency in Jaipur",
+    url: "https://Agarwalproperties.com",
+    siteName: "Agarwal Properties",
+    title: "Agarwal Properties | Best Real Estate Agency in Jaipur",
     description: "Premium property listings and expert real estate consultation in Jaipur by Anil Goyal.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80",
         width: 1200,
         height: 630,
-        alt: "Agrwal Properties Jaipur",
+        alt: "Agarwal Properties Jaipur",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agrwal Properties | Real Estate Jaipur",
+    title: "Agarwal Properties | Real Estate Jaipur",
     description: "Find your dream home with Jaipur's most trusted real estate partner.",
     images: ["https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80"],
   },
@@ -74,10 +74,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
-              "name": "Agrwal Properties",
+              "name": "Agarwal Properties",
               "description": "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
-              "url": "https://agrwalproperties.com",
-              "logo": "https://agrwalproperties.com/logo.png", // Assume there's a logo or use favicon later
+              "url": "https://Agarwalproperties.com",
+              "logo": "https://Agarwalproperties.com/logo.png", // Assume there's a logo or use favicon later
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jaipur",

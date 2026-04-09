@@ -45,7 +45,7 @@ export async function generateStaticParams() {
 
 export default async function PropertyDetailPage({ params }: Props) {
     const { slug } = await params;
-    
+
     // START PARALLEL FETCHING
     const propertyPromise = getPropertyBySlug(slug);
     const similarPromise = getProperties(); // Broad fetch first, filter later for speed
@@ -58,8 +58,8 @@ export default async function PropertyDetailPage({ params }: Props) {
 
     // Improvised suggestion logic: Same type and Category prioritized
     // 1. Filter by same PropertyCategory (e.g., Plot matching Plot) and same City
-    let similarProperties = allPotentialSimilar.filter(p => 
-        p.id !== property.id && 
+    let similarProperties = allPotentialSimilar.filter(p =>
+        p.id !== property.id &&
         p.type.toLowerCase() === property.type.toLowerCase() &&
         p.location.city.toLowerCase() === property.location.city.toLowerCase()
     ).slice(0, 3);
@@ -67,8 +67,8 @@ export default async function PropertyDetailPage({ params }: Props) {
     // 2. Fallback: If not enough matches, relax city filter but keep type
     if (similarProperties.length < 3) {
         const remainingNeeded = 3 - similarProperties.length;
-        const fallbackByType = allPotentialSimilar.filter(p => 
-            p.id !== property.id && 
+        const fallbackByType = allPotentialSimilar.filter(p =>
+            p.id !== property.id &&
             p.type.toLowerCase() === property.type.toLowerCase() &&
             !similarProperties.some(sp => sp.id === p.id)
         ).slice(0, remainingNeeded);
@@ -78,8 +78,8 @@ export default async function PropertyDetailPage({ params }: Props) {
     // 3. Last Resort: Just same listingType (Sale/Rent)
     if (similarProperties.length < 3) {
         const remainingNeeded = 3 - similarProperties.length;
-        const finalFallback = allPotentialSimilar.filter(p => 
-            p.id !== property.id && 
+        const finalFallback = allPotentialSimilar.filter(p =>
+            p.id !== property.id &&
             p.listingType === property.listingType &&
             !similarProperties.some(sp => sp.id === p.id)
         ).slice(0, remainingNeeded);
@@ -96,7 +96,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                         "@type": "RealEstateListing",
                         "name": property.title,
                         "description": property.description,
-                        "url": `https://agrwalproperties.com/properties/${property.type.toLowerCase().replace(' ', '-')}/${property.slug}`,
+                        "url": `https://Agarwalproperties.com/properties/${property.type.toLowerCase().replace(' ', '-')}/${property.slug}`,
                         "image": property.images,
                         "address": {
                             "@type": "PostalAddress",

@@ -80,23 +80,23 @@ export function getPropertyImage(property: Property): string {
 
     // Map types to category images from CategoryCards.tsx
     if (type.includes('apartment') || type.includes('flat')) {
-        return "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00";
+        return "/brand-placeholder.png";
     }
     if (type.includes('villa') || type.includes('house')) {
-        return "https://images.unsplash.com/photo-1613490493576-7fde63acd811";
+        return "/brand-placeholder.png";
     }
     if (type.includes('farmhouse')) {
-        return "https://images.unsplash.com/photo-1500382017468-9049fed747ef";
+        return "/brand-placeholder.png";
     }
     if (type.includes('commercial') || type.includes('shop') || type.includes('office')) {
-        return "https://images.unsplash.com/photo-1497366216548-37526070297c";
+        return "/brand-placeholder.png";
     }
     if (type.includes('land') || type.includes('plot')) {
-        return "https://images.unsplash.com/photo-1500382017468-9049fed747ef";
+        return "/brand-placeholder.png";
     }
 
-    // Default fallback
-    return "/hero.png";
+    // Default fallback - Branded placeholder
+    return "/brand-placeholder.png";
 }
 
 /**

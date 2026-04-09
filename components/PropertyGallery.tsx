@@ -9,7 +9,7 @@ interface PropertyGalleryProps {
 
 export default function PropertyGallery({ images }: PropertyGalleryProps) {
     const hasImages = images && images.length > 0 && images[0] && !images[0].includes("unsplash.com/photo-154532441") && !images[0].includes("unsplash.com/photo-1613490493") && !images[0].includes("unsplash.com/photo-150038201");
-    
+
     // Actually, check if the image matches any of our category fallbacks
     // But it's easier to just pass a 'isFallback' prop if we want to be precise.
     // For now, if we have only 1 image and it's our known fallback, show badge.
@@ -25,17 +25,17 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
     const imageCount = images.length;
 
     return (
-        <section className="pt-28 relative">
-            <div className=" px-4 absolute sm:px-6 lg:px-8 py-4">
+        <section className="pt-28  relative">
+            <div className=" px-4 absolute z-50 sm:px-6 lg:px-8 py-4">
                 <button
                     onClick={() => window.history.back()}
-                    className="flex items-center gap-2 text-slate-200  z-500 bg-[#1D4ED8] hover:text-[#1D4ED8] font-bold text-sm   hover:bg-blue-50 px-4 py-2 rounded-xl transition-all cursor-pointer border border-slate-100 w-fit active:scale-95 shadow-sm"
+                    className="flex items-center gap-2 text-slate-200  z-500 bg-[#1D4ED8] hover:text-[#1D4ED8] font-bold text-sm   hover:bg-blue-50 px-4 py-2 max-md:mt-2 -mt-4 rounded-xl transition-all cursor-pointer border border-slate-100 w-fit active:scale-95 shadow-sm"
                 >
                     <ChevronLeft className="w-4 h-4" />
                     Back to Listings
                 </button>
             </div>
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto px-4 max-md:pt-16 sm:px-6 lg:px-8">
                 <div className={`grid gap-3 grid-cols-1 md:grid-cols-4 rounded-2xl overflow-hidden shadow-md`}>
                     {/* Main Image - Spans 2 cols and 2 rows to force 3:2 among neighbors */}
                     <div className={`${imageCount > 1 ? 'md:col-span-2 md:row-span-2' : 'md:col-span-4'} relative group overflow-hidden cursor-pointer aspect-3/2`}>
@@ -48,7 +48,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
                             priority
                         />
                         {isFallback && (
-                             <div className="absolute inset-x-0 bottom-0 py-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] text-center">
+                            <div className="absolute inset-x-0 bottom-0 py-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] text-center">
                                 Representative Image
                             </div>
                         )}
