@@ -37,11 +37,11 @@ const serviceData: Record<string, any> = {
         ]
     },
     "loan-housing": {
-        title: "Housing Loan",
+        title: "Home Loan",
         icon: Landmark,
         color: "text-emerald-600",
         bgColor: "bg-emerald-50",
-        description: "Hassle-free housing loans and property financing from India's top banks. We help you secure the lowest interest rates with minimal documentation and fast approvals.",
+        description: "Hassle-free Home Loans and property financing from India's top banks. We help you secure the lowest interest rates with minimal documentation and fast approvals.",
         features: [
             "Home Loans for New & Resale Properties",
             "Loan Against Property (LAP)",

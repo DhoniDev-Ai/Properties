@@ -23,7 +23,7 @@ const serviceList = [
     },
     {
         id: "loan-housing",
-        title: "Housing Loan",
+        title: "Home Loan",
         desc: "Best home loan rates and financing from top public & private sector banks.",
         icon: Landmark,
         color: "bg-emerald-600",
@@ -56,7 +56,7 @@ export default function Services() {
                             Legal & <span className="text-blue-400">Financial Excellence</span>
                         </h2>
                         <p className="text-slate-400 text-lg font-medium border-l-4 border-blue-500 pl-6">
-                            Beyond real estate: Seamlessly manage your ITR, GST, Housing Loans, and JDA Liaison under one expert roof.
+                            Beyond real estate: Seamlessly manage your ITR, GST, Home Loans, and JDA Liaison under one expert roof.
                         </p>
                     </div>
                     <div className="flex items-center gap-6">

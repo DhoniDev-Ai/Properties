@@ -171,7 +171,7 @@ export default function AboutPage() {
                                 color: "bg-orange-50 text-orange-600"
                             },
                             {
-                                title: "Housing Loan",
+                                title: "Home Loan",
                                 desc: "Elite tie-ups with leading banks for seamless home and commercial loan approvals.",
                                 icon: Landmark,
                                 color: "bg-green-50 text-green-600"

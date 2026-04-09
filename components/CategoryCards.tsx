@@ -18,7 +18,7 @@ const categories: CategoryCard[] = [
     { id: "HB", label: "HB Homes", image: "/hero.png" }, // Assuming hb.png exists or fallback
     { id: "Society-Patta", label: "Society Patta", image: "/gpplot.png" },
     { id: "JDA-Scheme", label: "JDA Scheme", image: "/gpplot.png" },
-    { id: "Villa", label: "Villas", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811" },
+    { id: "Villa", label: "Duplex Villas", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811" },
     { id: "Farmhouse", label: "Farm House", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
     { id: "Commercial", label: "Commercial", image: "https://images.unsplash.com/photo-1497366216548-37526070297c" },
     { id: "Agriculture-Land", label: "Agriculture Land", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef" },
@@ -90,60 +90,60 @@ export default function CategoryCards({
             <div className="relative group/scroll-container">
                 {/* Scroll hint gradient - Soft edge to indicate more content */}
                 <div className="absolute top-0 right-0 bottom-4 w-12 bg-linear-to-l from-white via-white/40 to-transparent z-10 pointer-events-none md:w-24 group-hover/scroll-container:opacity-0 transition-opacity duration-300" />
-                
-                <div className="flex overflow-x-auto no-scrollbar gap-3 md:gap-5 snap-x snap-mandatory scroll-smooth pb-4 px-1 relative z-0">
-                {filteredCategories.map((cat) => {
-                    const isActive = activePropertyTypes.includes(cat.id);
 
-                    return (
-                        <button
-                            key={cat.id}
-                            onClick={() => handleCategoryClick(cat)}
-                            className={`
+                <div className="flex overflow-x-auto no-scrollbar gap-3 md:gap-5 snap-x snap-mandatory scroll-smooth pb-4 px-1 relative z-0">
+                    {filteredCategories.map((cat) => {
+                        const isActive = activePropertyTypes.includes(cat.id);
+
+                        return (
+                            <button
+                                key={cat.id}
+                                onClick={() => handleCategoryClick(cat)}
+                                className={`
                                 shrink-0 snap-start group cursor-pointer relative 
                                 w-[150px] h-28 sm:w-[220px] sm:h-40 lg:w-[280px] lg:h-48 rounded-3xl overflow-hidden border-2 transition-all duration-700
                                 ${isActive
-                                    ? 'border-[#1D4ED8] ring-4 ring-blue-500/10 scale-[1.02]'
-                                    : 'border-transparent hover:border-slate-300'
-                                }
+                                        ? 'border-[#1D4ED8] ring-4 ring-blue-500/10 scale-[1.02]'
+                                        : 'border-transparent hover:border-slate-300'
+                                    }
                             `}
-                        >
-                            <Image
-                                src={`${cat.image}?auto=format&fit=crop&w=800&q=80`}
-                                alt={cat.label}
-                                fill
-                                className={`
+                            >
+                                <Image
+                                    src={`${cat.image}?auto=format&fit=crop&w=800&q=80`}
+                                    alt={cat.label}
+                                    fill
+                                    className={`
                                     object-cover transition-transform duration-1000 
                                     ${isActive ? 'scale-110' : 'group-hover:scale-110'}
                                 `}
-                                priority={isActive}
-                            />
-                            <div className={`
+                                    priority={isActive}
+                                />
+                                <div className={`
                                 absolute inset-0 transition-all duration-700
                                 ${isActive ? 'bg-[#1D4ED8]/25' : 'bg-black/30 group-hover:bg-black/15'}
                             `} />
 
-                            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col items-start text-left bg-linear-to-t from-black/80 via-black/10 to-transparent">
-                                {cat.id === 'Agriculture-Land' && (
-                                    <div className="mb-1.5 bg-green-600 text-white p-1 rounded-lg shadow-xl">
-                                        <Tractor className="w-3 h-3" />
-                                    </div>
-                                )}
-                                <span className={`
+                                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col items-start text-left bg-linear-to-t from-black/80 via-black/10 to-transparent">
+                                    {cat.id === 'Agriculture-Land' && (
+                                        <div className="mb-1.5 bg-green-600 text-white p-1 rounded-lg shadow-xl">
+                                            <Tractor className="w-3 h-3" />
+                                        </div>
+                                    )}
+                                    <span className={`
                                     text-[11px] sm:text-lg font-black tracking-tight text-white transition-all duration-500 uppercase
                                     ${isActive ? 'scale-105 drop-shadow-2xl' : 'group-hover:translate-x-1'}
                                 `}>
-                                    {cat.label}
-                                </span>
-                                {isActive && (
-                                    <div className="mt-1.5 bg-white text-[#1D4ED8] px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                        Active
-                                    </div>
-                                )}
-                            </div>
-                        </button>
-                    );
-                })}
+                                        {cat.label}
+                                    </span>
+                                    {isActive && (
+                                        <div className="mt-1.5 bg-white text-[#1D4ED8] px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                            Active
+                                        </div>
+                                    )}
+                                </div>
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
 

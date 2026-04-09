@@ -79,7 +79,7 @@ export default function SearchBar({
     const propertyTypes = [
         { label: "Apartment / Flat", value: "Apartment" },
         { label: "Plot", value: "Plot" },
-        { label: "Villa / House", value: "Villa" },
+        { label: "Duplex Villa", value: "Duplex Villa" },
         { label: "Independent House", value: "Independent House" },
         { label: "Penthouse", value: "Penthouse" },
         { label: "Farmhouse", value: "Farmhouse" },

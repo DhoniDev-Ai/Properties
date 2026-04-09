@@ -39,7 +39,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                 { id: "HB", label: "HB Homes" },
                 { id: "Society-Patta", label: "Society Patta" },
                 { id: "JDA-Scheme", label: "JDA Scheme" },
-                { id: "Villa", label: "Villas" },
+                { id: "Villa", label: "Duplex Villas" },
                 { id: "Farmhouse", label: "Farm House" },
                 { id: "Commercial", label: "Commercial" },
                 { id: "Agriculture-Land", label: "Agriculture Land" }

@@ -112,7 +112,7 @@ export default function PostProperty() {
                                             <option>Flat / Apartment</option>
                                             <option>Independent House</option>
                                             <option>Commercial</option>
-                                            <option>Villa</option>
+                                            <option>Duplex Villa</option>
                                             <option>Agriculture Land</option>
                                             <option>Farm House</option>
 
