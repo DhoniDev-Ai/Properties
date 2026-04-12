@@ -9,11 +9,11 @@ interface PropertyTabsProps {
 }
 
 export default function PropertyTabs({ property }: PropertyTabsProps) {
-    const [activeTab, setActiveTab] = useState("overview");
+    const [activeTab, setActiveTab] = useState("amenities");
 
     const tabs = [
-        { id: "overview", label: "Overview", icon: <Info className="w-4 h-4" /> },
         { id: "amenities", label: "Amenities", icon: <CheckCircle2 className="w-4 h-4" /> },
+        { id: "overview", label: "Overview", icon: <Info className="w-4 h-4" /> },
         { id: "location", label: "Location", icon: <MapPin className="w-4 h-4" /> },
         { id: "emi", label: "EMI Calculator", icon: <Calculator className="w-4 h-4" /> },
     ];

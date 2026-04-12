@@ -33,16 +33,16 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             name: "Properties",
             href: "#",
             dropdown: [
-                { id: "Apartment", label: "Apartments / Flats" },
-                { id: "Plot", label: "Plots" },
-                { id: "Project", label: "Gated Society" },
-                { id: "HB", label: "HB Homes" },
-                { id: "Society-Patta", label: "Society Patta" },
-                { id: "JDA-Scheme", label: "JDA Scheme" },
-                { id: "Villa", label: "Duplex Villas" },
-                { id: "Farmhouse", label: "Farm House" },
-                { id: "Commercial", label: "Commercial" },
-                { id: "Agriculture-Land", label: "Agriculture Land" }
+                { id: "properties/Apartment", label: "Apartments / Flats" },
+                { id: "properties/Plot", label: "Plots" },
+                { id: "properties/project?approval=Gated%20Society", label: "Gated Society" },
+                { id: "properties/project?approval=HB", label: "HB Homes" },
+                { id: "properties/project?approval=Society%20Patta", label: "Society Patta" },
+                { id: "properties/project?approval=JDA%20Scheme", label: "JDA Scheme" },
+                { id: "properties/Villa", label: "Duplex Villas" },
+                { id: "properties/Farmhouse", label: "Farm House" },
+                { id: "properties/Commercial", label: "Commercial" },
+                { id: "properties/Agriculture-Land", label: "Agriculture Land" }
             ]
         },
         {
@@ -134,7 +134,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                                                     {link.dropdown.map((sub) => (
                                                         <Link
                                                             key={sub.id}
-                                                            href={`/properties/${sub.id}`}
+                                                            href={`/${sub.id}`}
                                                             className="block px-4 py-2 rounded-xl text-[14px] font-bold text-slate-600 hover:text-[#1D4ED8] hover:bg-blue-50 transition-all uppercase tracking-tight"
                                                         >
                                                             {sub.label}
@@ -204,7 +204,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                                         {link.dropdown.map((sub) => (
                                             <Link
                                                 key={sub.id}
-                                                href={sub.label}
+                                                href={`/${sub.id}`}
                                                 className="block px-3 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-[#1D4ED8] uppercase tracking-tight"
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
