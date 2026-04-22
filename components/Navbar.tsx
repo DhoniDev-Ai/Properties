@@ -36,7 +36,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                 { id: "properties/Apartment", label: "Apartments / Flats" },
                 { id: "properties/Plot", label: "Plots" },
                 { id: "properties/project?approval=Gated%20Society", label: "Gated Society" },
-                { id: "properties/project?approval=HB", label: "HB Homes" },
+                { id: "properties/hb", label: "Housing Board Homes" },
                 { id: "properties/project?approval=Society%20Patta", label: "Society Patta" },
                 { id: "properties/project?approval=JDA%20Scheme", label: "JDA Scheme" },
                 { id: "properties/Villa", label: "Duplex Villas" },

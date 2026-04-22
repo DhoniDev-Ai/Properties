@@ -34,8 +34,8 @@ export const getProperties = cache(async (filters: any = {}) => {
         const dbTypes = filters.propertyType.map((t: string) => typeMap[t] || t.toLowerCase());
         query = query.in('property_type', dbTypes);
     }
-    if (filters.isHB || filters.approvalType === 'HB') {
-        query = query.or('approval_type.eq.HB,property_type.eq.independent_house');
+    if (filters.isHB || filters.approvalType === 'HB' || filters.approvalType === 'Housing Board') {
+        query = query.or('approval_type.ilike.%HB%,approval_type.ilike.%Housing Board%');
     }
     if (filters.isSocietyPatta || filters.approvalType === 'Society Patta') {
         query = query.ilike('group', '%Society Patta%');

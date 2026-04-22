@@ -14,14 +14,14 @@ function CategoryPageContent({ params }: Props) {
     const { type } = use(params);
     const searchParams = useSearchParams();
     const approval = searchParams.get('approval');
-    
+
     // Clean mappings for large display titles
     const typeMap: Record<string, string> = {
         'plot': 'PLOTS',
-        'project': 'PROJECTS & GROUPS',
+        'project': 'PROJECTS',
         'apartment': 'APARTMENTS',
         'housing-board': 'HOUSING BOARD',
-        'hb': 'HOUSING BOARD',
+        'hb': 'Housing Board HOMES',
         'independent-house': 'INDEPENDENT HOUSES',
         'villa': 'LUXURY VILLAS',
         'commercial': 'COMMERCIAL SPACES',
@@ -57,11 +57,11 @@ function CategoryPageContent({ params }: Props) {
     return (
         <main className="min-h-screen bg-slate-50 flex flex-col">
             <Navbar theme="light" />
-            
-            <PropertyListingClient 
-                initialFilters={{ 
+
+            <PropertyListingClient
+                initialFilters={{
                     propertyType: dataTypes,
-                    approvalType: approval || ""
+                    approvalType: type.toLowerCase() === 'hb' || type.toLowerCase() === 'housing-board' ? 'HB' : (approval || "")
                 }}
                 hideHero={true}
                 hideCategoryCards={true}
