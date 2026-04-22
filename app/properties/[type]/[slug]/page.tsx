@@ -17,12 +17,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
+    const title = `${property.title} | ${property.specs.bhk || property.type} in ${property.location.city}`;
+    const description = `${property.description.slice(0, 150)}... Find more JDA plots and luxury homes at Agrawal Real Estate Jaipur.`;
+
     return {
-        title: `${property.title} | ${property.specs.bhk} in ${property.location.city}`,
-        description: property.description.slice(0, 160),
+        title,
+        description,
         openGraph: {
-            title: property.title,
-            description: property.description.slice(0, 160),
+            title,
+            description,
             images: [
                 {
                     url: property.images[0],
@@ -75,7 +78,7 @@ export default async function PropertyDetailPage({ params }: Props) {
         similarProperties = [...similarProperties, ...fallbackByType];
     }
 
-    // 3. Last Resort: Just same listingType (Sale/Rent)
+    // Suggestion logic fallback - ensures we always have 3 properties
     if (similarProperties.length < 3) {
         const remainingNeeded = 3 - similarProperties.length;
         const finalFallback = allPotentialSimilar.filter(p =>
@@ -96,7 +99,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                         "@type": "RealEstateListing",
                         "name": property.title,
                         "description": property.description,
-                        "url": `https://Agarwalproperties.com/properties/${property.type.toLowerCase().replace(' ', '-')}/${property.slug}`,
+                        "url": `https://agrawalrealestate.com/properties/${property.type.toLowerCase().replace(/ /g, '-')}/${property.slug}`,
                         "image": property.images,
                         "address": {
                             "@type": "PostalAddress",
@@ -104,6 +107,11 @@ export default async function PropertyDetailPage({ params }: Props) {
                             "addressRegion": "Rajasthan",
                             "streetAddress": property.location.address,
                             "addressCountry": "IN"
+                        },
+                        "offeredBy": {
+                            "@type": "RealEstateAgent",
+                            "name": "Agrawal Real Estate",
+                            "url": "https://agrawalrealestate.com"
                         }
                     })
                 }}

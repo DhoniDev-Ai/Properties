@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/admin/'],
+      disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://Agarwalproperties.com/sitemap.xml',
+    sitemap: 'https://agrawalrealestate.com/sitemap.xml',
   }
 }

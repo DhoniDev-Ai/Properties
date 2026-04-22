@@ -86,14 +86,15 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             <div className={`${isScrolled ? "w-full" : "max-w-7xl mx-auto"}`}>
                 <div className="flex justify-between items-center">
                     {/* Logo */}
-                    <div className="shrink cursor-pointer  flex items-center">
-                        <Link href="/" className="flex flex-col justify-center items-start group cursor-pointer pl-1">
-                            <span className={`font-black text-[22px] tracking-tight leading-none font-heading ${isSolidText ? "text-[#0F172A]" : "text-white"}`}>
-                                Agarwal
-                            </span>
-                            <span className={`text-[9.5px] font-bold tracking-widest md:tracking-[0.22em]  ${isSolidText ? "text-slate-500" : "text-white/80"}`}>
-                                PROPERTIES
-                            </span>
+                    <div className="shrink cursor-pointer flex items-center">
+                        <Link href="/" className="flex rounded-xl p-1 items-center group cursor-pointer">
+                            <div className="relative flex rounded-xl">
+                                <img
+                                    src={isSolidText ? "/logolit.png" : "/logodrk.png"}
+                                    alt="Agrawal Real Estate Logo"
+                                    className="w-full h-12 zoom-out-50 rounded-xl scale-105 object-contain"
+                                />
+                            </div>
                         </Link>
                     </div>
 

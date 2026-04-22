@@ -2,36 +2,46 @@ import { MetadataRoute } from 'next'
 import { getProperties } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://Agarwalproperties.com'
+  const baseUrl = 'https://agrawalrealestate.com'
 
-  // Basic Routes
-  const routes = [
-    '',
-    '/properties',
-    '/sell',
-    '/properties/apartment',
-    '/properties/plot',
-    '/properties/villa',
-    '/properties/commercial',
-    '/properties/agriculture-land',
-    '/properties/farmhouse',
-    '/properties/hb',
-    '/properties/project',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'daily' as const,
-    priority: route === '' ? 1 : 0.8,
-  }))
-
-  // Dynamic Property Routes
-  const properties = await getProperties()
-  const propertyEntries = properties.map((prop) => ({
-    url: `${baseUrl}/properties/${prop.type.toLowerCase().replace(' ', '-')}/${prop.slug}`,
-    lastModified: new Date().toISOString(),
+  // Dynamic routes from properties
+  const properties = await getProperties({});
+  const propertyEntries = properties.map((property) => ({
+    url: `${baseUrl}/properties/${property.property_type.toLowerCase().replace(/_/g, '-')}/${property.slug || property.id}`,
+    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: 0.6,
+    priority: 0.7,
   }))
 
-  return [...routes, ...propertyEntries]
+  // Category routes
+  const categories = ['apartment', 'plot', 'villa', 'commercial', 'farmhouse', 'hb']
+  const categoryEntries = categories.map((cat) => ({
+    url: `${baseUrl}/properties/${cat}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.8,
+  }))
+
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/sell`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    ...categoryEntries,
+    ...propertyEntries,
+  ]
 }

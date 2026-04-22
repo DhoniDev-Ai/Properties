@@ -207,12 +207,12 @@ export default function PropertyListingClient({
                                     <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[0.9]  mb-3">
                                         {title}
                                     </h1>
-                                    <div className="flex items-start gap-4 max-w-3xl">
+                                    {/* <div className="flex items-start gap-4 max-w-3xl">
                                         <div className="w-1.5 h-12 bg-blue-600 rounded-full shrink-0 mt-1" />
                                         <p className="text-lg md:text-xl text-slate-500 font-bold leading-tight">
                                             {description}
                                         </p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         )}

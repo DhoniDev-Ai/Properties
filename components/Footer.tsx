@@ -26,13 +26,14 @@ export default function Footer() {
 
                     {/* Column 1 - ABOUT */}
                     <div>
-                        <Link href="/" className="flex flex-col justify-center items-start group cursor-pointer mb-6">
-                            <span className="font-black text-[22px] tracking-tight leading-none font-heading text-white">
-                                Agarwal
-                            </span>
-                            <span className="text-[10px] font-semibold tracking-[0.2em] text-[#3b82f6] uppercase mt-1">
-                                Real Estate
-                            </span>
+                        <Link href="/" className="flex items-center group cursor-pointer mb-6">
+                            <div className="relative h-14 aspect-3/1 overflow-hidden">
+                                <img
+                                    src="/logodrk.png"
+                                    alt="Agrawal Real Estate Logo"
+                                    className="w-full h-full object-contain"
+                                />
+                            </div>
                         </Link>
 
                         <p className="text-slate-400 mb-8 max-w-sm leading-relaxed">
@@ -187,7 +188,7 @@ export default function Footer() {
                 {/* BOTTOM BAR */}
                 <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm text-center md:text-left">
-                        &copy; 2026 Agarwal Real Estate. All Rights Reserved.
+                        &copy; 2026 Agrawal Real Estate. All Rights Reserved.
                     </p>
                     <p className="text-slate-500 text-sm text-center md:text-right">
                         Designed & Developed by <span className="text-white font-medium">DhoniDev-ai</span>

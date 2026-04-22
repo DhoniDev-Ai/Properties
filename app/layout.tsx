@@ -23,33 +23,49 @@ const greatVibes = Great_Vibes({
 
 export const metadata: Metadata = {
   title: {
-    default: "Agarwal Properties | Best Real Estate Agency in Jaipur",
-    template: "%s | Agarwal Properties"
+    default: "Agrawal Real Estate | Best Property Dealer & Real Estate Agency in Jaipur",
+    template: "%s | Agrawal Real Estate"
   },
-  description: "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
-  keywords: ["Real Estate Jaipur", "Agarwal Properties", "Anil Goyal Real Estate", "Properties in Jaipur", "Buy House Jaipur", "Rent Apartment Jaipur"],
+  description: "Find your dream property with Agrawal Real Estate, Jaipur's most trusted agency. We specialize in Rental Properties, JDA plots, Housing Board homes, and Luxury 3BHK/4BHK/5BHK flats. Expert consultation by Anil Goyal.",
+  keywords: [
+    "Agrawal Real Estate",
+    "Agrawal Properties Jaipur",
+    "Real Estate Agency Jaipur",
+    "Property Dealer in Jaipur",
+    "Anil Goyal Real Estate",
+    "Rental Properties in Jaipur",
+    "3BHK Flats for sale Jaipur",
+    "4BHK 5BHK Luxury Apartments Jaipur",
+    "Buy Plots in Jaipur",
+    "JDA Approved Plots Jagatpura",
+    "Housing Board Homes Jaipur",
+    "Luxury Villas in Jaipur",
+    "Ready to Move Flats Jaipur",
+    "Independent House for Sale Jaipur",
+    "Real Estate Investment Jaipur"
+  ],
   authors: [{ name: "Anil Goyal" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://Agarwalproperties.com",
-    siteName: "Agarwal Properties",
-    title: "Agarwal Properties | Best Real Estate Agency in Jaipur",
-    description: "Premium property listings and expert real estate consultation in Jaipur by Anil Goyal.",
+    url: "https://agrawalrealestate.com",
+    siteName: "Agrawal Real Estate",
+    title: "Agrawal Real Estate | Best Property Dealer in Jaipur",
+    description: "Premium property listings and expert real estate consultation in Jaipur. JDA Plots, Apartments, and Villas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80",
+        url: "https://agrawalrealestate.com/logodrk.png",
         width: 1200,
         height: 630,
-        alt: "Agarwal Properties Jaipur",
+        alt: "Agrawal Real Estate Jaipur",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agarwal Properties | Real Estate Jaipur",
+    title: "Agrawal Real Estate | Best Property Dealer in Jaipur",
     description: "Find your dream home with Jaipur's most trusted real estate partner.",
-    images: ["https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80"],
+    images: ["https://agrawalrealestate.com/logodrk.png"],
   },
 };
 
@@ -74,15 +90,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
-              "name": "Agarwal Properties",
+              "name": "Agrawal Real Estate",
               "description": "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
-              "url": "https://Agarwalproperties.com",
-              "logo": "https://Agarwalproperties.com/logo.png", // Assume there's a logo or use favicon later
+              "url": "https://agrawalrealestate.com",
+              "logo": "https://agrawalrealestate.com/logodrk.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jaipur",
                 "addressRegion": "Rajasthan",
-                "postalCode": "302001", // Placeholder
+                "postalCode": "302020",
                 "addressCountry": "IN"
               },
               "contactPoint": {
