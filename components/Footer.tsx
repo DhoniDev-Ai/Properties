@@ -125,7 +125,7 @@ export default function Footer() {
                                 >
                                     <span className="flex items-center gap-2">
                                         <Landmark className="w-3.5 h-3.5 text-green-500" />
-                                        House Loan
+                                        Home Loan
                                     </span>
                                     <span className="text-[10px] text-slate-600 ml-5">Home & business financing</span>
                                 </Link>

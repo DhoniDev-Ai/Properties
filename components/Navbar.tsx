@@ -51,7 +51,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
             dropdown: [
                 { label: "ITR Filing", id: "services/itr-filing" },
                 { label: "GST Filing", id: "services/gst-registration" },
-                { label: "House Loan", id: "services/loan-housing" },
+                { label: "Home Loan", id: "services/loan-housing" },
                 { label: "Liaison with JDA | HB", id: "services/license-jda-hb" },
             ]
         },
