@@ -29,7 +29,7 @@ export default function QuickActionFilters({
     const isVilla = activeCategory.includes("Villa") || activeCategory.includes("Independent House");
 
     return (
-        <div className="w-full mb-6 pb-2 border-b border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
+        <div className="w-full mb-3 pb-1 border-b border-slate-300 animate-in fade-in slide-in-from-top-4 duration-500">
             <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 mr-2">
                     <LayoutGrid className="w-3.5 h-3.5" />

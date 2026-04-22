@@ -176,7 +176,7 @@ export default function PropertyListingClient({
         filters.budget !== "";
 
     return (
-        <div className="flex flex-col mt-20 min-h-[600px] animate-in fade-in duration-700">
+        <div className="flex flex-col mt-16 min-h-[600px] animate-in fade-in duration-700">
             {!hideHero && (
                 <ListingHero
                     totalCount={filteredProperties.length}
@@ -189,22 +189,22 @@ export default function PropertyListingClient({
 
                 {/* Authoritative Header Section */}
                 {(title || showBackButton) && (
-                    <div className="mb-12 flex flex-col items-start gap-6">
+                    <div className="mb-6 flex flex-col items-start gap-6">
                         {showBackButton && (
                             <button
                                 onClick={() => router.push('/properties')}
-                                className="flex items-center gap-2 text-slate-200 font-black bg-[#1D4ED8] transition-all group text-[11px] uppercase tracking-[0.2em] active:scale-95 cursor-pointer px-5 py-2.5 rounded-xl border border-slate-100 shadow-sm"
+                                className="flex items-center gap-2 text-slate-200 font-black bg-[#1D4ED8] transition-all group text-[10px] uppercase tracking-[0.2em] active:scale-95 cursor-pointer px-5 py-2.5 rounded-xl border border-slate-100 shadow-sm"
                             >
                                 <ChevronLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                                 Return to Inventory
                             </button>
                         )}
                         {title && (
-                            <div className="w-full bg-slate-50/50 rounded-4xl p-8 md:p-12 border border-slate-100 shadow-sm relative overflow-hidden">
+                            <div className="w-full bg-slate-50/50 rounded-4xl p-6  border border-slate-100 shadow-sm relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                                 <div className="relative z-10">
-                                    <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4">Market Discovery</p>
-                                    <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase italic mb-6">
+                                    <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-2">Market Discovery</p>
+                                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[0.9]  mb-3">
                                         {title}
                                     </h1>
                                     <div className="flex items-start gap-4 max-w-3xl">
@@ -221,7 +221,7 @@ export default function PropertyListingClient({
 
                 {/* Search Bar for Listing View */}
                 {hideHero && (
-                    <div className="mb-12">
+                    <div className="mb-6">
                         <SearchBar
                             onSearch={handleSearch}
                             initialFilters={filters}
@@ -249,7 +249,7 @@ export default function PropertyListingClient({
                     onSortChange={setSortBy}
                 />
 
-                <div className="mt-8 flex flex-col lg:flex-row gap-8 items-start relative">
+                <div className="mt-3 flex flex-col lg:flex-row gap-8 items-start relative">
                     <div className="flex-1 w-full min-w-0">
                         <ResultsHeader
                             count={filteredProperties.length}
@@ -328,7 +328,7 @@ export default function PropertyListingClient({
                                 </div>
                                 <button
                                     onClick={() => router.push('/sell')}
-                                    className="shrink-0 bg-white hover:bg-blue-50 text-[#0F172A] px-10 py-6 rounded-3xl font-black uppercase tracking-widest text-sm flex items-center gap-3 transition-all active:scale-95 shadow-xl shadow-white/5"
+                                    className="shrink-0 bg-white hover:bg-blue-50 text-[#0F172A] cursor-pointer px-10 py-6 rounded-3xl font-black uppercase tracking-widest text-sm flex items-center gap-3 transition-all active:scale-95 shadow-xl shadow-white/5"
                                 >
                                     Get Started Now
                                     <Send className="w-4 h-4 text-blue-600" />

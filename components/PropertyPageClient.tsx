@@ -54,14 +54,14 @@ export default function PropertyPageClient({ property, similarProperties }: Prop
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex flex-col lg:flex-row gap-12 md:gap-16">
                     {/* Left Column: Content */}
-                    <div className="lg:w-[68%]">
+                    <div className="lg:w-[75%]">
                         {/* Authoritative Header Info */}
                         <div className="bg-slate-50/50 rounded-[2.5rem] p-4 mb-2 border border-slate-100 shadow-sm relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
                             <div className="relative z-10">
 
-                                <h1 className="text-[20px] md:text-3xl font-black text-slate-900  tracking-tighter leading-tight uppercase italic">
+                                <h1 className="text-[20px] md:text-3xl font-black  text-slate-900 font-serif  leading-tight">
                                     {property.title}
                                 </h1>
 

@@ -35,7 +35,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
                     Back to Listings
                 </button>
             </div>
-            <div className="max-w-6xl mx-auto px-4 max-md:pt-16 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto px-4 max-md:pt-16 sm:px-6 lg:px-8">
                 <div className={`grid gap-3 grid-cols-1 md:grid-cols-4 rounded-2xl overflow-hidden shadow-md`}>
                     {/* Main Image - Spans 2 cols and 2 rows to force 3:2 among neighbors */}
                     <div className={`${imageCount > 1 ? 'md:col-span-2 md:row-span-2' : 'md:col-span-4'} relative group overflow-hidden cursor-pointer aspect-3/2`}>
