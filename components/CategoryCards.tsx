@@ -52,7 +52,7 @@ export default function CategoryCards({
             return;
         }
         if (cat.id === 'HB') {
-            router.push('project?approval=HB');
+            router.push('/properties/hb');
             return;
         }
         if (cat.id === 'Society-Patta') {
