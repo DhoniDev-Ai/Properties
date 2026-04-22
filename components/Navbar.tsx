@@ -71,8 +71,8 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                 maxWidth: isScrolled ? "1152px" : "100%",
                 backgroundColor: isScrolled ? "rgba(255, 255, 255, 1)" : (theme === "light" ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)"),
                 borderRadius: isScrolled ? "9999px" : "0px",
-                paddingTop: isScrolled ? "12px" : "20px",
-                paddingBottom: isScrolled ? "12px" : "20px",
+                paddingTop: isScrolled ? "8px" : "10px",
+                paddingBottom: isScrolled ? "8px" : "10px",
                 boxShadow: isScrolled ? "0 8px 30px rgba(0,0,0,0.08)" : (theme === "light" ? "0 4px 20px rgba(0,0,0,0.05)" : "0 0 0 rgba(0,0,0,0)"),
             }}
             transition={{
