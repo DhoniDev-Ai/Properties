@@ -65,8 +65,8 @@ export default function Contact() {
                                     </div>
                                     <div className="pt-2">
                                         <p className="text-base font-bold text-slate-900 mb-1">Email Address</p>
-                                        <a href="mailto:anilgoyal@propdesk.com" className="text-slate-600 text-base hover:text-blue-600 transition-colors">
-                                            anilgoyal@propdesk.com
+                                        <a href="mailto:aggrawalpropertys@gmail.com" className="text-slate-600 text-base hover:text-blue-600 transition-colors">
+                                            aggrawalpropertys@gmail.com
                                         </a>
                                     </div>
                                 </div>
@@ -119,13 +119,13 @@ export default function Contact() {
                         <div className="bg-slate-50 rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-6 shadow-sm">
                             <h3 className="text-lg font-bold text-slate-900 m-0 leading-none">Connect With Us:</h3>
                             <div className="flex justify-center gap-4">
-                                <a href="#" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-200 hover:bg-white transition-all shadow-sm group">
+                                <a href="https://www.facebook.com/jaipurestate" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-200 hover:bg-white transition-all shadow-sm group">
                                     <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-pink-600 hover:border-pink-200 hover:bg-white transition-all shadow-sm group">
+                                <a href="#" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-pink-600 hover:border-pink-200 hover:bg-white transition-all shadow-sm group">
                                     <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </a>
-                                <a href="#" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-700 hover:border-blue-700 hover:bg-white transition-all shadow-sm group">
+                                <a href="https://www.linkedin.com/in/agrawal-property-5540a5408/" className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-700 hover:border-blue-700 hover:bg-white transition-all shadow-sm group">
                                     <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </a>
                             </div>

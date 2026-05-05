@@ -166,7 +166,7 @@ function mapDbToProperty(db: any): Property {
             name: 'Anil Goyal',
             photo: '/AG.png',
             phone: '84260 22000',
-            email: 'anilgoyal@propdesk.com',
+            email: 'aggrawalpropertys@gmail.com',
             type: 'Property Consultant'
         },
         isFeatured: db.is_featured || false,

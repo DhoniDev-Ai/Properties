@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">5. Contact Us</h2>
                         <p>
-                            If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at anilgoyal@propdesk.com.
+                            If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at aggrawalpropertys@gmail.com.
                         </p>
                     </div>
                 </div>

@@ -167,8 +167,8 @@ export default function Footer() {
 
                             <div className="flex items-center">
                                 <Mail className="w-5 h-5 text-[#3b82f6] mr-3 shrink-0" />
-                                <a href="mailto:anilgoyal@propdesk.com" className="text-slate-400 hover:text-white transition-colors text-sm">
-                                    anilgoyal@propdesk.com
+                                <a href="mailto:aggrawalpropertys@gmail.com" className="text-slate-400 hover:text-white transition-colors text-sm">
+                                    aggrawalpropertys@gmail.com
                                 </a>
                             </div>
 

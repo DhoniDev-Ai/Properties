@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getProperties } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://agrawalpropertys.com'
+  const baseUrl = 'https://agrawalrealestate.com'
 
   // Dynamic routes from properties
   const properties = await getProperties({});
@@ -13,13 +13,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // Category routes
-  const categories = ['apartment', 'plot', 'villa', 'commercial', 'farmhouse', 'hb']
+  // Category routes - expanded to match Navbar and more
+  const categories = [
+    'apartment', 'plot', 'villa', 'commercial', 'farmhouse', 'agriculture-land',
+    'hb', 'independent-house', 'project'
+  ]
   const categoryEntries = categories.map((cat) => ({
     url: `${baseUrl}/properties/${cat}`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,
     priority: 0.8,
+  }))
+
+  // Professional Services routes
+  const services = [
+    'services/itr-filing',
+    'services/gst-registration',
+    'services/loan-housing',
+    'services/license-jda-hb'
+  ]
+  const serviceEntries = services.map((service) => ({
+    url: `${baseUrl}/${service}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }))
 
   return [
@@ -42,6 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     ...categoryEntries,
+    ...serviceEntries,
     ...propertyEntries,
   ]
 }

@@ -17,12 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
-    const title = `${property.title} | ${property.specs.bhk || property.type} in ${property.location.city}`;
-    const description = `${property.description.slice(0, 150)}... Find more JDA plots and luxury homes at Agrawal Real Estate Jaipur.`;
+    const bhkInfo = property.specs.bhk ? `${property.specs.bhk} ` : '';
+    const title = `${property.title} | ${bhkInfo}${property.type} in ${property.location.city}`;
+    const description = `${property.description.slice(0, 140)}... ${property.specs.area} | ${property.price}. Verified listing by Agrawal Real Estate, Jaipur's luxury property expert.`;
 
     return {
         title,
         description,
+        keywords: [
+            `${property.type} in ${property.location.city}`,
+            `${property.title} Jaipur`,
+            `Buy ${property.type} ${property.location.city}`,
+            "Agrawal Real Estate",
+            "Anil Goyal Properties"
+        ],
         openGraph: {
             title,
             description,

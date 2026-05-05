@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'housing-board': 'Housing Board Homes',
     };
 
-    const categoryName = typeMap[type.toLowerCase()] || type.charAt(0).toUpperCase() + type.slice(1);
+    const categoryName = typeMap[type.toLowerCase()] || type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ');
     
     return {
         title: `${categoryName} for Sale in Jaipur | Agrawal Real Estate`,
-        description: `Explore premium ${categoryName.toLowerCase()} in Jaipur. JDA approved, prime locations, and best prices. Trust Agrawal Real Estate for verified listings.`,
-        keywords: [`${categoryName} Jaipur`, `Buy ${categoryName} Jaipur`, `JDA ${categoryName} Jaipur`, "Agrawal Real Estate"],
+        description: `Explore premium ${categoryName.toLowerCase()} in Jaipur. Hand-picked JDA approved properties, prime locations, and competitive pricing. Find your dream ${categoryName.toLowerCase()} today with Agrawal Real Estate.`,
+        keywords: [`${categoryName} Jaipur`, `Buy ${categoryName} Jaipur`, `JDA ${categoryName} Jaipur`, `Real Estate ${categoryName} Jaipur`, "Agrawal Real Estate", "Property Dealer Jaipur"],
     };
 }
 
