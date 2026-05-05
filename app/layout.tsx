@@ -48,13 +48,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://agrawalrealestate.com",
+    url: "https://agrawalpropertys.com",
     siteName: "Agrawal Real Estate",
     title: "Agrawal Real Estate | Best Property Dealer in Jaipur",
     description: "Premium property listings and expert real estate consultation in Jaipur. JDA Plots, Apartments, and Villas.",
     images: [
       {
-        url: "https://agrawalrealestate.com/logodrk.png",
+        url: "https://agrawalpropertys.com/logodrk.png",
         width: 1200,
         height: 630,
         alt: "Agrawal Real Estate Jaipur",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agrawal Real Estate | Best Property Dealer in Jaipur",
     description: "Find your dream home with Jaipur's most trusted real estate partner.",
-    images: ["https://agrawalrealestate.com/logodrk.png"],
+    images: ["https://agrawalpropertys.com/logodrk.png"],
   },
 };
 
@@ -92,8 +92,8 @@ export default function RootLayout({
               "@type": "RealEstateAgent",
               "name": "Agrawal Real Estate",
               "description": "Your trusted partner for buying, selling, and renting premium properties in Jaipur. Expert consultation by Anil Goyal.",
-              "url": "https://agrawalrealestate.com",
-              "logo": "https://agrawalrealestate.com/logodrk.png",
+              "url": "https://agrawalpropertys.com",
+              "logo": "https://agrawalpropertys.com/logodrk.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jaipur",

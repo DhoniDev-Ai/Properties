@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getProperties } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://agrawalrealestate.com'
+  const baseUrl = 'https://agrawalpropertys.com'
 
   // Dynamic routes from properties
   const properties = await getProperties({});

@@ -107,7 +107,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                         "@type": "RealEstateListing",
                         "name": property.title,
                         "description": property.description,
-                        "url": `https://agrawalrealestate.com/properties/${property.type.toLowerCase().replace(/ /g, '-')}/${property.slug}`,
+                        "url": `https://agrawalpropertys.com/properties/${property.type.toLowerCase().replace(/ /g, '-')}/${property.slug}`,
                         "image": property.images,
                         "address": {
                             "@type": "PostalAddress",
@@ -119,7 +119,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                         "offeredBy": {
                             "@type": "RealEstateAgent",
                             "name": "Agrawal Real Estate",
-                            "url": "https://agrawalrealestate.com"
+                            "url": "https://agrawalpropertys.com"
                         }
                     })
                 }}
