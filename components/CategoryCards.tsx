@@ -109,7 +109,7 @@ export default function CategoryCards({
                             `}
                             >
                                 <Image
-                                    src={`${cat.image}?auto=format&fit=crop&w=800&q=80`}
+                                    src={cat.image.startsWith('http') ? `${cat.image}?auto=format&fit=crop&w=800&q=80` : cat.image}
                                     alt={cat.label}
                                     fill
                                     className={`
