@@ -30,7 +30,7 @@ export default function Footer() {
                             <div className="relative h-14 aspect-3/1 overflow-hidden">
                                 <img
                                     src="/logodrk.png"
-                                    alt="Agrawal Real Estate Logo"
+                                    alt="Agrawal Properties Logo"
                                     className="w-full h-full object-contain"
                                 />
                             </div>
@@ -188,7 +188,7 @@ export default function Footer() {
                 {/* BOTTOM BAR */}
                 <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm text-center md:text-left">
-                        &copy; 2026 Agrawal Real Estate. All Rights Reserved.
+                        &copy; 2026 Agrawal Properties. All Rights Reserved.
                     </p>
                     <p className="text-slate-500 text-sm text-center md:text-right">
                         Designed & Developed by <span className="text-white font-medium">DhoniDev-ai</span>

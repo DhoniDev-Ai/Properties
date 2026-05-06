@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Privacy Policy | Agarwal Properties",
-    description: "Privacy policy and data protection practices for Agarwal Properties Jaipur.",
+    title: "Privacy Policy | Agrawal Properties",
+    description: "Privacy policy and data protection practices for Agrawal Properties Jaipur.",
 };
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
                         <p className="font-medium text-slate-800">Last Updated: March 26, 2026</p>
 
                         <p>
-                            At Agarwal Properties, reachable from Agarwalproperties.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Agarwal Properties and how we use it.
+                            At Agrawal Properties, reachable from Agrawalproperties.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Agrawal Properties and how we use it.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">1. Information We Collect</h2>
@@ -37,12 +37,12 @@ export default function PrivacyPage() {
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">3. Log Files</h2>
                         <p>
-                            Agarwal Properties follows a standard procedure of using log files. These files log visitors when they visit websites. Every hosting company does this as part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.
+                            Agrawal Properties follows a standard procedure of using log files. These files log visitors when they visit websites. Every hosting company does this as part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">4. Third Party Privacy Policies</h2>
                         <p>
-                            Agarwal Properties's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.
+                            Agrawal Properties's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">5. Contact Us</h2>

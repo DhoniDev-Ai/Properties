@@ -25,19 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // Professional Services routes
-  const services = [
-    'services/itr-filing',
-    'services/gst-registration',
-    'services/loan-housing',
-    'services/license-jda-hb'
-  ]
-  const serviceEntries = services.map((service) => ({
-    url: `${baseUrl}/${service}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+
 
   return [
     {
@@ -59,7 +47,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     ...categoryEntries,
-    ...serviceEntries,
     ...propertyEntries,
   ]
 }

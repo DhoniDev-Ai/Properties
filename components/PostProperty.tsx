@@ -53,12 +53,12 @@ export default function PostProperty() {
                         </div>
 
                         <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase italic mb-8">
-                            Sell Your <span className="text-blue-500">Property</span> <br />
+                            Sell with <span className="text-blue-500">Agrawal Properties</span> <br />
                             Faster Than Ever.
                         </h2>
 
                         <p className="text-xl text-slate-400 font-bold leading-relaxed mb-10 max-w-xl">
-                            List your property directly with our executive team. Skip the middleman and get high-intent buyers instantly via WhatsApp.
+                            List your property directly with Agrawal Properties. Get your JDA Plots, Villas, or Apartments in front of high-intent buyers instantly via WhatsApp.
                         </p>
 
                         <div className="space-y-6">

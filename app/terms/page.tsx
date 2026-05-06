@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Terms & Conditions | Agarwal Properties",
-    description: "Terms and conditions for using the Agarwal Properties real estate platform.",
+    title: "Terms & Conditions | Agrawal Properties",
+    description: "Terms and conditions for using the Agrawal Properties real estate platform.",
 };
 
 export default function TermsPage() {
@@ -19,12 +19,12 @@ export default function TermsPage() {
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">1. Introduction</h2>
                         <p>
-                            Welcome to Agarwal Properties. By accessing this website (Agarwalproperties.com) and using our real estate services, you agree to comply with and be bound by the following terms and conditions of use.
+                            Welcome to Agrawal Properties. By accessing this website (Agrawalproperties.com) and using our real estate services, you agree to comply with and be bound by the following terms and conditions of use.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">2. Listing Accuracy</h2>
                         <p>
-                            While we strive for 100% accuracy in all property details including prices, areas, and amenities, Agarwal Properties and its agents do not guarantee the completeness or reliability of the information. Users are strongly encouraged to verify all details before making a purchase or rental decision.
+                            While we strive for 100% accuracy in all property details including prices, areas, and amenities, Agrawal Properties and its agents do not guarantee the completeness or reliability of the information. Users are strongly encouraged to verify all details before making a purchase or rental decision.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">3. Intellectual Property</h2>
@@ -39,7 +39,7 @@ export default function TermsPage() {
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">5. Limitation of Liability</h2>
                         <p>
-                            Agarwal Properties shall not be liable for any direct, indirect, incidental, or consequential loss or damage arising out of your access to, or use of, this website or your reliance on its content.
+                            Agrawal Properties shall not be liable for any direct, indirect, incidental, or consequential loss or damage arising out of your access to, or use of, this website or your reliance on its content.
                         </p>
 
                         <h2 className="text-2xl font-bold text-[#0F172A] pt-4">6. Amendments</h2>

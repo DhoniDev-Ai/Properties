@@ -91,7 +91,7 @@ export default function Navbar({ theme = "dark" }: { theme?: "dark" | "light" })
                             <div className="relative flex rounded-xl">
                                 <img
                                     src={isSolidText ? "/logolit.png" : "/logodrk.png"}
-                                    alt="Agrawal Real Estate Logo"
+                                    alt="Agrawal Properties Logo"
                                     className="w-full h-12 zoom-out-50 rounded-xl scale-105 object-contain"
                                 />
                             </div>

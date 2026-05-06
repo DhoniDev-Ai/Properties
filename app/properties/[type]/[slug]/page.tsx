@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const bhkInfo = property.specs.bhk ? `${property.specs.bhk} ` : '';
     const title = `${property.title} | ${bhkInfo}${property.type} in ${property.location.city}`;
-    const description = `${property.description.slice(0, 140)}... ${property.specs.area} | ${property.price}. Verified listing by Agrawal Real Estate, Jaipur's luxury property expert.`;
+    const description = `${property.description.slice(0, 140)}... ${property.specs.area} | ${property.price}. Verified listing by Agrawal Properties, Jaipur's luxury property expert.`;
 
     return {
         title,
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             `${property.type} in ${property.location.city}`,
             `${property.title} Jaipur`,
             `Buy ${property.type} ${property.location.city}`,
-            "Agrawal Real Estate",
+            "Agrawal Properties",
             "Anil Goyal Properties"
         ],
         openGraph: {
@@ -118,7 +118,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                         },
                         "offeredBy": {
                             "@type": "RealEstateAgent",
-                            "name": "Agrawal Real Estate",
+                            "name": "Agrawal Properties",
                             "url": "https://agrawalpropertys.com"
                         }
                     })

@@ -21,7 +21,7 @@ const testimonials = [
     },
     {
         id: 3,
-        name: "Kunal Agarwal",
+        name: "Kunal Agrawal",
         property: "Bought Plot in Jagatpura",
         text: "Found our dream property within just two weeks! Their vast network and transparent dealings gave us complete peace of mind.",
         image: "/kn.png",
@@ -66,7 +66,7 @@ export default function Testimonials() {
                     </div>
 
                     {/* Google Reviews Badge */}
-                    <Link target="_blank" href={"https://www.google.com/search?sca_esv=df25ec6ca4037ad0&cs=1&sxsrf=ANbL-n72eT6lGhjWOimQMBgwyF3YgZdsbw:1775031116153&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXPXZsKuBa7AOj5EBlsKPxy0wqbE57ZDGIsfZKJ3OysPXlTS1nMm9XL66GzAt8-m3EGq08_3Z-aqgXTjKMRdUSEeEfTF5HfsisXoVxFiG_EjeePfGw%3D%3D&q=Agarwal+Properties+Reviews&sa=X&ved=2ahUKEwjs2ZKZmsyTAxXd-zgGHUexDUMQ0bkNegQIKBAH&biw=1470&bih=835&dpr=2"} className="bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-200 flex items-center shrink-0 hover:shadow-md transition-shadow  group">
+                    <Link target="_blank" href={"https://www.google.com/search?sca_esv=df25ec6ca4037ad0&cs=1&sxsrf=ANbL-n72eT6lGhjWOimQMBgwyF3YgZdsbw:1775031116153&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXPXZsKuBa7AOj5EBlsKPxy0wqbE57ZDGIsfZKJ3OysPXlTS1nMm9XL66GzAt8-m3EGq08_3Z-aqgXTjKMRdUSEeEfTF5HfsisXoVxFiG_EjeePfGw%3D%3D&q=Agrawal+Properties+Reviews&sa=X&ved=2ahUKEwjs2ZKZmsyTAxXd-zgGHUexDUMQ0bkNegQIKBAH&biw=1470&bih=835&dpr=2"} className="bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-200 flex items-center shrink-0 hover:shadow-md transition-shadow  group">
                         <div className="mr-5 border-r border-slate-100 pr-5">
                             <div className="flex items-center gap-1 mb-1">
                                 <span className="text-xl font-bold text-slate-900">4.8</span>

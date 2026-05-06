@@ -13,7 +13,7 @@ const highValueProps = [
     {
         icon: History,
         title: "45+ Years Trust",
-        desc: "Over a decade of dominance in the Rajasthan real estate market with proven integrity."
+        desc: "Over 20 years of dominance in the Jaipur real estate market with proven integrity."
     },
     {
         icon: Handshake,
@@ -72,7 +72,7 @@ export default function WhyChooseUs() {
 
                     {/* Left: Branding & Value Props */}
                     <div className="lg:w-1/2">
-                        <h3 className="text-sm font-black text-blue-600 uppercase tracking-[0.2em] mb-4">The PropDesk Difference</h3>
+                        <h3 className="text-sm font-black text-blue-600 uppercase tracking-[0.2em] mb-4">The Agrawal Properties Difference</h3>
                         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter uppercase leading-tight italic">
                             Why the Best Investors <br /><span className="text-[#1D4ED8]">Choose Anil Goyal?</span>
                         </h2>

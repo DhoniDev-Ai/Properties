@@ -8,7 +8,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { type } = await params;
-    
+
     const typeMap: Record<string, string> = {
         'plot': 'Plots',
         'apartment': 'Apartments',
@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 
     const categoryName = typeMap[type.toLowerCase()] || type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ');
-    
+
     return {
-        title: `${categoryName} for Sale in Jaipur | Agrawal Real Estate`,
-        description: `Explore premium ${categoryName.toLowerCase()} in Jaipur. Hand-picked JDA approved properties, prime locations, and competitive pricing. Find your dream ${categoryName.toLowerCase()} today with Agrawal Real Estate.`,
-        keywords: [`${categoryName} Jaipur`, `Buy ${categoryName} Jaipur`, `JDA ${categoryName} Jaipur`, `Real Estate ${categoryName} Jaipur`, "Agrawal Real Estate", "Property Dealer Jaipur"],
+        title: `${categoryName} for Sale in Jaipur | Agrawal Properties`,
+        description: `Explore premium ${categoryName.toLowerCase()} in Jaipur. Hand-picked JDA approved properties, prime locations, and competitive pricing. Find your dream ${categoryName.toLowerCase()} today with Agrawal Properties.`,
+        keywords: [`${categoryName} Jaipur`, `Buy ${categoryName} Jaipur`, `JDA ${categoryName} Jaipur`, `Real Estate ${categoryName} Jaipur`, "Agrawal Properties", "Property Dealer Jaipur"],
     };
 }
 

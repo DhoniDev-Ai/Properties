@@ -1,10 +1,15 @@
-"use client";
-
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle, Award, Users, Phone, ArrowRight, FileText, Landmark, ShieldCheck, PieChart } from "lucide-react";
+
+export const metadata: Metadata = {
+    title: "About Us | Agrawal Properties - 25+ Years Expertise in Jaipur",
+    description: "Learn about Agrawal Properties, Jaipur's most trusted property agency led by Anil Goyal. Specializing in JDA plots, luxury villas, and professional property services since 2004.",
+    keywords: ["Agrawal Properties", "Agrawal real estate", "Anil Goyal Real Estate", "About Agrawal Properties", "Best Property Dealer Jaipur", "Real Estate Expert Jaipur"],
+};
 
 export default function AboutPage() {
     return (
@@ -16,11 +21,11 @@ export default function AboutPage() {
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-600/10 skew-x-12 transform translate-x-1/2" />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl">
-                        <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight">
-                            Redefining Real Estate In <span className="text-blue-500">Jaipur</span>
+                        <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight uppercase italic">
+                            Redefining Real Estate with <span className="text-blue-600">Agrawal Properties</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed font-medium">
-                            Agarwal Properties is more than just a real estate agency; we are your dedicated partners in find the perfect space to call home. With decades of experience and a commitment to transparency, we bring premium properties and expertise together.
+                        <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed font-bold">
+                            Agrawal Properties is Jaipur's premier real estate consultant, dedicated to finding you the perfect luxury space. Led by Anil Goyal, we bring 20+ years of trust and transparency to every deal.
                         </p>
                     </div>
                 </div>
@@ -46,7 +51,7 @@ export default function AboutPage() {
                                 Our Legacy of Trust
                             </h2>
                             <p className="text-slate-600 mb-8 text-lg leading-relaxed">
-                                Founded on the principles of integrity and excellence, Agarwal Properties has grown to become Jaipur's most trusted name in real estate. We specialize in luxury apartments, independent villas, and prime commercial spaces.
+                                Founded on the principles of integrity and excellence, Agrawal Properties has grown to become Jaipur's most trusted name in real estate. We specialize in luxury apartments, independent villas, and prime commercial spaces.
                             </p>
                             <div className="space-y-4">
                                 {[
@@ -103,7 +108,7 @@ export default function AboutPage() {
                                     "Our mission is simple: to make property buying a premium, stress-free experience for everyone in Jaipur. We treat every client's dream as our own responsibility."
                                 </p>
                                 <p className="text-slate-500 mb-10 leading-relaxed font-medium">
-                                    With over 20 years of experience in the Rajasthan real estate market, Anil Goyal has built a reputation for unmatched expertise and unwavering integrity. Under his leadership, Agarwal Properties has closed over 1,000 successful deals.
+                                    With over 20 years of experience in the Rajasthan real estate market, Anil Goyal has built a reputation for unmatched expertise and unwavering integrity. Under his leadership, Agrawal Properties has closed over 1,000 successful deals.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <Link

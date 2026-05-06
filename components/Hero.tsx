@@ -53,7 +53,8 @@ export default function Hero() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="text-[40px] sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tighter leading-[1.1] drop-shadow-2xl uppercase italic"
                     >
-                        Find A Place <br className="md:hidden" /> You Will Call <br className="md:hidden" /> <span className="text-orange-400">HOME</span>
+                        <span className="text-orange-400">Agrawal Properties</span> <br />
+                        Real Estate <br className="md:hidden" /> Excellence In <span className="text-orange-400">Jaipur</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -61,7 +62,7 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="text-[15px] md:text-2xl lg:text-3xl text-white/90 mb-8 font-bold drop-shadow-md max-w-2xl mx-auto border-l-4 border-orange-400 pl-4 text-left md:text-center md:border-none md:pl-0 uppercase tracking-tight"
                     >
-                        Premium Residential, Commercial & <span className="text-orange-400 font-black">Agriculture Land</span>
+                        20+ Years of Trusted Real Estate Expertise in Jaipur. JDA Plots, Luxury Flats & Commercial.
                     </motion.p>
                 </div>
 
